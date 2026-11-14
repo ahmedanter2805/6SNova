@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="web_standard" name="shell-type"/>
+<style>
+  @layer base {
+    html, body { margin: 0; padding: 0; }
+    body { overscroll-behavior: none; }
+    main>:first-child { margin-top: 0 !important; }
+    main>:last-child { margin-bottom: 0 !important; }
+  }
+  ::-webkit-scrollbar { display: none; }
+</style>
+<script src="https://cdn.tailwindcss.com"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "primary-fixed": "#f0dbff",
+          "on-primary": "#490080",
+          "primary-container": "#9333ea",
+          "on-tertiary-container": "#ffe8d4",
+          "primary": "#ddb8ff",
+          "secondary-fixed": "#f0dbff",
+          "alert-amber": "#f59e0b",
+          "surface-container-low": "#1c1b1d",
+          "inverse-on-surface": "#313032",
+          "outline": "#988ca0",
+          "primary-fixed-dim": "#ddb8ff",
+          "on-primary-fixed": "#2c0051",
+          "on-tertiary": "#492900",
+          "tertiary": "#ffb86b",
+          "inverse-primary": "#861fdd",
+          "on-surface-variant": "#cfc2d7",
+          "error": "#ffb4ab",
+          "secondary-container": "#6f00be",
+          "text-secondary": "#a1a1aa",
+          "on-secondary": "#490080",
+          "background": "#131315",
+          "on-primary-fixed-variant": "#6800b4",
+          "on-secondary-fixed": "#2c0051",
+          "on-secondary-container": "#d6a9ff",
+          "on-tertiary-fixed": "#2c1700",
+          "surface-dark": "#121217",
+          "secondary": "#ddb7ff",
+          "tertiary-fixed-dim": "#ffb86b",
+          "border-subtle": "#27272a",
+          "inverse-surface": "#e5e1e4",
+          "status-success": "#10b981",
+          "on-primary-container": "#f6e6ff",
+          "on-tertiary-fixed-variant": "#683d00",
+          "tertiary-container": "#9a5c00",
+          "outline-variant": "#4d4354",
+          "on-error-container": "#ffdad6",
+          "error-container": "#93000a",
+          "on-surface": "#e5e1e4",
+          "secondary-fixed-dim": "#ddb7ff",
+          "tertiary-fixed": "#ffdcbc",
+          "on-secondary-fixed-variant": "#6900b3",
+          "surface-tint": "#ddb8ff",
+          "surface": "#131315",
+          "on-error": "#690005",
+          "surface-dim": "#131315",
+          "surface-bright": "#39393b",
+          "surface-variant": "#353437",
+          "text-primary": "#f4f4f5",
+          "surface-elevated": "#18181b",
+          "surface-container-lowest": "#0e0e10",
+          "surface-container-high": "#2a2a2c",
+          "on-background": "#e5e1e4",
+          "surface-container-highest": "#353437",
+          "surface-container": "#201f22"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.125rem",
+          "lg": "0.25rem",
+          "xl": "0.5rem",
+          "full": "0.75rem"
+        },
+        "spacing": {
+          "margin": "2rem",
+          "space-sm": "0.5rem",
+          "space-xl": "2.5rem",
+          "space-lg": "1.5rem",
+          "space-xs": "0.25rem",
+          "gutter": "1.5rem",
+          "space-md": "1rem"
+        },
+        "fontFamily": {
+          "body-lg": [
+            "Inter"
+          ],
+          "headline-sm": [
+            "Space Grotesk"
+          ],
+          "body-sm": [
+            "Inter"
+          ],
+          "headline-lg": [
+            "Space Grotesk"
+          ],
+          "body-md": [
+            "Inter"
+          ],
+          "label-lg": [
+            "JetBrains Mono"
+          ],
+          "headline-lg-mobile": [
+            "Space Grotesk"
+          ],
+          "headline-md": [
+            "Space Grotesk"
+          ],
+          "label-md": [
+            "JetBrains Mono"
+          ]
+        },
+        "fontSize": {
+          "body-lg": [
+            "16px",
+            {
+              "lineHeight": "24px",
+              "fontWeight": "400"
+            }
+          ],
+          "headline-sm": [
+            "18px",
+            {
+              "lineHeight": "24px",
+              "fontWeight": "600"
+            }
+          ],
+          "body-sm": [
+            "12px",
+            {
+              "lineHeight": "16px",
+              "fontWeight": "400"
+            }
+          ],
+          "headline-lg": [
+            "36px",
+            {
+              "lineHeight": "44px",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "700"
+            }
+          ],
+          "body-md": [
+            "14px",
+            {
+              "lineHeight": "20px",
+              "fontWeight": "400"
+            }
+          ],
+          "label-lg": [
+            "13px",
+            {
+              "lineHeight": "18px",
+              "letterSpacing": "0.05em",
+              "fontWeight": "500"
+            }
+          ],
+          "headline-lg-mobile": [
+            "28px",
+            {
+              "lineHeight": "36px",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "700"
+            }
+          ],
+          "headline-md": [
+            "24px",
+            {
+              "lineHeight": "32px",
+              "letterSpacing": "-0.01em",
+              "fontWeight": "600"
+            }
+          ],
+          "label-md": [
+            "11px",
+            {
+              "lineHeight": "16px",
+              "letterSpacing": "0.05em",
+              "fontWeight": "500"
+            }
+          ]
+        }
+      }
+    }
+  }
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+</head>
+<body class="bg-surface font-body-md text-on-surface">
+<header class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-xl border-b border-outline-variant/40">
+<div class="h-16 max-w-7xl mx-auto px-gutter flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[24px]">satellite_alt</span>
+<span class="text-headline-sm font-headline-sm text-on-surface tracking-wider uppercase">6snova Observatory</span>
+</div>
+<nav class="hidden md:flex items-center gap-space-lg" data-active-classes="text-primary border-b-2 border-primary">
+<a class="text-body-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="global-observatory" href="#">Global Observatory</a>
+<a class="text-body-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="satellite-data" href="#">Satellite Data</a>
+<a class="text-body-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="emergency-alerts" href="#">Emergency Alerts</a>
+<a aria-current="page" class="transition-colors text-primary border-b-2 border-primary" data-path="mission-control" href="#">Mission Control</a>
+<a class="text-body-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="eco-travel" href="#">Eco-Travel</a>
+</nav>
+<div class="flex items-center gap-space-md">
+<button aria-label="Toggle Language" class="flex items-center gap-1 px-2.5 py-1 rounded bg-surface-container border border-outline-variant/60 text-label-lg text-on-surface hover:border-primary transition-colors" onclick="toggleLanguage()">
+<span class="material-symbols-outlined text-[14px] text-primary">translate</span>
+<span id="lang-btn-text">العربية / AR</span>
+</button>
+<div class="hidden lg:flex items-center gap-space-sm px-3 py-1 rounded bg-surface-container border border-outline-variant/40 text-label-lg text-primary">
+<span class="w-2 h-2 rounded-full bg-secondary-container animate-pulse"></span>
+<span>Google Alert Sync: Active</span>
+</div>
+<div class="w-8 h-8 rounded bg-primary-container/20 border border-primary/40 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">person</span>
+</div>
+</div>
+</div>
+</header>
+<main class="w-full pt-16 bg-surface min-h-[calc(100vh-4rem)]"><div class="flex flex-col w-full text-on-surface">
+<!-- Top Telemetry & Mission Ticker Bar -->
+<div class="w-full bg-surface-container-low px-gutter py-space-sm flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<span class="flex items-center gap-1 font-label-md text-secondary-fixed">
+<span class="w-2 h-2 rounded-full bg-secondary-container animate-ping"></span>
+<span data-i18n="status_nominal">ORBITAL LOCK: STABLE</span>
+</span>
+<span class="text-on-surface-variant text-body-sm font-body-sm">|</span>
+<span class="font-label-md text-on-surface-variant" data-i18n="telemetry_feed">SAT-COMMS: 99.8% EFFICIENCY</span>
+</div>
+<div class="flex items-center gap-space-lg text-label-md text-primary">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">public</span>
+<span>LAT: 24.7136° N, LON: 46.6753° E</span>
+</span>
+<span class="flex items-center gap-1 text-tertiary-fixed">
+<span class="material-symbols-outlined text-[16px]">warning</span>
+<span data-i18n="active_warnings_count">5 ACTIVE ANOMALY ALERTS</span>
+</span>
+</div>
+</div>
+<!-- Main Dashboard Content -->
+<div class="w-full max-w-7xl mx-auto px-gutter py-space-xl flex flex-col gap-space-xl">
+<!-- Section Header & Quick Metrics -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div>
+<div class="flex items-center gap-space-xs text-primary font-label-sm uppercase tracking-wider mb-space-xs">
+<span class="material-symbols-outlined text-[14px]">satellite_alt</span>
+<span data-i18n="system_command">SYSTEM COMMAND // SECTOR 6</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface" data-i18n="dashboard_title">Mission Control &amp; Environmental Telemetry</h1>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="px-space-md py-space-sm bg-surface-container hover:bg-surface-container-high transition-colors font-label-lg text-primary flex items-center gap-2 border border-outline-variant/30" onclick="toggleLanguage()">
+<span class="material-symbols-outlined text-[16px]">translate</span>
+<span id="lang-btn-text-2">العربية / AR</span>
+</button>
+<button class="px-space-md py-space-sm bg-primary-container text-on-primary font-label-lg hover:bg-primary-fixed transition-colors flex items-center gap-2" onclick="runDiagnostic()">
+<span class="material-symbols-outlined text-[16px]">bolt</span>
+<span data-i18n="run_diagnostic">Run Diagnostic</span>
+</button>
+</div>
+</div>
+<!-- Warnings Grid: Weather Anomalies & Green Cover Deficit -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-lg">
+<!-- Card 1: Extreme Temperature Anomaly -->
+<div class="bg-surface-container border border-border-subtle p-space-lg flex flex-col justify-between gap-space-lg relative overflow-hidden">
+<div class="absolute top-0 right-0 w-24 h-24 bg-error-container/20 rounded-full blur-2xl"></div>
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-sm px-2 py-0.5 bg-error-container text-on-error-container" data-i18n="severity_critical">CRITICAL PRIORITY</span>
+<span class="material-symbols-outlined text-error text-[20px]">thermostat</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-space-xs" data-i18n="temp_anomaly_title">Extreme Thermal Surge</h3>
+<p class="font-body-md text-on-surface-variant text-body-md" data-i18n="temp_anomaly_desc">Sector 4 registers surface temperatures +6.4°C above historical baseline. Heat island effect amplifying.</p>
+</div>
+<div class="flex items-center justify-between pt-space-sm bg-surface-container-low px-space-md py-space-sm border border-border-subtle">
+<span class="font-label-md text-on-surface-variant" data-i18n="metric_value">VALUE: 48.2°C</span>
+<span class="font-label-md text-error" data-i18n="status_alert">ALERT ACTIVE</span>
+</div>
+</div>
+<!-- Card 2: Severe Wind Storms -->
+<div class="bg-surface-container border border-border-subtle p-space-lg flex flex-col justify-between gap-space-lg relative overflow-hidden">
+<div class="absolute top-0 right-0 w-24 h-24 bg-primary-container/10 rounded-full blur-2xl"></div>
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-sm px-2 py-0.5 bg-surface-container-high text-primary" data-i18n="severity_warning">WARNING</span>
+<span class="material-symbols-outlined text-primary text-[20px]">air</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-space-xs" data-i18n="wind_anomaly_title">Severe Dust Vector Winds</h3>
+<p class="font-body-md text-on-surface-variant text-body-md" data-i18n="wind_anomaly_desc">High-velocity gusts exceeding 74 km/h detected via MODIS thermal bands. Visibility impaired.</p>
+</div>
+<div class="flex items-center justify-between pt-space-sm bg-surface-container-low px-space-md py-space-sm border border-border-subtle">
+<span class="font-label-md text-on-surface-variant" data-i18n="wind_value">GUSTS: 74 KM/H</span>
+<span class="font-label-md text-secondary-fixed" data-i18n="monitoring">MONITORING</span>
+</div>
+</div>
+<!-- Card 3: Rainfall & Humidity Fluctuations -->
+<div class="bg-surface-container border border-border-subtle p-space-lg flex flex-col justify-between gap-space-lg relative overflow-hidden">
+<div class="absolute top-0 right-0 w-24 h-24 bg-secondary-container/10 rounded-full blur-2xl"></div>
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-sm px-2 py-0.5 bg-surface-container-high text-secondary-fixed" data-i18n="severity_advisory">ADVISORY</span>
+<span class="material-symbols-outlined text-secondary-fixed text-[20px]">humidity_percentage</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-space-xs" data-i18n="rain_anomaly_title">Precipitation Deficit &amp; Low Humidity</h3>
+<p class="font-body-md text-on-surface-variant text-body-md" data-i18n="rain_anomaly_desc">Extended dry spell with relative humidity dropping below 12%. Aridity index peaking across eastern basin.</p>
+</div>
+<div class="flex items-center justify-between pt-space-sm bg-surface-container-low px-space-md py-space-sm border border-border-subtle">
+<span class="font-label-md text-on-surface-variant" data-i18n="humidity_value">HUMIDITY: 11.8%</span>
+<span class="font-label-md text-secondary-fixed" data-i18n="status_stable">STABLE LOW</span>
+</div>
+</div>
+<!-- Card 4: Green Cover Deficit Warning (Afforestation Recommendation) -->
+<div class="bg-surface-container border border-border-subtle lg:col-span-3 p-space-lg flex flex-col md:flex-row items-start md:items-center justify-between gap-space-lg relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-r from-secondary-container/5 via-transparent to-transparent pointer-events-none"></div>
+<div class="max-w-2xl">
+<div class="flex items-center gap-space-sm mb-space-sm">
+<span class="font-label-sm px-2 py-0.5 bg-secondary-container text-on-secondary-fixed" data-i18n="eco_action_required">ECO ACTION REQUIRED</span>
+<span class="text-secondary-fixed font-label-md" data-i18n="vegetation_index">VEGETATION INDEX: -34% DEFICIT</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-space-xs" data-i18n="green_cover_title">Green Cover Deficit &amp; Urban Heat Mitigation</h3>
+<p class="font-body-lg text-on-surface-variant text-body-lg" data-i18n="green_cover_desc">Satellite multispectral analysis reveals critical canopy shortages in Zone B. Immediate large-scale afforestation and urban forestry deployment recommended to reduce local ambient temperatures by up to 3.5°C.</p>
+</div>
+<div class="flex flex-col sm:flex-row items-center gap-space-md">
+<div class="text-right hidden md:block">
+<span class="block font-headline-sm text-headline-sm text-primary" data-i18n="trees_recommended">1.2M TREES</span>
+<span class="font-body-sm text-on-surface-variant" data-i18n="target_offset">TARGET OFFSET</span>
+</div>
+<button class="px-space-xl py-space-md bg-secondary-container text-on-secondary-fixed font-label-lg hover:bg-secondary-fixed transition-colors flex items-center gap-space-sm whitespace-nowrap" onclick="deployAfforestationPlan()">
+<span class="material-symbols-outlined text-[18px]">forest</span>
+<span data-i18n="deploy_afforestation">Deploy Afforestation Plan</span>
+</button>
+</div>
+</div>
+</div>
+<!-- NASA Satellite Telemetry & Interactive Map Section -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-space-lg">
+<!-- Telemetry Stream Feed -->
+<div class="lg:col-span-2 bg-surface-container border border-border-subtle p-space-lg flex flex-col justify-between gap-space-lg">
+<div class="flex items-center justify-between">
+<div>
+<span class="font-label-sm text-primary uppercase" data-i18n="orbital_sensors">ORBITAL SENSORS // LIVE STREAM</span>
+<h2 class="font-headline-md text-headline-md text-on-surface" data-i18n="telemetry_stream_title">NASA Landsat &amp; MODIS Multispectral Telemetry</h2>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-secondary-container animate-ping"></span>
+<span class="font-label-md text-secondary-fixed" data-i18n="live_sync">LIVE SYNC</span>
+</div>
+</div>
+<!-- Simulated SVG Waveform / Telemetry Graph -->
+<div class="w-full h-48 bg-surface-container-low border border-border-subtle p-space-md flex flex-col justify-between relative overflow-hidden">
+<div class="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none">
+<div class="w-full h-full bg-[radial-gradient(#ddb8ff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+</div>
+<div class="flex justify-between items-center z-10">
+<span class="font-label-sm text-on-surface-variant" data-i18n="spectral_band_8">BAND 8 - PANCHROMATIC REFLECTANCE</span>
+<span class="font-label-sm text-primary">892.4 NM</span>
+</div>
+<div class="w-full h-24 flex items-end gap-1 z-10">
+<div class="w-1/12 bg-primary/40 h-[40%]"></div>
+<div class="w-1/12 bg-primary/60 h-[65%]"></div>
+<div class="w-1/12 bg-primary/50 h-[50%]"></div>
+<div class="w-1/12 bg-primary/80 h-[85%]"></div>
+<div class="w-1/12 bg-primary-container h-[95%]"></div>
+<div class="w-1/12 bg-primary/70 h-[70%]"></div>
+<div class="w-1/12 bg-primary/40 h-[45%]"></div>
+<div class="w-1/12 bg-secondary-container h-[90%]"></div>
+<div class="w-1/12 bg-primary/80 h-[75%]"></div>
+<div class="w-1/12 bg-primary/60 h-[60%]"></div>
+<div class="w-1/12 bg-primary/50 h-[55%]"></div>
+<div class="w-1/12 bg-primary-container h-[100%]"></div>
+</div>
+<div class="flex justify-between items-center z-10 text-body-sm text-on-surface-variant">
+<span data-i18n="t_minus_12h">T-12H</span>
+<span data-i18n="t_minus_6h">T-6H</span>
+<span data-i18n="realtime_now">REALTIME NOW</span>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-space-md">
+<div class="bg-surface-container-low border border-border-subtle p-space-md">
+<span class="block font-label-sm text-on-surface-variant" data-i18n="altitude">ALTITUDE</span>
+<span class="font-headline-sm text-headline-sm text-primary">705 KM</span>
+</div>
+<div class="bg-surface-container-low border border-border-subtle p-space-md">
+<span class="block font-label-sm text-on-surface-variant" data-i18n="velocity">VELOCITY</span>
+<span class="font-headline-sm text-headline-sm text-primary">7.55 KM/S</span>
+</div>
+<div class="bg-surface-container-low border border-border-subtle p-space-md">
+<span class="block font-label-sm text-on-surface-variant" data-i18n="inclination">INCLINATION</span>
+<span class="font-headline-sm text-headline-sm text-primary">98.2°</span>
+</div>
+<div class="bg-surface-container-low border border-border-subtle p-space-md">
+<span class="block font-label-sm text-on-surface-variant" data-i18n="payload_status">PAYLOAD</span>
+<span class="font-headline-sm text-headline-sm text-secondary-fixed">NOMINAL</span>
+</div>
+</div>
+</div>
+<!-- Orbital Map View -->
+<div class="bg-surface-container border border-border-subtle p-space-lg flex flex-col justify-between gap-space-lg">
+<div>
+<span class="font-label-sm text-primary uppercase" data-i18n="geo_vector">GEO VECTOR MAPPING</span>
+<h2 class="font-headline-md text-headline-md text-on-surface" data-i18n="spatial_view">Sector Overview</h2>
+</div>
+<div class="w-full h-64 bg-cover bg-center relative overflow-hidden border border-border-subtle" data-alt="High-resolution satellite view of arid terrain transitioning into urban infrastructure, glowing purple telemetry vectors overlaid on desert dunes and city grids, dark obsidian space command interface style." data-location="Riyadh Region, Saudi Arabia" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDj1BUHgUk7fL7mUqpcdDx4KRCg5Cjl42whHVL7XoyV_rAX3ZWmypDioggZbM75mKoYRdB3PjXwDhfpOdptbz0h5KK7sMPtZ7_p54vmyYGgVbWxP8ifi8nDi99iaOLBTzkjuZYpY7vBfEUNMLiCIv0A6oaz48D_CY3ZWqjyXVShcF3u3kLUfuTy0sbZOgm7fFuG6O0p-MpH3HN1BQFxSluCBF_ggG7VQgXIZV1WLGFw')">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent"></div>
+<div class="absolute bottom-space-md left-space-md right-space-md flex items-center justify-between">
+<span class="font-label-md px-2 py-1 bg-surface/80 backdrop-blur-md text-primary" data-i18n="target_zone_b">TARGET ZONE: ZONE B</span>
+<span class="font-label-md px-2 py-1 bg-secondary-container text-on-secondary-fixed" data-i18n="active_radar">RADAR ACTIVE</span>
+</div>
+</div>
+<p class="font-body-md text-on-surface-variant text-body-md" data-i18n="map_desc">Real-time thermal infrared composite tracking urban heat islands and vegetation loss index across Sector 6.</p>
+</div>
+</div>
+<!-- Pipeline Health & Team Roster Section -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-space-lg">
+<!-- Pipeline Health -->
+<div class="bg-surface-container border border-border-subtle p-space-lg flex flex-col justify-between gap-space-lg">
+<div>
+<span class="font-label-sm text-primary uppercase" data-i18n="data_pipelines">DATA PIPELINES &amp; PROCESSORS</span>
+<h2 class="font-headline-md text-headline-md text-on-surface" data-i18n="pipeline_health">Pipeline Health Matrix</h2>
+</div>
+<div class="flex flex-col gap-space-md">
+<!-- Pipeline Item 1 -->
+<div class="bg-surface-container-low border border-border-subtle p-space-md flex items-center justify-between">
+<div class="flex items-center gap-space-md">
+<span class="material-symbols-outlined text-primary text-[24px]">hub</span>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface" data-i18n="pipe_modis">MODIS Atmospheric Correction</h4>
+<p class="font-body-sm text-on-surface-variant" data-i18n="latency_300ms">Latency: 300ms • Throughput: 4.2 GB/s</p>
+</div>
+</div>
+<span class="font-label-sm px-2 py-1 bg-secondary-container/20 text-secondary-fixed" data-i18n="healthy">HEALTHY</span>
+</div>
+<!-- Pipeline Item 2 -->
+<div class="bg-surface-container-low border border-border-subtle p-space-md flex items-center justify-between">
+<div class="flex items-center gap-space-md">
+<span class="material-symbols-outlined text-primary text-[24px]">sensors</span>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface" data-i18n="pipe_landsat">Landsat Thermal Radiometry</h4>
+<p class="font-body-sm text-on-surface-variant" data-i18n="latency_450ms">Latency: 450ms • Throughput: 6.8 GB/s</p>
+</div>
+</div>
+<span class="font-label-sm px-2 py-1 bg-secondary-container/20 text-secondary-fixed" data-i18n="healthy">HEALTHY</span>
+</div>
+<!-- Pipeline Item 3 -->
+<div class="bg-surface-container-low border border-border-subtle p-space-md flex items-center justify-between">
+<div class="flex items-center gap-space-md">
+<span class="material-symbols-outlined text-tertiary-fixed text-[24px]">waves</span>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface" data-i18n="pipe_google">Google Earth Engine AI Sync</h4>
+<p class="font-body-sm text-on-surface-variant" data-i18n="latency_1200ms">Latency: 1200ms • Throughput: 12.5 GB/s</p>
+</div>
+</div>
+<span class="font-label-sm px-2 py-1 bg-primary-container/20 text-primary" data-i18n="syncing">SYNCING</span>
+</div>
+</div>
+</div>
+<!-- Team Roster -->
+<div class="bg-surface-container border border-border-subtle p-space-lg flex flex-col justify-between gap-space-lg">
+<div>
+<span class="font-label-sm text-primary uppercase" data-i18n="command_crew">COMMAND CREW // TEAM 6SNOVA</span>
+<h2 class="font-headline-md text-headline-md text-on-surface" data-i18n="team_roster">Active Mission Roster</h2>
+</div>
+<div class="flex flex-col gap-space-md">
+<!-- Member 1 -->
+<div class="bg-surface-container-low border border-border-subtle p-space-md flex items-center justify-between">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 bg-primary-container/20 border border-primary/40 text-primary flex items-center justify-center font-headline-sm">DR</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface" data-i18n="member_1_name">Dr. Tariq Al-Mansoor</h4>
+<p class="font-body-sm text-on-surface-variant" data-i18n="member_1_role">Lead Orbital Flight Director</p>
+</div>
+</div>
+<span class="font-label-sm px-2 py-1 bg-surface-container-high text-primary" data-i18n="on_station">ON STATION</span>
+</div>
+<!-- Member 2 -->
+<div class="bg-surface-container-low border border-border-subtle p-space-md flex items-center justify-between">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 bg-primary-container/20 border border-primary/40 text-primary flex items-center justify-center font-headline-sm">SA</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface" data-i18n="member_2_name">Sarah Jenkins</h4>
+<p class="font-body-sm text-on-surface-variant" data-i18n="member_2_role">Senior Climate Telemetry Analyst</p>
+</div>
+</div>
+<span class="font-label-sm px-2 py-1 bg-surface-container-high text-primary" data-i18n="on_station">ON STATION</span>
+</div>
+<!-- Member 3 -->
+<div class="bg-surface-container-low border border-border-subtle p-space-md flex items-center justify-between">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 bg-primary-container/20 border border-primary/40 text-primary flex items-center justify-center font-headline-sm">KZ</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface" data-i18n="member_3_name">Khaled Zayd</h4>
+<p class="font-body-sm text-on-surface-variant" data-i18n="member_3_role">GIS &amp; Afforestation Strategist</p>
+</div>
+</div>
+<span class="font-label-sm px-2 py-1 bg-surface-container-high text-primary" data-i18n="on_station">ON STATION</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Interactive Translation & Diagnostic Script -->
+<script>
+    const translations = {
+      en: {
+        status_nominal: "ORBITAL LOCK: STABLE",
+        telemetry_feed: "SAT-COMMS: 99.8% EFFICIENCY",
+        active_warnings_count: "5 ACTIVE ANOMALY ALERTS",
+        system_command: "SYSTEM COMMAND // SECTOR 6",
+        dashboard_title: "Mission Control & Environmental Telemetry",
+        run_diagnostic: "Run Diagnostic",
+        severity_critical: "CRITICAL PRIORITY",
+        severity_warning: "WARNING",
+        severity_advisory: "ADVISORY",
+        temp_anomaly_title: "Extreme Thermal Surge",
+        temp_anomaly_desc: "Sector 4 registers surface temperatures +6.4°C above historical baseline. Heat island effect amplifying.",
+        metric_value: "VALUE: 48.2°C",
+        status_alert: "ALERT ACTIVE",
+        wind_anomaly_title: "Severe Dust Vector Winds",
+        wind_anomaly_desc: "High-velocity gusts exceeding 74 km/h detected via MODIS thermal bands. Visibility impaired.",
+        wind_value: "GUSTS: 74 KM/H",
+        monitoring: "MONITORING",
+        rain_anomaly_title: "Precipitation Deficit & Low Humidity",
+        rain_anomaly_desc: "Extended dry spell with relative humidity dropping below 12%. Aridity index peaking across eastern basin.",
+        humidity_value: "HUMIDITY: 11.8%",
+        status_stable: "STABLE LOW",
+        eco_action_required: "ECO ACTION REQUIRED",
+        vegetation_index: "VEGETATION INDEX: -34% DEFICIT",
+        green_cover_title: "Green Cover Deficit & Urban Heat Mitigation",
+        green_cover_desc: "Satellite multispectral analysis reveals critical canopy shortages in Zone B. Immediate large-scale afforestation and urban forestry deployment recommended to reduce local ambient temperatures by up to 3.5°C.",
+        trees_recommended: "1.2M TREES",
+        target_offset: "TARGET OFFSET",
+        deploy_afforestation: "Deploy Afforestation Plan",
+        orbital_sensors: "ORBITAL SENSORS // LIVE STREAM",
+        telemetry_stream_title: "NASA Landsat & MODIS Multispectral Telemetry",
+        live_sync: "LIVE SYNC",
+        spectral_band_8: "BAND 8 - PANCHROMATIC REFLECTANCE",
+        t_minus_12h: "T-12H",
+        t_minus_6h: "T-6H",
+        realtime_now: "REALTIME NOW",
+        altitude: "ALTITUDE",
+        velocity: "VELOCITY",
+        inclination: "INCLINATION",
+        payload_status: "PAYLOAD",
+        geo_vector: "GEO VECTOR MAPPING",
+        spatial_view: "Sector Overview",
+        target_zone_b: "TARGET ZONE: ZONE B",
+        active_radar: "RADAR ACTIVE",
+        map_desc: "Real-time thermal infrared composite tracking urban heat islands and vegetation loss index across Sector 6.",
+        data_pipelines: "DATA PIPELINES & PROCESSORS",
+        pipeline_health: "Pipeline Health Matrix",
+        pipe_modis: "MODIS Atmospheric Correction",
+        latency_300ms: "Latency: 300ms • Throughput: 4.2 GB/s",
+        healthy: "HEALTHY",
+        pipe_landsat: "Landsat Thermal Radiometry",
+        latency_450ms: "Latency: 450ms • Throughput: 6.8 GB/s",
+        pipe_google: "Google Earth Engine AI Sync",
+        latency_1200ms: "Latency: 1200ms • Throughput: 12.5 GB/s",
+        syncing: "SYNCING",
+        command_crew: "COMMAND CREW // TEAM 6SNOVA",
+        team_roster: "Active Mission Roster",
+        member_1_name: "Dr. Tariq Al-Mansoor",
+        member_1_role: "Lead Orbital Flight Director",
+        on_station: "ON STATION",
+        member_2_name: "Sarah Jenkins",
+        member_2_role: "Senior Climate Telemetry Analyst",
+        member_3_name: "Khaled Zayd",
+        member_3_role: "GIS & Afforestation Strategist"
+      },
+      ar: {
+        status_nominal: "قفل المدار: مستقر",
+        telemetry_feed: "اتصالات الأقمار الصناعية: كفاءة 99.8%",
+        active_warnings_count: "5 تنبيهات شذوذ نشطة",
+        system_command: "أمر النظام // القطاع 6",
+        dashboard_title: "تحكم المهام القياسية والقياس عن بعد البيئي",
+        run_diagnostic: "تشخيص النظام",
+        severity_critical: "أولوية حرجة",
+        severity_warning: "تحذير",
+        severity_advisory: "إرشاد",
+        temp_anomaly_title: "ارتفاع حراري شديد",
+        temp_anomaly_desc: "يسجل القطاع 4 درجات حرارة سطحية أعلى بـ +6.4 مئوية عن المعدل التاريخي. تأثير الجزيرة الحرارية يتفاقم.",
+        metric_value: "القيمة: 48.2°م",
+        status_alert: "تنبيه نشط",
+        wind_anomaly_title: "رياح عاصفة محملة بالغبار",
+        wind_anomaly_desc: "هبات رياح عالية السرعة تتجاوز 74 كم/ساعة مرصودة عبر نطاقات موديس الحرارية. الرؤية متضررة.",
+        wind_value: "الهبات: 74 كم/س",
+        monitoring: "قيد المراقبة",
+        rain_anomaly_title: "عجز الأمطار وانخفاض الرطوبة",
+        rain_anomaly_desc: "موجة جفاف ممتدة مع انخفاض الرطوبة النسبية دون 12%. مؤشر الجفاف يبلغ ذروته عبر الحوض الشرقي.",
+        humidity_value: "الرطوبة: 11.8%",
+        status_stable: "انخفاض مستقر",
+        eco_action_required: "إجراء بيئي مطلوب",
+        vegetation_index: "مؤشر الغطاء النباتي: عجز -34%",
+        green_cover_title: "عجز الغطاء الأخضر وتخفيف حرارة الحضر",
+        green_cover_desc: "تحليل الأقمار الصناعية المتعدد الأطياف يكشف عن نقص حاد في المظلات النباتية في المنطقة ب. يوصى بالنشر الفوري للتشجير واسع النطاق وخفض درجات الحرارة المحلية بحد أقصى 3.5°م.",
+        trees_recommended: "1.2 مليون شجرة",
+        target_offset: "التعويض المستهدف",
+        deploy_afforestation: "نشر خطة التشجير",
+        orbital_sensors: "أجهزة الاستشعار المدارية // بث مباشر",
+        telemetry_stream_title: "قياسات لاندسات وموديس المتعددة الأطياف",
+        live_sync: "مزامنة حية",
+        spectral_band_8: "النطاق 8 - انعكاسية بانكروماتية",
+        t_minus_12h: "T-12H",
+        t_minus_6h: "T-6H",
+        realtime_now: "الآن مباشرة",
+        altitude: "الارتفاع",
+        velocity: "السرعة",
+        inclination: "الميل",
+        payload_status: "الحمولة",
+        geo_vector: "رسم خريطة المتجهات الجغرافية",
+        spatial_view: "نظرة عامة على القطاع",
+        target_zone_b: "منطقة الهدف: المنطقة ب",
+        active_radar: "الرادار نشط",
+        map_desc: "مركب الأشعة تحت الحمراء الحراري الفوري لتتبع الجزر الحرارية الحضرية ومؤشر فقدان الغطاء النباتي عبر القطاع 6.",
+        data_pipelines: "خطوط بيانات ومعالجات",
+        pipeline_health: "مصفوفة صحة خطوط الأنابيب",
+        pipe_modis: "تصحيح موديس الجوي",
+        latency_300ms: "وقت الاستجابة: 300 مللي ثانية • التدفق: 4.2 جيجابايت/ث",
+        healthy: "سليم",
+        pipe_landsat: "الإشعاع الحراري لاندسات",
+        latency_450ms: "وقت الاستجابة: 450 مللي ثانية • التدفق: 6.8 جيجابايت/ث",
+        pipe_google: "مزامنة جوجل إيرث إنجين للذكاء الاصطناعي",
+        latency_1200ms: "وقت الاستجابة: 1200 مللي ثانية • التدفق: 12.5 جيجابايت/ث",
+        syncing: "جاري المزامنة",
+        command_crew: "طاقم القيادة // فريق 6SNOVA",
+        team_roster: "قائمة المهام النشطة",
+        member_1_name: "د. طارق المنصور",
+        member_1_role: "مدير رحلات المدار الرئيسي",
+        on_station: "في المحطة",
+        member_2_name: "سارة جنكينز",
+        member_2_role: "محلل قياسات المناخ الأول",
+        member_3_name: "خالد زايد",
+        member_3_role: "خبير نظم المعلومات الجغرافية والتشجير"
+      }
+    };
+
+    let currentLang = 'en';
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'en' ? 'ar' : 'en';
+      const btnText = currentLang === 'en' ? 'العربية / AR' : 'English / EN';
+      document.getElementById('lang-btn-text').innerText = btnText;
+      document.getElementById('lang-btn-text-2').innerText = btnText;
+      
+      const htmlEl = document.documentElement;
+      if (currentLang === 'ar') {
+        htmlEl.setAttribute('dir', 'rtl');
+      } else {
+        htmlEl.setAttribute('dir', 'ltr');
+      }
+
+      const elements = document.querySelectorAll('[data-i18n]');
+      elements.forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[currentLang][key]) {
+          el.innerText = translations[currentLang][key];
+        }
+      });
+    }
+
+    function runDiagnostic() {
+      alert(currentLang === 'ar' ? 'جاري تشخيص أنظمة الأقمار الصناعية... كافة الأنظمة تعمل بكفاءة عالية.' : 'Running diagnostic sweep across satellite constellations... All telemetry nominal.');
+    }
+
+    function deployAfforestationPlan() {
+      alert(currentLang === 'ar' ? 'تم إرسال إحداثيات خطة التشجير إلى طائرات الدرون الزراعية في القطاع ب.' : 'Afforestation strategy coordinates transmitted to automated drone seeding units in Zone B.');
+    }
+  </script>
+</div></main>
+<footer class="w-full bg-surface-container-low py-space-lg border-t border-outline-variant/40">
+<div class="max-w-7xl mx-auto px-gutter flex flex-col md:flex-row items-center justify-between gap-space-md text-on-surface-variant text-body-sm">
+<p>© 2024 Team 6snova Earth Observatory. All systems nominal.</p>
+<div class="flex items-center gap-space-lg">
+<span class="text-label-sm text-primary">WEATHER ANOMALY RADAR: NOMINAL</span>
+<span class="text-label-sm text-secondary-container">GREEN COVER WARNINGS: 0 ACTIVE</span>
+</div>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {"colors": {"surface-dim": "#0f0f1a", "primary": "#ff2d78", "on-background": "#e8e0f0", "on-primary-container": "#ffe0ec", "primary-fixed": "#ffe0ec", "primary-fixed-dim": "#ff80aa", "outline-variant": "#302840", "surface-container-high": "#1e1e30", "inverse-primary": "#8c0038", "on-error": "#1a0000", "background": "#0a0a12", "surface": "#0f0f1a", "tertiary": "#ffe04a", "on-primary-fixed-variant": "#8c0038", "on-primary": "#1a0010", "tertiary-fixed": "#fff0c0", "outline": "#5a5068", "secondary-container": "#004d3d", "surface-container-highest": "#28283e", "on-secondary-container": "#c0fff4", "on-primary-fixed": "#3d0020", "on-surface": "#e8e0f0", "on-tertiary-fixed": "#1a1000", "primary-container": "#b3004e", "surface-container-lowest": "#0a0a12", "inverse-surface": "#e8e0f0", "secondary-fixed-dim": "#00e6b8", "surface-container-low": "#111118", "error": "#ff4444", "tertiary-fixed-dim": "#ffe04a", "on-tertiary-fixed-variant": "#665200", "on-secondary": "#001a1a", "on-secondary-fixed": "#001a1a", "surface-container": "#141422", "surface-bright": "#1a1a2e", "secondary-fixed": "#c0fff4", "on-tertiary-container": "#fff0c0", "secondary": "#00ffcc", "tertiary-container": "#665200", "on-error-container": "#ffa0a0", "surface-variant": "#1e1e30", "on-tertiary": "#1a1000", "on-secondary-fixed-variant": "#004d4d", "surface-tint": "#ff2d78", "on-surface-variant": "#a098b0", "inverse-on-surface": "#0a0a12", "error-container": "#3d0f0f"}, "borderRadius": {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"}, "spacing": {}, "fontFamily": {"headline": ["Sora"], "display": ["Sora"], "body": ["Inter"], "label": ["Space Grotesk"]}}}};</script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Sora:wght@100..900&family=Space+Grotesk:wght@100..900&display=swap" rel="stylesheet"/></head><body class="bg-surface font-body text-on-surface"><header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-primary/20"><div class="h-16 max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between"><div class="flex items-center gap-3"><img alt="Team 6snova Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBt_J_gny4M-fPXYAsi4DlC-I9hWSRY9bQzFTvYur8ahYCzdkAq_yBL4W8b5XQOOWG03TEdRz69FM6HsFsc__4_1NzpTqAwlgOr5fWqOU7aG1fqB07mKCdud-fIFVE_DceizfEASDKl-xWuhPQiNOYXnIeLt5oVX3nZD6xUUeej0TIubFy5ICPYzhRfjCXOlVfM4Yx0GjsqC40Y6oA9BjRvpO2y3eGANa-P4Iz-b9Kg"/><span class="text-lg font-headline font-bold tracking-tight uppercase text-on-surface drop-shadow-[0_0_8px_currentColor]">6snova Observatory</span></div><nav class="hidden md:flex items-center gap-6" data-active-classes="bg-primary-container text-on-primary-container font-bold rounded-lg px-3 py-1.5"><a aria-current="page" class="transition-colors bg-primary-container text-on-primary-container font-bold rounded-lg px-3 py-1.5" data-path="global-observatory" href="#">Global Observatory</a><a class="text-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="satellite-data" href="#">Satellite Data</a><a class="text-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="emergency-alerts" href="#">Emergency Alerts</a><a class="text-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="mission-control" href="#">Mission Control</a></nav><div class="flex items-center gap-4"><div class="hidden lg:flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container border border-secondary/30 text-xs font-label text-secondary"><span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span><span>Google Alert Sync: Active</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shadow-[0_0_12px_rgba(255,45,120,0.4)]"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-16 bg-surface min-h-[calc(100vh-4rem)]"><div class="flex flex-col w-full">
+<!-- Command Telemetry Top Bar -->
+<section class="w-full bg-surface-container-lowest px-6 lg:px-12 py-3.5 flex flex-wrap items-center justify-between gap-4">
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-3">
+<img alt="Team 6snova Insignia" class="h-9 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRdvKAfEsB9zCsF50SssC4R94WJghfZuGqRvW8ITeeb_mhwE9pmiJB-9tD9fqP8QOiRFqk1ZLvPdZMUa63S0wZM8ph1MUQlhjfFrtDXW0615Du5PNfOEGg8lgirIip-264M3wEtPd6bcmxpEKT-vhMwtAmcea4U4kMintj0OJoN9SQoiy0FgHQjWtBd5sdkrHvMoHi7Stsb2Fu0SUrQLPv4QHGBNQdbQqgLcGs9-N85wEpOBOfRUBk"/>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-text-primary tracking-tight uppercase">6snova Planetary System</span>
+<span class="font-label-md text-label-md text-primary tracking-widest">TACTICAL CLIMATE OBSERVATORY</span>
+</div>
+</div>
+<div class="hidden sm:flex items-center gap-2 px-2.5 py-1 rounded bg-surface-container-high text-primary font-label-md text-label-md">
+<span class="w-2 h-2 rounded-full bg-status-success animate-ping"></span>
+<span>SAT-LINK 09 // STREAM SYNCHRONIZED</span>
+</div>
+</div>
+<!-- Search, Region, Lang, Tourism -->
+<div class="flex items-center gap-3">
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-text-secondary text-[18px]">search</span>
+<input class="bg-surface-elevated pl-9 pr-4 py-1.5 rounded font-label-md text-label-md text-text-primary placeholder:text-text-secondary focus:outline-none focus:bg-surface-container" placeholder="Scan province, biome, coords..." type="text"/>
+</div>
+<div class="flex items-center bg-surface-elevated rounded p-0.5">
+<button class="px-2.5 py-1 rounded text-primary-container bg-primary font-label-md text-label-md font-bold transition-all" id="lang-en">EN</button>
+<button class="px-2.5 py-1 rounded text-text-secondary hover:text-text-primary font-label-md text-label-md transition-all" id="lang-ar">AR</button>
+</div>
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded bg-surface-container-high text-primary hover:bg-surface-bright transition-colors font-label-md text-label-md" title="Eco-Tourism Telemetry Sector">
+<span class="material-symbols-outlined text-[16px]">explore</span>
+<span class="hidden md:inline">TOURISM CORRIDORS</span>
+</button>
+</div>
+</section>
+<!-- Main Planetary Canvas & Live Telemetry Centerpiece -->
+<section class="w-full relative px-6 lg:px-12 py-6 bg-surface-container-lowest overflow-hidden">
+<div class="relative w-full rounded-xl overflow-hidden bg-surface-dark shadow-2xl min-h-[580px] flex flex-col justify-between p-6">
+<!-- Background Satellite Earth Imagery -->
+<div class="absolute inset-0 bg-cover bg-center opacity-90 scale-100 transition-transform duration-1000" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCSUoYmuxppjHOK2eZMOtzQ0FYIe4iCWHs1h1ORZZMUiiTKBmpTVflMicd2fehVvl9xUcY2AyflAz-XENAxbw9uwQBIa0LDBNhpQhNgXWbkDsZ_pH6zKhT16AANDlgBzzsLgb1YSjeVtUFYf1HUFdcAClA61sDAd20nH_Kr4TXVZnxPI5bSHCywNQ_9yrFGk0lrgFSqHJWMqIIrZtWU-JSsG362gzacdonlUCoDHgU');"></div>
+<!-- Overlay Gradient Scrims -->
+<div class="absolute inset-0 bg-gradient-to-t from-surface-dark via-transparent to-surface-dark/60 pointer-events-none"></div>
+<div class="absolute inset-0 bg-radial from-transparent via-surface-dark/20 to-surface-dark/80 pointer-events-none"></div>
+<!-- Top Overlay HUD Items -->
+<div class="relative z-10 flex flex-wrap items-start justify-between gap-4">
+<div class="bg-surface-dark/85 backdrop-blur-md p-4 rounded-lg max-w-sm">
+<div class="flex items-center gap-2 mb-1">
+<span class="font-label-md text-label-md text-primary font-bold">PRIMARY SECTOR ORBIT 4B</span>
+<span class="text-xs px-1.5 py-0.5 rounded bg-primary-container text-on-primary-container font-label-md font-bold">LIVE LIDAR</span>
+</div>
+<p class="font-headline-sm text-headline-sm text-text-primary font-bold tracking-tight">GLOBAL HEAT FLUX & IONOSPHERE</p>
+<div class="grid grid-cols-2 gap-2 mt-3 pt-3">
+<div>
+<span class="font-label-md text-label-md text-text-secondary uppercase">Mean Thermal Map</span>
+<p class="font-headline-sm text-headline-sm text-secondary font-bold">+28.4°C</p>
+</div>
+<div>
+<span class="font-label-md text-label-md text-text-secondary uppercase">Atmosphere Mass</span>
+<p class="font-headline-sm text-headline-sm text-primary font-bold">1.214 kg/m³</p>
+</div>
+</div>
+</div>
+<div class="bg-surface-dark/85 backdrop-blur-md p-4 rounded-lg flex flex-col items-end gap-1.5 text-right">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-status-success"></span>
+<span class="font-label-md text-label-md text-status-success font-bold tracking-widest">RADAR LOCK: CONTINENTAL ZONE 06</span>
+</div>
+<span class="font-label-lg text-label-lg text-text-primary tracking-widest font-mono">LAT: 34.05° N // LONG: 118.24° W</span>
+<div class="flex gap-2 mt-2">
+<span class="px-2 py-0.5 rounded bg-surface-container text-text-secondary font-label-md text-label-md">SPECTRAL: INFRARED</span>
+<span class="px-2 py-0.5 rounded bg-primary-container/40 text-primary font-label-md text-label-md">RESOLUTION: 0.25M</span>
+</div>
+</div>
+</div>
+<!-- Center Floating Dynamic Telemetry Badges -->
+<div class="relative z-10 grid grid-cols-1 sm:grid-cols-3 gap-3 my-auto pointer-events-none max-w-2xl mx-auto py-12">
+<div class="bg-surface-elevated/70 backdrop-blur-sm p-3 rounded text-center">
+<span class="font-label-md text-label-md text-primary tracking-widest uppercase">Seismic Stress Field</span>
+<p class="font-headline-md text-headline-md text-text-primary font-bold mt-0.5">2.4 <span class="font-body-sm text-body-sm text-text-secondary">Mw</span></p>
+</div>
+<div class="bg-surface-elevated/70 backdrop-blur-sm p-3 rounded text-center">
+<span class="font-label-md text-label-md text-alert-amber tracking-widest uppercase">Tropospheric Vortex</span>
+<p class="font-headline-md text-headline-md text-text-primary font-bold mt-0.5">142 <span class="font-body-sm text-body-sm text-text-secondary">km/h</span></p>
+</div>
+<div class="bg-surface-elevated/70 backdrop-blur-sm p-3 rounded text-center">
+<span class="font-label-md text-label-md text-status-success tracking-widest uppercase">Ozone Layer Density</span>
+<p class="font-headline-md text-headline-md text-text-primary font-bold mt-0.5">312 <span class="font-body-sm text-body-sm text-text-secondary">DU</span></p>
+</div>
+</div>
+<!-- Bottom Status & Spectral Controls HUD -->
+<div class="relative z-10 flex flex-wrap items-end justify-between gap-4 pt-4">
+<div class="flex flex-wrap items-center gap-2">
+<button class="px-3.5 py-1.5 rounded bg-primary-container text-on-primary-container font-label-md text-label-md font-bold hover:brightness-110 flex items-center gap-1.5 shadow-md">
+<span class="material-symbols-outlined text-[16px]">layers</span>
+<span>THERMAL HUD</span>
+</button>
+<button class="px-3.5 py-1.5 rounded bg-surface-elevated hover:bg-surface-bright text-text-primary font-label-md text-label-md flex items-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-[16px]">cyclone</span>
+<span>PRESSURE RIDGES</span>
+</button>
+<button class="px-3.5 py-1.5 rounded bg-surface-elevated hover:bg-surface-bright text-text-primary font-label-md text-label-md flex items-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-[16px]">park</span>
+<span>VEGETATION INDEX (NDVI)</span>
+</button>
+</div>
+<div class="flex items-center gap-4 bg-surface-dark/90 backdrop-blur-md px-4 py-2 rounded">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-text-secondary">GLOBAL SCANNER RATE</span>
+<span class="font-label-lg text-label-lg text-secondary font-mono">1.84 TB/SEC SATELLITE ARRAY</span>
+</div>
+<div class="w-16 h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="w-4/5 h-full bg-primary-container animate-pulse"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Weather Anomaly Alerts & Green Cover Deficit Grid -->
+<section class="w-full px-6 lg:px-12 py-8 bg-surface">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-3">
+<span class="w-2.5 h-6 bg-primary-container rounded-full"></span>
+<h2 class="font-headline-md text-headline-md text-text-primary font-bold tracking-tight">ACTIVE PLANETARY WARNINGS</h2>
+</div>
+<span class="font-label-md text-label-md text-text-secondary uppercase">AUTOMATED SATELLITE VECTOR AUDIT</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+<!-- High/Low Temp Warning -->
+<div class="bg-surface-elevated p-5 rounded-lg flex flex-col justify-between hover:bg-surface-bright transition-all">
+<div class="flex items-start justify-between">
+<span class="material-symbols-outlined text-alert-amber text-3xl">thermostat</span>
+<span class="px-2 py-0.5 rounded bg-alert-amber/20 text-alert-amber font-label-md text-label-md font-bold uppercase">CRITICAL SPIKE</span>
+</div>
+<div class="my-4">
+<span class="font-label-md text-label-md text-text-secondary uppercase">Thermal Dynamic Surge</span>
+<h3 class="font-headline-sm text-headline-sm text-text-primary font-bold mt-1">+49.8°C Interior Basin</h3>
+<p class="font-body-sm text-body-sm text-text-secondary mt-1">Extreme day-to-night delta detected (+28°C shift over 6 hours).</p>
+</div>
+<div class="flex items-center justify-between pt-3 text-text-secondary font-label-md text-label-md">
+<span>ZONE 3-ALPHA</span>
+<span class="text-alert-amber font-bold">HIGH RISK</span>
+</div>
+</div>
+<!-- Extreme Wind Speed -->
+<div class="bg-surface-elevated p-5 rounded-lg flex flex-col justify-between hover:bg-surface-bright transition-all">
+<div class="flex items-start justify-between">
+<span class="material-symbols-outlined text-primary text-3xl">air</span>
+<span class="px-2 py-0.5 rounded bg-primary-container/30 text-primary font-label-md text-label-md font-bold uppercase">GALE TELEMETRY</span>
+</div>
+<div class="my-4">
+<span class="font-label-md text-label-md text-text-secondary uppercase">Atmospheric Shear Alert</span>
+<h3 class="font-headline-sm text-headline-sm text-text-primary font-bold mt-1">118 km/h Coastal Gusts</h3>
+<p class="font-body-sm text-body-sm text-text-secondary mt-1">Cyclonic shear propagating eastward across northern ridge corridor.</p>
+</div>
+<div class="flex items-center justify-between pt-3 text-text-secondary font-label-md text-label-md">
+<span>RADIAL GULF</span>
+<span class="text-primary font-bold">WARNING ACTIVE</span>
+</div>
+</div>
+<!-- Heavy Rainfall / Drought -->
+<div class="bg-surface-elevated p-5 rounded-lg flex flex-col justify-between hover:bg-surface-bright transition-all">
+<div class="flex items-start justify-between">
+<span class="material-symbols-outlined text-secondary text-3xl">water_damage</span>
+<span class="px-2 py-0.5 rounded bg-secondary-container/40 text-secondary font-label-md text-label-md font-bold uppercase">DELUGE VECTOR</span>
+</div>
+<div class="my-4">
+<span class="font-label-md text-label-md text-text-secondary uppercase">Precipitation Spike</span>
+<h3 class="font-headline-sm text-headline-sm text-text-primary font-bold mt-1">140mm / 4hr Est.</h3>
+<p class="font-body-sm text-body-sm text-text-secondary mt-1">Rapid river-basin saturation threshold exceeded in Southern Sector.</p>
+</div>
+<div class="flex items-center justify-between pt-3 text-text-secondary font-label-md text-label-md">
+<span>VALLEY REACH</span>
+<span class="text-secondary font-bold">FLASH FLOOD</span>
+</div>
+</div>
+<!-- High Humidity Alert -->
+<div class="bg-surface-elevated p-5 rounded-lg flex flex-col justify-between hover:bg-surface-bright transition-all">
+<div class="flex items-start justify-between">
+<span class="material-symbols-outlined text-primary-fixed-dim text-3xl">humidity_high</span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-primary-fixed-dim font-label-md text-label-md font-bold uppercase">VAPOR CEILING</span>
+</div>
+<div class="my-4">
+<span class="font-label-md text-label-md text-text-secondary uppercase">Wet-Bulb Temperature Index</span>
+<h3 class="font-headline-sm text-headline-sm text-text-primary font-bold mt-1">94% Rel. Saturation</h3>
+<p class="font-body-sm text-body-sm text-text-secondary mt-1">Heat Index exceeds survivability envelope for outdoor work crews.</p>
+</div>
+<div class="flex items-center justify-between pt-3 text-text-secondary font-label-md text-label-md">
+<span>DELTA BASIN</span>
+<span class="text-primary-fixed-dim font-bold">CRITICAL WET-BULB</span>
+</div>
+</div>
+</div>
+<!-- Green Cover Deficit Urgent Advisory Banner -->
+<div class="bg-surface-container-high p-6 rounded-xl flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 shadow-lg">
+<div class="flex items-start gap-4 max-w-3xl">
+<div class="w-12 h-12 rounded-lg bg-error-container text-on-error-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-2xl">forest</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-error uppercase font-bold tracking-widest">CRITICAL ANOMALY DETECTED</span>
+<span class="px-2 py-0.5 rounded bg-surface-dark text-text-secondary font-label-md text-label-md">NDVI DEFICIT: -42.8%</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-text-primary font-bold mt-1">Severe Vegetative Canopy Depletion: Arid Province Sub-Divisions</h3>
+<p class="font-body-md text-body-md text-text-secondary mt-1">
+            Ground-cover telemetry shows desertification accelerating along the agricultural perimeter. Atmospheric buffering dropped by 31%, elevating local heat island coefficient to critical thresholds.
+          </p>
+</div>
+</div>
+<div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0 w-full lg:w-auto">
+<div class="bg-surface-elevated p-3 rounded">
+<span class="font-label-md text-label-md text-status-success uppercase font-bold">RECOMMENDED ACTION</span>
+<p class="font-body-sm text-body-sm text-text-primary mt-0.5 font-medium">Urban Micro-Forests + Agro-Tree Planting</p>
+</div>
+<button class="px-5 py-3 rounded bg-primary-container text-on-primary-container font-label-md text-label-md font-bold hover:brightness-110 flex items-center justify-center gap-2 transition-all shadow-md">
+<span class="material-symbols-outlined text-[18px]">nature_people</span>
+<span>DEPLOY AFFORESTATION PLAN</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Province Comparison & Time Series 2000-2050 -->
+<section class="w-full px-6 lg:px-12 py-8 bg-surface-container-lowest">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+<div>
+<div class="flex items-center gap-3">
+<span class="w-2.5 h-6 bg-secondary-container rounded-full"></span>
+<h2 class="font-headline-md text-headline-md text-text-primary font-bold tracking-tight">PROVINCIAL TIME-SERIES BENCHMARK (2000 – 2050)</h2>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary mt-1">Multispectral historic calibration paired with predictive trajectory projections.</p>
+</div>
+<!-- Province Selectors -->
+<div class="flex flex-wrap items-center gap-3">
+<div class="flex items-center gap-2 bg-surface-elevated px-3 py-1.5 rounded">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-label-md text-label-md text-text-secondary">PROVINCE A:</span>
+<select class="bg-transparent text-text-primary font-label-md text-label-md focus:outline-none cursor-pointer">
+<option class="bg-surface-elevated" value="prov1">North Highlands</option>
+<option class="bg-surface-elevated" value="prov2">Coastal Delta</option>
+<option class="bg-surface-elevated" value="prov3">Eastern Oasis</option>
+</select>
+</div>
+<div class="flex items-center gap-2 bg-surface-elevated px-3 py-1.5 rounded">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-label-md text-label-md text-text-secondary">PROVINCE B:</span>
+<select class="bg-transparent text-text-primary font-label-md text-label-md focus:outline-none cursor-pointer">
+<option class="bg-surface-elevated" value="prov4">Central Desert Plain</option>
+<option class="bg-surface-elevated" value="prov5">South Plateau</option>
+<option class="bg-surface-elevated" value="prov6">Western Basin</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Comparative Visual Time-Series Matrix -->
+<div class="grid grid-cols-1 lg:grid-cols-4 gap-4">
+<!-- Metric 1: Temperature -->
+<div class="bg-surface-elevated p-5 rounded-lg flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-md text-label-md text-text-secondary uppercase">SURFACE TEMPERATURE</span>
+<span class="text-xs px-2 py-0.5 rounded bg-surface-container font-label-md text-primary">+3.8°C Net Shift</span>
+</div>
+<div class="flex items-baseline justify-between mt-1">
+<div>
+<span class="font-label-md text-label-md text-primary">Prov A (Highlands)</span>
+<p class="font-headline-sm text-headline-sm text-text-primary font-bold">24.1°C</p>
+</div>
+<div class="text-right">
+<span class="font-label-md text-label-md text-secondary">Prov B (Desert)</span>
+<p class="font-headline-sm text-headline-sm text-text-primary font-bold">39.4°C</p>
+</div>
+</div>
+<!-- Sparkline SVG -->
+<div class="w-full h-24 my-3">
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 200 80">
+<!-- Historic Zone 2000-2024 -->
+<rect class="text-surface-container-high/40" fill="currentColor" height="80" width="100" x="0" y="0"></rect>
+<text class="text-text-secondary text-[8px] font-mono" fill="currentColor" x="5" y="14">2000-2024 HISTORIC</text>
+<text class="text-primary text-[8px] font-mono" fill="currentColor" x="105" y="14">2025-2050 PROJECTION</text>
+<!-- Prov A Line (Highlands - lower) -->
+<polyline class="text-primary" fill="none" points="0,55 30,52 60,50 90,46 120,40 150,35 180,30 200,24" stroke="currentColor" stroke-width="2"></polyline>
+<!-- Prov B Line (Desert - higher) -->
+<polyline class="text-secondary" fill="none" points="0,38 30,36 60,32 90,28 120,20 150,16 180,11 200,6" stroke="currentColor" stroke-width="2"></polyline>
+</svg>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary">Warming velocity 1.4x higher in desert plain zones due to albedo degradation.</p>
+</div>
+<!-- Metric 2: Wind Velocities -->
+<div class="bg-surface-elevated p-5 rounded-lg flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-md text-label-md text-text-secondary uppercase">MEAN WIND VELOCITY</span>
+<span class="text-xs px-2 py-0.5 rounded bg-surface-container font-label-md text-secondary">Gust Frequency</span>
+</div>
+<div class="flex items-baseline justify-between mt-1">
+<div>
+<span class="font-label-md text-label-md text-primary">Prov A</span>
+<p class="font-headline-sm text-headline-sm text-text-primary font-bold">34 km/h</p>
+</div>
+<div class="text-right">
+<span class="font-label-md text-label-md text-secondary">Prov B</span>
+<p class="font-headline-sm text-headline-sm text-text-primary font-bold">19 km/h</p>
+</div>
+</div>
+<!-- Sparkline SVG -->
+<div class="w-full h-24 my-3">
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 200 80">
+<rect class="text-surface-container-high/40" fill="currentColor" height="80" width="100" x="0" y="0"></rect>
+<!-- Prov A Line -->
+<polyline class="text-primary" fill="none" points="0,40 30,48 60,34 90,45 120,25 150,22 180,18 200,12" stroke="currentColor" stroke-width="2"></polyline>
+<!-- Prov B Line -->
+<polyline class="text-secondary" fill="none" points="0,62 30,65 60,60 90,58 120,54 150,56 180,50 200,48" stroke="currentColor" stroke-width="2"></polyline>
+</svg>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary">Highland wind pressure increases 22% by 2045 under thermal convection currents.</p>
+</div>
+<!-- Metric 3: Rain Patterns -->
+<div class="bg-surface-elevated p-5 rounded-lg flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-md text-label-md text-text-secondary uppercase">ANNUAL RAINFALL DENSITY</span>
+<span class="text-xs px-2 py-0.5 rounded bg-surface-container font-label-md text-alert-amber">-310mm Delta</span>
+</div>
+<div class="flex items-baseline justify-between mt-1">
+<div>
+<span class="font-label-md text-label-md text-primary">Prov A</span>
+<p class="font-headline-sm text-headline-sm text-text-primary font-bold">620 mm</p>
+</div>
+<div class="text-right">
+<span class="font-label-md text-label-md text-secondary">Prov B</span>
+<p class="font-headline-sm text-headline-sm text-text-primary font-bold">75 mm</p>
+</div>
+</div>
+<!-- Sparkline SVG (Bar comparison style) -->
+<div class="w-full h-24 my-3 flex items-end justify-between gap-1.5 pt-3">
+<div class="flex flex-col items-center flex-1 h-full justify-end gap-1">
+<div class="w-full bg-primary/70 rounded-t" style="height: 70%"></div>
+<span class="text-[9px] font-mono text-text-secondary">'00</span>
+</div>
+<div class="flex flex-col items-center flex-1 h-full justify-end gap-1">
+<div class="w-full bg-primary/80 rounded-t" style="height: 64%"></div>
+<span class="text-[9px] font-mono text-text-secondary">'15</span>
+</div>
+<div class="flex flex-col items-center flex-1 h-full justify-end gap-1">
+<div class="w-full bg-primary rounded-t" style="height: 52%"></div>
+<span class="text-[9px] font-mono text-text-secondary">'30</span>
+</div>
+<div class="flex flex-col items-center flex-1 h-full justify-end gap-1">
+<div class="w-full bg-secondary/70 rounded-t" style="height: 25%"></div>
+<span class="text-[9px] font-mono text-text-secondary">'00</span>
+</div>
+<div class="flex flex-col items-center flex-1 h-full justify-end gap-1">
+<div class="w-full bg-secondary/80 rounded-t" style="height: 18%"></div>
+<span class="text-[9px] font-mono text-text-secondary">'15</span>
+</div>
+<div class="flex flex-col items-center flex-1 h-full justify-end gap-1">
+<div class="w-full bg-secondary rounded-t" style="height: 9%"></div>
+<span class="text-[9px] font-mono text-text-secondary">'30</span>
+</div>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary">Arid plain experiences prolonged dry seasons interrupted by violent flash spells.</p>
+</div>
+<!-- Metric 4: Relative Humidity -->
+<div class="bg-surface-elevated p-5 rounded-lg flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-md text-label-md text-text-secondary uppercase">RELATIVE HUMIDITY</span>
+<span class="text-xs px-2 py-0.5 rounded bg-surface-container font-label-md text-primary-fixed-dim">Vapor Gradient</span>
+</div>
+<div class="flex items-baseline justify-between mt-1">
+<div>
+<span class="font-label-md text-label-md text-primary">Prov A</span>
+<p class="font-headline-sm text-headline-sm text-text-primary font-bold">58%</p>
+</div>
+<div class="text-right">
+<span class="font-label-md text-label-md text-secondary">Prov B</span>
+<p class="font-headline-sm text-headline-sm text-text-primary font-bold">22%</p>
+</div>
+</div>
+<!-- Sparkline SVG -->
+<div class="w-full h-24 my-3">
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 200 80">
+<rect class="text-surface-container-high/40" fill="currentColor" height="80" width="100" x="0" y="0"></rect>
+<!-- Prov A Line -->
+<polyline class="text-primary" fill="none" points="0,32 30,30 60,35 90,38 120,42 150,45 180,48 200,50" stroke="currentColor" stroke-width="2"></polyline>
+<!-- Prov B Line -->
+<polyline class="text-secondary" fill="none" points="0,68 30,66 60,70 90,72 120,74 150,75 180,78 200,79" stroke="currentColor" stroke-width="2"></polyline>
+</svg>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary">Desert vapor saturation drops below threshold for natural cloud nucleation.</p>
+</div>
+</div>
+</section>
+<!-- AI Neural Predictor & Scenario Simulator Section -->
+<section class="w-full px-6 lg:px-12 py-10 bg-surface">
+<div class="p-8 rounded-xl bg-surface-elevated shadow-xl">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-8">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary text-2xl">memory</span>
+<span class="font-label-md text-label-md text-primary font-bold uppercase tracking-widest">TEAM 6SNOVA NEURAL ENGINE // V4.9</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-text-primary font-bold tracking-tight">AI Neural Predictor & Scenario Simulator</h2>
+<p class="font-body-md text-body-md text-text-secondary mt-1 max-w-2xl">
+            Simulate planetary climate scenarios using Representative Concentration Pathways (RCP) calibrated against real-time 6snova satellite radar scans.
+          </p>
+</div>
+<!-- Scenario Mode Buttons -->
+<div class="flex items-center gap-2 bg-surface-container p-1 rounded-lg">
+<button class="px-4 py-2 rounded bg-primary-container text-on-primary-container font-label-md text-label-md font-bold transition-all flex items-center gap-2 shadow-sm" id="scenario-rcp45">
+<span class="w-2 h-2 rounded-full bg-status-success"></span>
+<span>RCP 4.5 (STABILIZED)</span>
+</button>
+<button class="px-4 py-2 rounded text-text-secondary hover:text-text-primary font-label-md text-label-md font-bold transition-all flex items-center gap-2" id="scenario-rcp85">
+<span class="w-2 h-2 rounded-full bg-alert-amber"></span>
+<span>RCP 8.5 (HIGH FORCING)</span>
+</button>
+</div>
+</div>
+<!-- Controls & Projection Dashboard -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Input Param 1: Carbon Trajectory -->
+<div class="bg-surface p-5 rounded-lg flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-text-secondary uppercase">CO2 Radiative Forcing</span>
+<span class="font-label-md text-label-md text-primary font-bold" id="co2-val">+4.5 W/m²</span>
+</div>
+<p class="font-headline-sm text-headline-sm text-text-primary font-bold mt-2" id="co2-ppm">538 PPM Equiv.</p>
+<p class="font-body-sm text-body-sm text-text-secondary mt-1">Reflects aggressive reforestation and solar geo-albedo conservation.</p>
+</div>
+<div class="mt-4">
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full transition-all duration-500" id="co2-bar" style="width: 52%"></div>
+</div>
+</div>
+</div>
+<!-- Input Param 2: Green Infrastructure Offset -->
+<div class="bg-surface p-5 rounded-lg flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-text-secondary uppercase">Target Vegetative Canopy</span>
+<span class="font-label-md text-label-md text-status-success font-bold" id="canopy-val">+24% By 2040</span>
+</div>
+<p class="font-headline-sm text-headline-sm text-text-primary font-bold mt-2" id="canopy-target">8.4M Hectares</p>
+<p class="font-body-sm text-body-sm text-text-secondary mt-1">Autonomous drone seed dispersal combined with urban green corridors.</p>
+</div>
+<div class="mt-4">
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
+<div class="bg-status-success h-full transition-all duration-500" id="canopy-bar" style="width: 68%"></div>
+</div>
+</div>
+</div>
+<!-- Predictor Action & Neural Probability -->
+<div class="bg-surface-container-high p-5 rounded-lg flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-primary uppercase font-bold">NEURAL CONFIDENCE</span>
+<span class="font-label-md text-label-md text-text-primary font-mono">98.42%</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-text-primary font-bold mt-2">Iterative Simulation Node</h4>
+<p class="font-body-sm text-body-sm text-text-secondary mt-1">Simulates 128 micro-climate variables across 52 satellite passes.</p>
+</div>
+<div class="mt-4 pt-3 flex gap-2">
+<button class="w-full py-2.5 rounded bg-primary-container text-on-primary-container font-label-md text-label-md font-bold hover:brightness-110 flex items-center justify-center gap-2 transition-all shadow-md" id="run-prediction-btn">
+<span class="material-symbols-outlined text-[18px]">psychology</span>
+<span id="run-btn-label">TRIGGER NEURAL RUN</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Real-Time Neural Projection Output Window -->
+<div class="mt-6 p-4 rounded-lg bg-surface-dark flex flex-col md:flex-row items-center justify-between gap-4" id="neural-output-box">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-2xl animate-spin" id="neural-spinner" style="animation-duration: 4s;">autorenew</span>
+<div>
+<span class="font-label-md text-label-md text-text-secondary uppercase">Projected 2050 Surface Temperature Delta:</span>
+<span class="font-headline-sm text-headline-sm text-primary font-bold ml-2" id="projected-delta">+1.7°C (Controlled Horizon)</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="font-label-md text-label-md text-status-success font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+            AFFORESTATION MITIGATION: VIABLE
+          </span>
+<button class="px-3 py-1.5 rounded bg-surface-elevated hover:bg-surface-bright text-text-primary font-label-md text-label-md transition-colors">
+            EXPORT CSV // NETCDF
+          </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Script for Interactive Scenario Toggles -->
+<script>
+    (function initPredictor() {
+      const btn45 = document.getElementById('scenario-rcp45');
+      const btn85 = document.getElementById('scenario-rcp85');
+      const co2Val = document.getElementById('co2-val');
+      const co2Ppm = document.getElementById('co2-ppm');
+      const co2Bar = document.getElementById('co2-bar');
+      const canopyVal = document.getElementById('canopy-val');
+      const canopyTarget = document.getElementById('canopy-target');
+      const canopyBar = document.getElementById('canopy-bar');
+      const deltaText = document.getElementById('projected-delta');
+      const runBtn = document.getElementById('run-prediction-btn');
+      const runBtnLabel = document.getElementById('run-btn-label');
+      const spinner = document.getElementById('neural-spinner');
+
+      if (!btn45 || !btn85) return;
+
+      btn45.addEventListener('click', () => {
+        btn45.className = 'px-4 py-2 rounded bg-primary-container text-on-primary-container font-label-md text-label-md font-bold transition-all flex items-center gap-2 shadow-sm';
+        btn85.className = 'px-4 py-2 rounded text-text-secondary hover:text-text-primary font-label-md text-label-md font-bold transition-all flex items-center gap-2';
+        co2Val.textContent = '+4.5 W/m²';
+        co2Ppm.textContent = '538 PPM Equiv.';
+        co2Bar.style.width = '52%';
+        canopyVal.textContent = '+24% By 2040';
+        canopyTarget.textContent = '8.4M Hectares';
+        canopyBar.style.width = '68%';
+        deltaText.textContent = '+1.7°C (Controlled Horizon)';
+        deltaText.className = 'font-headline-sm text-headline-sm text-primary font-bold ml-2';
+      });
+
+      btn85.addEventListener('click', () => {
+        btn85.className = 'px-4 py-2 rounded bg-alert-amber text-on-primary font-label-md text-label-md font-bold transition-all flex items-center gap-2 shadow-sm';
+        btn45.className = 'px-4 py-2 rounded text-text-secondary hover:text-text-primary font-label-md text-label-md font-bold transition-all flex items-center gap-2';
+        co2Val.textContent = '+8.5 W/m²';
+        co2Ppm.textContent = '940 PPM Equiv.';
+        co2Bar.style.width = '94%';
+        canopyVal.textContent = '-16% (Loss Phase)';
+        canopyTarget.textContent = '2.1M Hectares Deficit';
+        canopyBar.style.width = '24%';
+        deltaText.textContent = '+4.9°C (Severe Runaway)';
+        deltaText.className = 'font-headline-sm text-headline-sm text-error font-bold ml-2';
+      });
+
+      runBtn.addEventListener('click', () => {
+        runBtnLabel.textContent = 'CALCULATING TENSORS...';
+        spinner.style.animationDuration = '0.6s';
+        setTimeout(() => {
+          runBtnLabel.textContent = 'PREDICTION UPDATED';
+          spinner.style.animationDuration = '4s';
+          setTimeout(() => {
+            runBtnLabel.textContent = 'TRIGGER NEURAL RUN';
+          }, 2000);
+        }, 800);
+      });
+    })();
+  </script>
+</div></main><footer class="w-full bg-surface-container-low py-8 border-t border-outline-variant"><div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-4 text-on-surface-variant text-sm"><p>© 2024 Team 6snova Earth Observatory. All systems nominal.</p><div class="flex items-center gap-6"><span class="text-xs font-label text-secondary">SECURE FEED: ONLINE</span><span class="text-xs font-label text-tertiary">ENCRYPTION: AES-256</span></div></div></footer></body></html>

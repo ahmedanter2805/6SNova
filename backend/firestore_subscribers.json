@@ -1,0 +1,68 @@
+{
+  "1142168838": {
+    "chat_id": "1142168838",
+    "name": "ENG AHMED ANTER",
+    "username": "AHMED280500",
+    "city": "Cairo",
+    "city_ar": "القاهرة",
+    "district": "Heliopolis / مصر الجديدة",
+    "alert_types": ["heat", "wind", "rainfall", "humidity", "green_space"],
+    "active": true,
+    "registered_at": "2026-11-14T07:00:00Z"
+  },
+  "8458809118": {
+    "chat_id": "8458809118",
+    "name": "Subscriber Alexandria",
+    "username": "User_Alex",
+    "city": "Alexandria",
+    "city_ar": "الإسكندرية",
+    "district": "Montazah / المنتزه",
+    "alert_types": ["heat", "wind", "rainfall", "humidity", "green_space"],
+    "active": true,
+    "registered_at": "2026-11-14T07:00:00Z"
+  },
+  "6120922499": {
+    "chat_id": "6120922499",
+    "name": "abdalrhmn",
+    "username": "abdalrhmn",
+    "city": "Giza",
+    "city_ar": "الجيزة",
+    "district": "Dokki / الدقي",
+    "alert_types": ["heat", "wind", "rainfall", "humidity", "green_space"],
+    "active": true,
+    "registered_at": "2026-11-14T07:00:00Z"
+  },
+  "9293248707": {
+    "chat_id": "9293248707",
+    "name": "Noura",
+    "username": "Noura",
+    "city": "Aswan",
+    "city_ar": "أسوان",
+    "district": "Nile Basin / حوض النيل",
+    "alert_types": ["heat", "wind", "rainfall", "humidity", "green_space"],
+    "active": true,
+    "registered_at": "2026-11-14T07:00:00Z"
+  },
+  "5173643474": {
+    "chat_id": "5173643474",
+    "name": "Nour",
+    "username": "Nour",
+    "city": "Luxor",
+    "city_ar": "الأقصر",
+    "district": "Karnak / الكرنك",
+    "alert_types": ["heat", "wind", "rainfall", "humidity", "green_space"],
+    "active": true,
+    "registered_at": "2026-11-14T07:00:00Z"
+  },
+  "8948583787": {
+    "chat_id": "8948583787",
+    "name": "Ahmed",
+    "username": "Ahmed",
+    "city": "Red Sea",
+    "city_ar": "البحر الأحمر",
+    "district": "Hurghada / الغردقة",
+    "alert_types": ["heat", "wind", "rainfall", "humidity", "green_space"],
+    "active": true,
+    "registered_at": "2026-11-14T07:00:00Z"
+  }
+}

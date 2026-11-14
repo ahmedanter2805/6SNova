@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>6snova Earth Telemetry | Planetary Intelligence Command</title>
+<!-- Google Fonts: Space Grotesk, Geist, JetBrains Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 with Container Queries & Forms -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Theme Configuration Verbatim -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-variant": "#31353e",
+            "secondary-container": "#00b2d6",
+            "secondary": "#4cd6fb",
+            "on-tertiary-container": "#fff1f4",
+            "surface-container": "#1c1f28",
+            "surface-container-low": "#181b24",
+            "secondary-fixed": "#b3ebff",
+            "on-primary-fixed-variant": "#5d00c2",
+            "background": "#10131c",
+            "tertiary-fixed": "#ffd8e6",
+            "primary-fixed-dim": "#d4bbff",
+            "inverse-on-surface": "#2d3039",
+            "surface-container-high": "#272a33",
+            "on-secondary-fixed-variant": "#004e5f",
+            "secondary-fixed-dim": "#4cd6fb",
+            "on-error-container": "#ffdad6",
+            "error": "#ffb4ab",
+            "tertiary": "#ffafd1",
+            "surface-tint": "#d4bbff",
+            "inverse-surface": "#e0e2ee",
+            "on-surface": "#e0e2ee",
+            "on-primary": "#41008b",
+            "tertiary-container": "#d21489",
+            "primary-fixed": "#ebdcff",
+            "tertiary-fixed-dim": "#ffafd1",
+            "surface": "#10131c",
+            "on-error": "#690005",
+            "outline-variant": "#4b4455",
+            "surface-container-lowest": "#0b0e16",
+            "outline": "#968da1",
+            "on-tertiary-fixed": "#3d0024",
+            "inverse-primary": "#7825ea",
+            "primary": "#d4bbff",
+            "on-primary-container": "#faf1ff",
+            "on-secondary-fixed": "#001f27",
+            "on-tertiary": "#63003e",
+            "surface-dim": "#10131c",
+            "on-secondary-container": "#003f4e",
+            "on-surface-variant": "#cdc2d8",
+            "on-background": "#e0e2ee",
+            "on-secondary": "#003642",
+            "on-tertiary-fixed-variant": "#8b0059",
+            "surface-container-highest": "#31353e",
+            "primary-container": "#8a3ffc",
+            "surface-bright": "#363942",
+            "on-primary-fixed": "#270058",
+            "error-container": "#93000a"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "2rem",
+            "space-xl": "2.5rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1.5rem",
+            "margin-mobile": "1rem",
+            "gutter-mobile": "0.75rem",
+            "space-md": "1rem",
+            "space-sm": "0.5rem",
+            "gutter": "1.25rem"
+          },
+          "fontFamily": {
+            "headline-lg": ["Space Grotesk"],
+            "body-lg": ["Geist"],
+            "body-md": ["Geist"],
+            "label-md": ["JetBrains Mono"],
+            "body-sm": ["Geist"],
+            "headline-lg-mobile": ["Space Grotesk"],
+            "label-lg": ["JetBrains Mono"],
+            "headline-sm": ["Space Grotesk"],
+            "headline-md": ["Space Grotesk"],
+            "display-xl": ["Space Grotesk"],
+            "label-sm": ["JetBrains Mono"]
+          },
+          "fontSize": {
+            "headline-lg": ["2.25rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "body-lg": ["1.125rem", { "lineHeight": "1.75rem", "fontWeight": "400" }],
+            "body-md": ["0.9375rem", { "lineHeight": "1.5rem", "fontWeight": "400" }],
+            "label-md": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.06em", "fontWeight": "500" }],
+            "body-sm": ["0.8125rem", { "lineHeight": "1.25rem", "fontWeight": "400" }],
+            "headline-lg-mobile": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-lg": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0.05em", "fontWeight": "500" }],
+            "headline-sm": ["1.25rem", { "lineHeight": "1.75rem", "fontWeight": "500" }],
+            "headline-md": ["1.5rem", { "lineHeight": "2rem", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "display-xl": ["3.5rem", { "lineHeight": "4rem", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "label-sm": ["0.6875rem", { "lineHeight": "0.875rem", "letterSpacing": "0.08em", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    
+    /* Technical Sci-Fi Glows & Ambient Grid */
+    .bg-grid-tech {
+      background-image: linear-gradient(to right, rgba(75, 68, 85, 0.12) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgba(75, 68, 85, 0.12) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+    
+    .glow-cyan {
+      box-shadow: 0 0 20px rgba(0, 178, 214, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    }
+    
+    .glow-violet {
+      box-shadow: 0 0 24px rgba(138, 63, 252, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    }
+    
+    .radar-sweep {
+      background: conic-gradient(from 0deg at 50% 50%, rgba(76, 214, 251, 0.25) 0deg, transparent 60deg, transparent 360deg);
+      animation: sweep 4s linear infinite;
+    }
+    
+    @keyframes sweep {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    @keyframes pulse-halo {
+      0%, 100% { opacity: 0.6; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.05); }
+    }
+    
+    .pulse-beacon {
+      animation: pulse-halo 2.5s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="bg-surface-container-lowest text-on-surface min-h-screen overflow-x-hidden antialiased bg-grid-tech selection:bg-primary-container selection:text-on-primary-container">
+<!-- ================= TOP APP BAR (Shared Components JSON Anchor) ================= -->
+<header class="fixed top-0 left-0 right-0 z-50 h-16 px-6 flex items-center justify-between border-b border-outline-variant/30 bg-surface-container-lowest/85 backdrop-blur-xl max-w-full shadow-[0_4px_30px_rgba(0,0,0,0.6)]">
+<!-- Brand / Logo & Constellation Status -->
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-3">
+<!-- 6snova Cosmic Logo from Prompt Context -->
+<div class="relative flex items-center justify-center h-10 w-24 overflow-hidden rounded-lg bg-surface-container-low/60 border border-primary/30 p-1">
+<img alt="6snova Planetary Intelligence Insignia" class="h-full w-full object-contain filter drop-shadow-[0_0_8px_rgba(138,63,252,0.8)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBByq1njLXwTaIAcs0Z1PtoMmLuNs_wtlyq3wAd_S60rIxl0bOjXwLd4cfar8awewHg6se6xKf0cQrMNyiuQc8zKYwRdRmRNDQ8YMlM-qYEtT111LzFdieFuoBmuGK1bRtBmAMFR1-cBfiDREbwqQSWpqTFpsBxcU5F1OybmXanOZM7Kgqee9UIZN0hJsQz8vXHMZFefV2v094IZqZvdOQnx7buCMyWga8zaDzx-CzrMVidANvyNoG2"/>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md font-bold tracking-tight text-on-surface flex items-center gap-2">
+            6snova Earth Telemetry
+          </span>
+<div class="flex items-center gap-2">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
+</span>
+<span class="font-label-sm text-label-sm text-secondary-fixed-dim">NASA LEO-NET • 4 Active Constellations (MODIS-Aqua, Landsat-9, GOES-18, Sentinel-6)</span>
+</div>
+</div>
+</div>
+<!-- Quick Search Bar (search_bar: on_left) -->
+<div class="hidden xl:flex items-center gap-2 bg-surface-container-low/80 border border-outline-variant/40 rounded-lg px-3 py-1.5 ml-4">
+<span class="material-symbols-outlined text-outline text-lg" data-icon="search">search</span>
+<input class="bg-transparent border-0 text-on-surface font-label-sm text-label-sm placeholder-outline focus:ring-0 focus:outline-none w-56" placeholder="Locate Coordinates or Sensor ID..." type="text"/>
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-variant/70 text-on-surface-variant border border-outline-variant/30">⌘K</span>
+</div>
+</div>
+<!-- Center Navigation Links (Shared JSON Anchor: Earth Viewport active) -->
+<nav class="hidden lg:flex items-center gap-8">
+<a class="text-secondary dark:text-secondary border-b-2 border-secondary font-label-md text-label-md pb-1 tracking-wider flex items-center gap-1.5" href="#">
+<span class="material-symbols-outlined text-base" data-icon="public">public</span>
+        Earth Viewport
+      </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-on-surface font-label-md text-label-md tracking-wider transition-colors duration-200" href="#">
+        Constellations
+      </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-on-surface font-label-md text-label-md tracking-wider transition-colors duration-200" href="#">
+        Atmospheric Layers
+      </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-on-surface font-label-md text-label-md tracking-wider transition-colors duration-200" href="#">
+        Anomaly Matrix
+      </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-on-surface font-label-md text-label-md tracking-wider transition-colors duration-200" href="#">
+        Mission Logs
+      </a>
+</nav>
+<!-- Trailing Actions & Mission Clock -->
+<div class="flex items-center gap-3">
+<!-- Resolution Mode Badge -->
+<div class="hidden md:flex items-center gap-1.5 px-2.5 py-1 rounded bg-surface-container-high/80 border border-outline-variant/40">
+<span class="font-label-sm text-label-sm text-on-surface-variant">GRID RES</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">0.05° HIGH-RES</span>
+</div>
+<!-- Trailing Secondary Action (UTC Clock) -->
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-surface-container-low border border-outline-variant/40 font-label-md text-label-md text-primary tracking-wider">
+<span class="material-symbols-outlined text-base text-secondary" data-icon="schedule">schedule</span>
+<span id="utc-clock">UTC 14:32:08</span>
+</div>
+<!-- Trailing Icon Actions -->
+<button class="relative p-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/40 transition-colors" title="Notifications">
+<span class="material-symbols-outlined text-xl" data-icon="notifications_active">notifications_active</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span>
+</button>
+<button class="p-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/40 transition-colors" title="Settings">
+<span class="material-symbols-outlined text-xl" data-icon="settings">settings</span>
+</button>
+<button class="p-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/40 transition-colors" title="Telemetry Calibration">
+<span class="material-symbols-outlined text-xl" data-icon="tune">tune</span>
+</button>
+<!-- Trailing Primary Action (Live Uplink) -->
+<button class="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-primary-container to-secondary-container text-on-primary-container font-headline-sm text-sm font-semibold tracking-wide shadow-[0_0_16px_rgba(0,178,214,0.4)] active:scale-95 hover:brightness-110 transition-all duration-150">
+<span class="material-symbols-outlined text-base animate-pulse" data-icon="cell_tower">cell_tower</span>
+        Live Uplink
+      </button>
+<!-- Profile Avatar -->
+<div class="h-9 w-9 rounded-full ring-2 ring-primary/40 overflow-hidden ml-1 bg-surface-container-high flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="Futuristic portrait of a female mission commander and orbital payload specialist wearing a sleek biometric planetary flight suit, deep space lighting with neon magenta and cyan visor reflections." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbo8BCNo9MVyPmsqKW_XRQu1_l4bmKihZjmHCDoIBKWRUvG-NIdKPEu6HpPnOatEePpYBbe4Jhz2hWxqSdJclGHR61LrPIFCoOOgzetRDj_s1eB2xiSBsP_Cr0l-nYs_5VWp3DMcHQmWekxfsa2xNMST39XuDANk87dCl64rBSSbMHWaaGezlLHTGeBi7d9RKh2nzouiFRwEFdlD40EJ_gpi_pcWkZyBisIr_1f2Y"/>
+</div>
+</div>
+</header>
+<!-- ================= SIDE NAVIGATION BAR (Shared Components JSON Anchor) ================= -->
+<aside class="fixed top-16 left-0 bottom-0 w-64 z-40 flex flex-col justify-between p-4 bg-surface-container-lowest/90 backdrop-blur-2xl border-r border-outline-variant/30 shadow-[4px_0_24px_rgba(0,0,0,0.5)]">
+<!-- Constellation Header -->
+<div class="space-y-4">
+<div class="flex items-center gap-3 px-2 py-2 rounded-xl bg-surface-container-low/70 border border-outline-variant/20">
+<div class="w-10 h-10 rounded-lg bg-primary-container/20 border border-primary/40 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl" data-icon="satellite_alt">satellite_alt</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm font-bold text-primary">6snova LEO-NET</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Constellation MODIS-GOES</span>
+</div>
+</div>
+<!-- Navigation Tabs (5 tabs from JSON) -->
+<nav class="space-y-1.5">
+<!-- Active Tab: Orbital Telemetry -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary-container/20 text-secondary border border-secondary/40 font-label-sm tracking-wider shadow-[0_0_12px_rgba(0,178,214,0.25)]" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="globe">globe</span>
+          Orbital Telemetry
+        </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/30 font-label-sm tracking-wider transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="thermostat">thermostat</span>
+          Thermal Anomalies
+        </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/30 font-label-sm tracking-wider transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="water_drop">water_drop</span>
+          Atmospheric Moisture
+        </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/30 font-label-sm tracking-wider transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="radar">radar</span>
+          Precipitation Radar
+        </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/30 font-label-sm tracking-wider transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="air">air</span>
+          Vector Wind Dynamics
+        </a>
+</nav>
+<!-- Primary CTA button from JSON -->
+<div class="pt-2">
+<button class="w-full flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg bg-surface-container-high hover:bg-primary-container/30 border border-secondary/40 text-secondary font-label-md text-label-md tracking-wider transition-all duration-150 active:scale-[0.98]">
+<span class="material-symbols-outlined text-lg" data-icon="sync">sync</span>
+          Execute Orbital Sweep
+        </button>
+</div>
+<!-- Realtime Constellation Status Chips -->
+<div class="p-3 rounded-xl bg-surface-container-low/60 border border-outline-variant/30 space-y-2">
+<div class="flex items-center justify-between font-label-sm text-label-sm text-outline">
+<span>PAYLOAD NODES</span>
+<span class="text-secondary font-semibold">4 / 4 ONLINE</span>
+</div>
+<div class="space-y-1.5">
+<div class="flex items-center justify-between font-label-sm text-label-sm">
+<span class="text-on-surface flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> MODIS-Aqua (EOS-PM)
+            </span>
+<span class="text-on-surface-variant">ALT 705km</span>
+</div>
+<div class="flex items-center justify-between font-label-sm text-label-sm">
+<span class="text-on-surface flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Landsat-9 (TIRS-2)
+            </span>
+<span class="text-on-surface-variant">ALT 705km</span>
+</div>
+<div class="flex items-center justify-between font-label-sm text-label-sm">
+<span class="text-on-surface flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> GOES-18 (ABI Geo)
+            </span>
+<span class="text-on-surface-variant">GEO 35,786km</span>
+</div>
+<div class="flex items-center justify-between font-label-sm text-label-sm">
+<span class="text-on-surface flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Sentinel-6 (Poseidon-4)
+            </span>
+<span class="text-on-surface-variant">ALT 1,336km</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Side Nav Footer Tabs (from JSON) -->
+<div class="space-y-1 pt-3 border-t border-outline-variant/20">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/30 font-label-sm text-label-sm tracking-wider transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="sensors">sensors</span>
+        Sensor Diagnostics
+      </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/30 font-label-sm text-label-sm tracking-wider transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="satellite_alt">satellite_alt</span>
+        Station Uplink
+      </a>
+<div class="flex items-center justify-between px-3 py-1.5 text-outline font-label-sm text-[10px]">
+<span>DOWNLINK LATENCY</span>
+<span class="text-emerald-400 font-semibold">112ms [SYNCD]</span>
+</div>
+</div>
+</aside>
+<!-- ================= MAIN CANVASES & BENTO TELEMETRY VIEWPORT ================= -->
+<main class="ml-64 pt-20 p-6 min-h-screen space-y-6">
+<!-- Top Mission Control Alert Ribbon -->
+<section class="flex flex-wrap items-center justify-between gap-4 p-3.5 rounded-xl bg-surface-container/70 backdrop-blur-xl border border-outline-variant/30">
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded bg-tertiary-container/30 border border-tertiary-container text-tertiary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-sm animate-pulse" data-icon="warning">warning</span>
+          PLANETARY CLIMATE INTELLIGENCE RUN
+        </div>
+<span class="font-body-md text-body-md text-on-surface">
+          Global tropospheric thermodynamic sweep initialized. Next orbital pass over Western Hemisphere in <span class="text-secondary font-semibold font-label-md">00:14:22</span>.
+        </span>
+</div>
+<div class="flex items-center gap-4 text-outline font-label-sm text-label-sm">
+<span>GROUND LINK: <strong class="text-on-surface font-medium">Svalbard / White Sands</strong></span>
+<span>•</span>
+<span>EPHEMERIS: <strong class="text-on-surface font-medium">TLE-MODIS-VER-4.88</strong></span>
+<button class="flex items-center gap-1 text-secondary hover:text-secondary-fixed transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="file_download">file_download</span>
+          Export NetCDF-4
+        </button>
+</div>
+</section>
+<!-- Bento Tier 1: Interactive Earth Telemetry Viewport & Telemetry HUD -->
+<section class="grid grid-cols-12 gap-6">
+<!-- Central Viewport Display (8 Cols) -->
+<div class="col-span-12 xl:col-span-8 rounded-2xl bg-surface-container-low/80 backdrop-blur-2xl border border-outline-variant/40 overflow-hidden relative shadow-[0_8px_32px_rgba(0,0,0,0.6)] flex flex-col h-[520px]">
+<!-- Viewport Top Controls & Layer Switcher -->
+<div class="p-4 border-b border-outline-variant/30 flex flex-wrap items-center justify-between gap-3 bg-surface-container-lowest/60 z-20">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="public">public</span>
+<span class="font-headline-sm text-headline-sm font-semibold tracking-tight text-on-surface">Geospatial Telemetry Matrix</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-primary-container/20 text-primary border border-primary/40">GEO-VIEW 3D</span>
+</div>
+<!-- Multi-spectrum layer switcher tabs -->
+<div class="flex items-center p-1 rounded-xl bg-surface-container-high/90 border border-outline-variant/40 font-label-sm text-label-sm">
+<button class="px-3 py-1.5 rounded-lg bg-primary-container text-on-primary-container shadow-sm font-medium transition-all">
+              Thermal / SST
+            </button>
+<button class="px-3 py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface transition-all">
+              Atmospheric Moisture
+            </button>
+<button class="px-3 py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface transition-all">
+              Precipitation Radar
+            </button>
+<button class="px-3 py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface transition-all">
+              Wind Vector Streamlines
+            </button>
+</div>
+<div class="flex items-center gap-1.5">
+<button class="p-1.5 rounded bg-surface-container-high hover:bg-surface-variant text-on-surface-variant hover:text-on-surface transition-colors" title="Zoom In">
+<span class="material-symbols-outlined text-lg" data-icon="add">add</span>
+</button>
+<button class="p-1.5 rounded bg-surface-container-high hover:bg-surface-variant text-on-surface-variant hover:text-on-surface transition-colors" title="Zoom Out">
+<span class="material-symbols-outlined text-lg" data-icon="remove">remove</span>
+</button>
+<button class="p-1.5 rounded bg-surface-container-high hover:bg-surface-variant text-on-surface-variant hover:text-on-surface transition-colors" title="Full Screen Viewport">
+<span class="material-symbols-outlined text-lg" data-icon="fullscreen">fullscreen</span>
+</button>
+</div>
+</div>
+<!-- Realistic Composite Viewport Canvas Area -->
+<div class="relative flex-1 bg-surface-container-lowest overflow-hidden flex items-center justify-center">
+<!-- Background Satellite Earth Imagery Projection -->
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover opacity-85" data-alt="Photorealistic high-resolution orbital satellite composite view of Earth from space at twilight, showing glowing city lights across continents, vibrant cyan auroras along the polar limb, and vivid purple-red atmospheric thermal radiation contours overlaid with futuristic telemetry grids and flight paths." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6LmmZ1hA9X_qrtXK4lguT4PK5lIzKg-xGwWbj7f_E0gi0Szb4hprmik95ru9EW4B5R6djjaNXqKy02DHn3WSiBX8gSFWTvJ0X3milNF70QcTWQ_VfWpEvXC1TbIM8vaGYMsVZz5T7d2wJyPoRhZX63D2XlmTqFTKSgnC2tMtZi8_2x2kAVp5ktCXeSV1H1bpRmAlzi2dGiw4GUMbVUVsVZjL0eKRUxOU9KTuE8zI"/>
+</div>
+<!-- Radar / Atmospheric Scan Conic Overlay -->
+<div class="absolute inset-0 pointer-events-none z-10 opacity-30 flex items-center justify-center">
+<div class="w-[480px] h-[480px] rounded-full border border-secondary/30 radar-sweep"></div>
+</div>
+<!-- Coordinate HUD Overlays -->
+<div class="absolute top-4 left-4 z-20 space-y-1 font-label-sm text-label-sm text-on-surface-variant/90 bg-surface-container-lowest/80 backdrop-blur-md p-2.5 rounded-lg border border-outline-variant/30">
+<div class="flex items-center gap-2">
+<span class="text-secondary font-semibold">SUBSAT POINT:</span>
+<span class="text-on-surface">34°12'19" N, 118°08'53" W</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-secondary font-semibold">SENSOR APERTURE:</span>
+<span class="text-on-surface">MODIS B31/32 (11.03µm)</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-secondary font-semibold">SUN ELEVATION:</span>
+<span class="text-on-surface">+52.4° (Direct Solar Flux)</span>
+</div>
+</div>
+<!-- Orbital Track Trajectory HUD lines -->
+<div class="absolute bottom-16 right-4 z-20 font-label-sm text-label-sm bg-surface-container-lowest/80 backdrop-blur-md p-2.5 rounded-lg border border-outline-variant/30 text-right">
+<div class="text-primary font-semibold">ORBITAL PASS: #24,902</div>
+<div class="text-on-surface-variant">VELOCITY: 7.62 km/s • INCLINATION: 98.2°</div>
+<div class="text-secondary font-medium">NEXT TLE SYNCHRONIZATION: 02:44 UTC</div>
+</div>
+<!-- Center Viewport Targeting Reticle -->
+<div class="pointer-events-none z-10 flex flex-col items-center justify-center">
+<div class="w-24 h-24 rounded-full border border-secondary/40 flex items-center justify-center relative">
+<div class="w-2 h-2 rounded-full bg-secondary pulse-beacon"></div>
+<div class="absolute top-0 bottom-0 w-[1px] bg-secondary/30"></div>
+<div class="absolute left-0 right-0 h-[1px] bg-secondary/30"></div>
+</div>
+<div class="mt-2 px-2 py-0.5 rounded bg-surface-container-high/80 text-secondary font-label-sm text-[10px] tracking-widest border border-secondary/30">
+              TARGET LOCK: TROPOSPHERIC CORE
+            </div>
+</div>
+<!-- Scrubbable Orbital Timeline Slider (-24h to +48h predictive telemetry) -->
+<div class="absolute bottom-3 left-4 right-4 z-20 bg-surface-container-lowest/90 backdrop-blur-xl border border-outline-variant/40 rounded-xl p-3 flex items-center gap-4">
+<button class="flex items-center justify-center w-8 h-8 rounded-lg bg-primary-container text-on-primary-container hover:brightness-110 transition-all">
+<span class="material-symbols-outlined text-lg" data-icon="play_arrow">play_arrow</span>
+</button>
+<div class="flex flex-col flex-1">
+<div class="flex justify-between font-label-sm text-label-sm text-outline mb-1">
+<span>-24h Historical Archive</span>
+<span class="text-secondary font-semibold">LIVE T-0 (14:32:08 UTC)</span>
+<span>+48h NOAA Predictive Run</span>
+</div>
+<div class="relative w-full flex items-center">
+<input class="w-full accent-secondary bg-surface-variant h-1.5 rounded-lg cursor-pointer" max="100" min="0" type="range" value="33"/>
+</div>
+</div>
+<div class="flex items-center gap-1 font-label-sm text-label-sm px-2 py-1 rounded bg-surface-container-high text-on-surface">
+<span>SPEED:</span>
+<span class="text-secondary font-semibold">1.0x</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Realtime Orbital Pass & Downlink Telemetry Stream (4 Cols) -->
+<div class="col-span-12 xl:col-span-4 rounded-2xl bg-surface-container-low/80 backdrop-blur-2xl border border-outline-variant/40 p-5 space-y-4 shadow-[0_8px_32px_rgba(0,0,0,0.6)] flex flex-col justify-between">
+<div>
+<!-- Header -->
+<div class="flex items-center justify-between pb-3 border-b border-outline-variant/30">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="satellite_alt">satellite_alt</span>
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface">Constellation Uplink</span>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> ACTIVE
+            </span>
+</div>
+<!-- Dynamic Sensor Metrics -->
+<div class="grid grid-cols-2 gap-3 mt-4">
+<div class="p-3 rounded-xl bg-surface-container/60 border border-outline-variant/20">
+<span class="font-label-sm text-label-sm text-outline block">SPECTRAL RESOLUTION</span>
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface mt-1 block">36 Channels</span>
+<span class="font-label-sm text-label-sm text-secondary">0.4µm to 14.4µm</span>
+</div>
+<div class="p-3 rounded-xl bg-surface-container/60 border border-outline-variant/20">
+<span class="font-label-sm text-label-sm text-outline block">DOWNLINK SNR</span>
+<span class="font-headline-sm text-headline-sm font-semibold text-emerald-400 mt-1 block">38.4 dB</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Optimal Margin</span>
+</div>
+</div>
+<!-- Live Uplink Packet Stream Log -->
+<div class="mt-4 space-y-2">
+<span class="font-label-sm text-label-sm text-outline tracking-wider block">REALTIME PAYLOAD PACKET LOG</span>
+<div class="space-y-1.5 font-label-sm text-label-sm bg-surface-container-lowest/80 p-3 rounded-xl border border-outline-variant/30 max-h-48 overflow-y-auto">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="text-secondary font-mono">[14:32:05]</span>
+<span class="truncate ml-2">MODIS-Aqua Radiometric Calibration nominal</span>
+<span class="text-emerald-400 text-[10px]">OK</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="text-secondary font-mono">[14:31:58]</span>
+<span class="truncate ml-2">GOES-18 ABI Full Disk Band 14 frame sync</span>
+<span class="text-emerald-400 text-[10px]">OK</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="text-secondary font-mono">[14:31:42]</span>
+<span class="truncate ml-2">Sentinel-6 Poseidon Altimetry radar ping</span>
+<span class="text-primary text-[10px]">ACK</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="text-secondary font-mono">[14:31:19]</span>
+<span class="truncate ml-2">Landsat-9 Thermal Infrared Sensor-2 baseline</span>
+<span class="text-emerald-400 text-[10px]">OK</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="text-tertiary-container font-mono">[14:30:52]</span>
+<span class="truncate ml-2">Thermal plume anomaly tagged: Sector 14-C</span>
+<span class="text-tertiary text-[10px]">WARN</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Sensor Health Gauges -->
+<div class="pt-3 border-t border-outline-variant/30">
+<div class="flex items-center justify-between font-label-sm text-label-sm text-outline mb-1.5">
+<span>DETECTOR CRYO-COOLER TEMP</span>
+<span class="text-secondary font-semibold">85.2 K (NOMINAL)</span>
+</div>
+<div class="w-full bg-surface-variant h-2 rounded-full overflow-hidden">
+<div class="bg-gradient-to-r from-secondary to-primary h-full rounded-full" style="width: 82%"></div>
+</div>
+<div class="flex justify-between items-center mt-3 font-label-sm text-label-sm">
+<span class="text-on-surface-variant">EPHEMERIS HEALTH: 99.8%</span>
+<span class="text-primary font-semibold">DRIFT &lt; 0.002°/yr</span>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= FOUR PRIMARY PLANETARY CLIMATE CONDITION MODULES ================= -->
+<div class="pt-2">
+<div class="flex items-center justify-between mb-4">
+<div>
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="insights">insights</span>
+            Core Planetary Climate Condition Modules
+          </h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            NASA Earth Observatory multi-sensor synthesis calibrated across geostationary &amp; polar-orbiting radiances.
+          </p>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm px-3 py-1 rounded-lg bg-surface-container border border-outline-variant/40 text-on-surface">
+            UPDATED: JUST NOW
+          </span>
+</div>
+</div>
+<!-- 4-Column Bento Grid for the 4 Essential Climate Modules -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+<!-- MODULE 1: Temperature Monitoring -->
+<div class="rounded-2xl bg-surface-container-low/80 backdrop-blur-2xl border border-outline-variant/40 p-5 flex flex-col justify-between hover:border-primary/50 transition-all duration-200 group shadow-[0_4px_24px_rgba(0,0,0,0.4)]">
+<div>
+<div class="flex items-center justify-between pb-3 border-b border-outline-variant/20">
+<span class="font-label-md text-label-md tracking-wider text-outline uppercase flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span>
+                THERMAL DYNAMICS
+              </span>
+<span class="material-symbols-outlined text-tertiary" data-icon="thermostat">thermostat</span>
+</div>
+<!-- Big Metric Value -->
+<div class="mt-4 flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg font-bold text-on-surface group-hover:text-primary transition-colors">
+                15.8<span class="text-2xl font-light text-on-surface-variant">°C</span>
+</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-tertiary-container/30 text-tertiary border border-tertiary-container/50 font-semibold">
+                +1.42°C ANOMALY
+              </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+              Global Troposphere &amp; Sea Surface Mean (vs 1951-1980 baseline).
+            </p>
+<!-- Mini Sparkline Graph -->
+<div class="mt-4 p-2 rounded-xl bg-surface-container-lowest/60 border border-outline-variant/20">
+<div class="flex justify-between font-label-sm text-[10px] text-outline mb-1">
+<span>30-DAY THERMAL FLUX</span>
+<span class="text-tertiary">+0.18°C MOM</span>
+</div>
+<svg class="w-full h-12 overflow-visible" viewbox="0 0 200 40">
+<defs>
+<lineargradient id="thermal-grad" x1="0" x2="1" y1="0" y2="0">
+<stop offset="0%" stop-color="#8a3ffc"></stop>
+<stop offset="60%" stop-color="#d21489"></stop>
+<stop offset="100%" stop-color="#ffafd1"></stop>
+</lineargradient>
+</defs>
+<path d="M0,28 Q25,25 50,30 T100,18 T150,22 T200,8" fill="none" stroke="url(#thermal-grad)" stroke-linecap="round" stroke-width="2.5"></path>
+<circle class="pulse-beacon" cx="200" cy="8" fill="#ffafd1" r="3.5"></circle>
+</svg>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-outline-variant/20 space-y-2">
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="text-outline">MODIS Band 31/32:</span>
+<span class="text-secondary font-mono">11.03µm / 12.02µm</span>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="text-outline">Active Heatwave Alert:</span>
+<span class="text-tertiary font-medium">Sub-Saharan / S. Asia</span>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="text-outline">Arctic Sea Ice Extent:</span>
+<span class="text-on-surface font-mono">4.12 M km² (-6.4%)</span>
+</div>
+</div>
+</div>
+<!-- MODULE 2: Humidity & Atmospheric Water Vapor -->
+<div class="rounded-2xl bg-surface-container-low/80 backdrop-blur-2xl border border-outline-variant/40 p-5 flex flex-col justify-between hover:border-secondary/50 transition-all duration-200 group shadow-[0_4px_24px_rgba(0,0,0,0.4)]">
+<div>
+<div class="flex items-center justify-between pb-3 border-b border-outline-variant/20">
+<span class="font-label-md text-label-md tracking-wider text-outline uppercase flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+                ATMOSPHERIC MOISTURE
+              </span>
+<span class="material-symbols-outlined text-secondary" data-icon="water_drop">water_drop</span>
+</div>
+<!-- Big Metric Value -->
+<div class="mt-4 flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg font-bold text-on-surface group-hover:text-secondary transition-colors">
+                68.4<span class="text-2xl font-light text-on-surface-variant">%</span>
+</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-secondary-container/20 text-secondary border border-secondary/40 font-semibold">
+                TPW 28.5 mm
+              </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+              Global Relative Humidity mean and Total Precipitable Water column.
+            </p>
+<!-- Vapor Gradient Progress Bar -->
+<div class="mt-4 p-3 rounded-xl bg-surface-container-lowest/60 border border-outline-variant/20 space-y-2">
+<div class="flex justify-between font-label-sm text-[10px] text-outline">
+<span>TROPOSPHERIC SATURATION</span>
+<span class="text-secondary font-mono">HIGH DENSITY</span>
+</div>
+<div class="w-full bg-surface-variant h-2 rounded-full overflow-hidden">
+<div class="bg-gradient-to-r from-primary-container via-secondary-container to-secondary h-full rounded-full" style="width: 68.4%"></div>
+</div>
+<div class="flex justify-between font-label-sm text-[10px] text-outline pt-1">
+<span>0 mm (Arid)</span>
+<span>35 mm (Equatorial Core)</span>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-outline-variant/20 space-y-2">
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="text-outline">GOES-18 Vapor Band 8:</span>
+<span class="text-secondary font-mono">6.2µm Upper-Level</span>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="text-outline">Dew Point Convergence:</span>
+<span class="text-on-surface font-mono">18.6°C (Equatorial)</span>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="text-outline">Moisture Influx Rate:</span>
+<span class="text-emerald-400 font-medium">+4.2 g/kg/hr</span>
+</div>
+</div>
+</div>
+<!-- MODULE 3: Probability of Rain & Precipitation Radar -->
+<div class="rounded-2xl bg-surface-container-low/80 backdrop-blur-2xl border border-outline-variant/40 p-5 flex flex-col justify-between hover:border-secondary-container/50 transition-all duration-200 group shadow-[0_4px_24px_rgba(0,0,0,0.4)]">
+<div>
+<div class="flex items-center justify-between pb-3 border-b border-outline-variant/20">
+<span class="font-label-md text-label-md tracking-wider text-outline uppercase flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                PRECIPITATION RADAR
+              </span>
+<span class="material-symbols-outlined text-secondary-fixed" data-icon="radar">radar</span>
+</div>
+<!-- Big Metric Value -->
+<div class="mt-4 flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg font-bold text-on-surface group-hover:text-secondary-fixed transition-colors">
+                42<span class="text-2xl font-light text-on-surface-variant">%</span>
+</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-semibold">
+                PEAK CONVECTIVE
+              </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+              Global Frontal Precipitation Probability &amp; GPM Doppler Sweep.
+            </p>
+<!-- Radar Cell Matrix Display -->
+<div class="mt-4 p-2.5 rounded-xl bg-surface-container-lowest/60 border border-outline-variant/20 space-y-2">
+<div class="flex items-center justify-between font-label-sm text-[10px] text-outline">
+<span>DOPPLER REFLECTIVITY (dBZ)</span>
+<span class="text-emerald-400 font-mono">54 dBZ PEAK</span>
+</div>
+<!-- dBZ Color Ramp visual -->
+<div class="h-2 w-full rounded-full bg-gradient-to-r from-emerald-500 via-yellow-400 via-orange-500 to-tertiary-container"></div>
+<div class="flex justify-between font-label-sm text-[10px] text-outline">
+<span>Light (15)</span>
+<span>Moderate (35)</span>
+<span>Severe Storm (60+)</span>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-outline-variant/20 space-y-2">
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="text-outline">Active Storm Cells:</span>
+<span class="text-tertiary font-semibold">18 Convective Fronts</span>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="text-outline">24h Accumulation Exp:</span>
+<span class="text-on-surface font-mono">68.2 mm Max</span>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="text-outline">GPM Dual-Freq Radar:</span>
+<span class="text-secondary font-mono">Ku/Ka-Band Active</span>
+</div>
+</div>
+</div>
+<!-- MODULE 4: Wind Speed & Vector Dynamics -->
+<div class="rounded-2xl bg-surface-container-low/80 backdrop-blur-2xl border border-outline-variant/40 p-5 flex flex-col justify-between hover:border-primary/50 transition-all duration-200 group shadow-[0_4px_24px_rgba(0,0,0,0.4)]">
+<div>
+<div class="flex items-center justify-between pb-3 border-b border-outline-variant/20">
+<span class="font-label-md text-label-md tracking-wider text-outline uppercase flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                VECTOR WIND DYNAMICS
+              </span>
+<span class="material-symbols-outlined text-primary" data-icon="air">air</span>
+</div>
+<!-- Big Metric Value -->
+<div class="mt-4 flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg font-bold text-on-surface group-hover:text-primary transition-colors">
+                142<span class="text-2xl font-light text-on-surface-variant">km/h</span>
+</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-primary-container/20 text-primary border border-primary/40 font-semibold">
+                300 hPa JET
+              </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+              Polar Jet Stream Core Velocity (Surface Mean: 19.4 km/h).
+            </p>
+<!-- Vector Angle HUD Gauge -->
+<div class="mt-4 p-2.5 rounded-xl bg-surface-container-lowest/60 border border-outline-variant/20 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-[10px] text-outline">DOMINANT STREAMLINE</span>
+<span class="font-label-md text-label-md font-bold text-secondary font-mono">285° WNW (Coriolis)</span>
+<span class="font-label-sm text-[10px] text-on-surface-variant">Barometric: 994 hPa Low</span>
+</div>
+<div class="w-12 h-12 rounded-full border border-secondary/40 flex items-center justify-center relative bg-surface-container">
+<span class="material-symbols-outlined text-secondary transform -rotate-45" data-icon="navigation">navigation</span>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-outline-variant/20 space-y-2">
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="text-outline">Cyclone Telemetry:</span>
+<span class="text-emerald-400 font-medium">No Cat-4/5 Active</span>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="text-outline">Surface Boundary Gust:</span>
+<span class="text-on-surface font-mono">58 km/h (N. Atlantic)</span>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="text-outline">Scatterometer Sensor:</span>
+<span class="text-secondary font-mono">SeaWinds Ku-Band</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bento Tier 3: Regional Climate Anomaly Matrix & Satellite Subsystem Health -->
+<section class="grid grid-cols-12 gap-6 pt-2">
+<!-- Regional Thermal & Precipitation Anomaly Matrix Table (8 Cols) -->
+<div class="col-span-12 xl:col-span-8 rounded-2xl bg-surface-container-low/80 backdrop-blur-2xl border border-outline-variant/40 p-5 shadow-[0_8px_32px_rgba(0,0,0,0.6)]">
+<div class="flex items-center justify-between pb-4 border-b border-outline-variant/30">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="grid_view">grid_view</span>
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface">Planetary Anomaly Matrix by Latitude Sector</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">AUTO-REFRESH: 10s</span>
+</div>
+<div class="overflow-x-auto mt-4">
+<table class="w-full text-left font-label-sm text-label-sm">
+<thead>
+<tr class="text-outline border-b border-outline-variant/20 pb-2">
+<th class="py-2.5 font-medium">GEOSPATIAL ZONE</th>
+<th class="py-2.5 font-medium">SURFACE TEMP</th>
+<th class="py-2.5 font-medium">THERMAL DELTA</th>
+<th class="py-2.5 font-medium">VAPOR COLUMN (TPW)</th>
+<th class="py-2.5 font-medium">WIND VECTOR</th>
+<th class="py-2.5 font-medium">RISK INDEX</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/20 text-on-surface">
+<tr class="hover:bg-surface-variant/20 transition-colors">
+<td class="py-3 font-semibold flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+                  North Polar Vortex (60°N - 90°N)
+                </td>
+<td class="py-3 font-mono">-14.2°C</td>
+<td class="py-3 text-tertiary font-mono">+3.8°C</td>
+<td class="py-3 text-on-surface-variant">8.4 mm</td>
+<td class="py-3 font-mono">118 km/h NW</td>
+<td class="py-3">
+<span class="px-2 py-0.5 rounded bg-tertiary-container/30 text-tertiary border border-tertiary-container/50">WARMING</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-variant/20 transition-colors">
+<td class="py-3 font-semibold flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+                  Mid-Latitude Pacific (30°N - 50°N)
+                </td>
+<td class="py-3 font-mono">18.6°C</td>
+<td class="py-3 text-secondary font-mono">+0.6°C</td>
+<td class="py-3 text-on-surface-variant">32.1 mm</td>
+<td class="py-3 font-mono">72 km/h W</td>
+<td class="py-3">
+<span class="px-2 py-0.5 rounded bg-secondary-container/20 text-secondary border border-secondary/40">NOMINAL</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-variant/20 transition-colors">
+<td class="py-3 font-semibold flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                  Intertropical Convergence Zone (0° - 15°N)
+                </td>
+<td class="py-3 font-mono">29.1°C</td>
+<td class="py-3 text-on-surface-variant font-mono">+0.9°C</td>
+<td class="py-3 text-on-surface-variant">54.8 mm</td>
+<td class="py-3 font-mono">24 km/h ENE</td>
+<td class="py-3">
+<span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">CONVECTIVE</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-variant/20 transition-colors">
+<td class="py-3 font-semibold flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary-container"></span>
+                  Sub-Saharan Sahel (10°N - 25°N)
+                </td>
+<td class="py-3 font-mono">38.4°C</td>
+<td class="py-3 text-tertiary font-mono">+2.4°C</td>
+<td class="py-3 text-on-surface-variant">14.2 mm</td>
+<td class="py-3 font-mono">35 km/h NE</td>
+<td class="py-3">
+<span class="px-2 py-0.5 rounded bg-tertiary-container/40 text-on-tertiary-container border border-tertiary-container">HEAT ANOMALY</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-variant/20 transition-colors">
+<td class="py-3 font-semibold flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+                  Southern Ocean Circumpolar (50°S - 65°S)
+                </td>
+<td class="py-3 font-mono">2.1°C</td>
+<td class="py-3 text-secondary font-mono">-0.4°C</td>
+<td class="py-3 text-on-surface-variant">19.7 mm</td>
+<td class="py-3 font-mono">94 km/h WNW</td>
+<td class="py-3">
+<span class="px-2 py-0.5 rounded bg-surface-variant/50 text-on-surface-variant border border-outline-variant/30">STABLE</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Orbital Mission Telemetry Health & Payload Control (4 Cols) -->
+<div class="col-span-12 xl:col-span-4 rounded-2xl bg-surface-container-low/80 backdrop-blur-2xl border border-outline-variant/40 p-5 shadow-[0_8px_32px_rgba(0,0,0,0.6)] flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-3 border-b border-outline-variant/30">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="hub">hub</span>
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface">Sensor Bus Health</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-mono">MODIS-GOES</span>
+</div>
+<div class="mt-4 space-y-3.5">
+<!-- Telemetry item 1 -->
+<div>
+<div class="flex justify-between font-label-sm text-label-sm mb-1">
+<span class="text-on-surface-variant">Solar Array Output Power</span>
+<span class="text-emerald-400 font-semibold font-mono">3,420 W (99.2%)</span>
+</div>
+<div class="w-full bg-surface-variant h-1.5 rounded-full overflow-hidden">
+<div class="bg-emerald-400 h-full rounded-full" style="width: 99%"></div>
+</div>
+</div>
+<!-- Telemetry item 2 -->
+<div>
+<div class="flex justify-between font-label-sm text-label-sm mb-1">
+<span class="text-on-surface-variant">Payload Solid-State Recorder</span>
+<span class="text-secondary font-semibold font-mono">482 / 1024 GB</span>
+</div>
+<div class="w-full bg-surface-variant h-1.5 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 47%"></div>
+</div>
+</div>
+<!-- Telemetry item 3 -->
+<div>
+<div class="flex justify-between font-label-sm text-label-sm mb-1">
+<span class="text-on-surface-variant">Reaction Wheel Angular Momentum</span>
+<span class="text-primary font-semibold font-mono">1.82 N·m·s (Nominal)</span>
+</div>
+<div class="w-full bg-surface-variant h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 32%"></div>
+</div>
+</div>
+<!-- Telemetry item 4 -->
+<div>
+<div class="flex justify-between font-label-sm text-label-sm mb-1">
+<span class="text-on-surface-variant">Star Tracker Quaternions Lock</span>
+<span class="text-emerald-400 font-semibold font-mono">0.001° ArcSec</span>
+</div>
+<div class="w-full bg-surface-variant h-1.5 rounded-full overflow-hidden">
+<div class="bg-emerald-400 h-full rounded-full" style="width: 98%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Payload Command Actions -->
+<div class="mt-6 pt-4 border-t border-outline-variant/30 grid grid-cols-2 gap-2">
+<button class="px-3 py-2 rounded-lg bg-surface-container-high hover:bg-surface-variant text-on-surface font-label-sm text-label-sm border border-outline-variant/40 transition-colors flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-base" data-icon="restart_alt">restart_alt</span>
+            Recalibrate IR
+          </button>
+<button class="px-3 py-2 rounded-lg bg-surface-container-high hover:bg-surface-variant text-on-surface font-label-sm text-label-sm border border-outline-variant/40 transition-colors flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-base" data-icon="download">download</span>
+            Dump Telemetry
+          </button>
+</div>
+</div>
+</section>
+<!-- Footer System Status -->
+<footer class="pt-6 pb-4 border-t border-outline-variant/20 flex flex-wrap items-center justify-between gap-4 text-outline font-label-sm text-label-sm">
+<div class="flex items-center gap-4">
+<span>© 2025 6snova Earth Telemetry Systems</span>
+<span>•</span>
+<span>Planetary Observation Subsystem Release v4.19-PROD</span>
+<span>•</span>
+<span class="text-secondary">NASA EOSDIS &amp; NOAA Ground Feed Synchronized</span>
+</div>
+<div class="flex items-center gap-6">
+<span class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-emerald-400"></span> ALL SYSTEMS GREEN
+        </span>
+<span>SECURITY LEVEL: ORBITAL RESTRICTED</span>
+</div>
+</footer>
+</main>
+<!-- Interactive JavaScript for Live Mission Clock and Micro-interactions -->
+<script>
+    // Live Mission Clock (UTC format)
+    function updateMissionClock() {
+      const now = new Date();
+      const hours = String(now.getUTCHours()).padStart(2, '0');
+      const minutes = String(now.getUTCMinutes()).padStart(2, '0');
+      const seconds = String(now.getUTCSeconds()).padStart(2, '0');
+      const clockElement = document.getElementById('utc-clock');
+      if (clockElement) {
+        clockElement.textContent = `UTC ${hours}:${minutes}:${seconds}`;
+      }
+    }
+    setInterval(updateMissionClock, 1000);
+    updateMissionClock();
+  </script>
+</body></html>

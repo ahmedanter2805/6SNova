@@ -1,0 +1,34 @@
+{
+  "california": {
+    "id": "GHCND:USC00040343",
+    "name": "Ash Mountain, CA"
+  },
+  "india": {
+    "id": "GHCND:IN012030700",
+    "name": "Amraoti, India"
+  },
+  "patagonia": {
+    "id": "GHCND:AR000087860",
+    "name": "Comodoro Rivadavia, Argentina"
+  },
+  "sahel": {
+    "id": "GHCND:NGM00061045",
+    "name": "GOURE, NG"
+  },
+  "greenland": {
+    "id": "GHCND:GL000004250",
+    "name": "NUUK"
+  },
+  "siberia": {
+    "id": "GHCND:RSM00024507",
+    "name": "TURA, RS"
+  },
+  "arabia": {
+    "id": "GHCND:SAM00040437",
+    "name": "KING KHALED INTERNATIONAL, SA"
+  },
+  "amazon": {
+    "id": "GHCND:BRM00082336",
+    "name": "ITACOATIARA, BR"
+  }
+}

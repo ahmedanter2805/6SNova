@@ -1,0 +1,26 @@
+{
+  "bot_username": "@sixsnova_bot",
+  "bot_token": "9249854983:AAFSHV24Htm1MVzqX6LDnFKNoeRHYVfBUN4",
+  "default_chat_id": "1142168838",
+  "enabled": true,
+  "last_daily_run": "2026-11-14T05:20:44.541517+00:00",
+  "thresholds": {
+    "temperature_high_c": 38.0,
+    "temperature_anomaly_c": 3.0,
+    "wind_speed_kmh": 45.0,
+    "rainfall_mm_day": 5.0,
+    "humidity_high_pct": 75.0,
+    "green_space_deficit_uhi": true
+  },
+  "chat_id": "1142168838",
+  "last_sent": null,
+  "recent_alerts": [],
+  "registered_subscribers": [
+    "1142168838",
+    "8458809118",
+    "6120922499",
+    "9293248707",
+    "5173643474",
+    "8948583787"
+  ]
+}
