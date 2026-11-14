@@ -706,7 +706,7 @@ async function initAllRegions() {
           <span class="w-2.5 h-2.5 rounded-full ${idx % 2 === 0 ? 'bg-cyan-400 shadow-sm shadow-cyan-400/50' : 'bg-aura-purple shadow-sm shadow-aura-purple/50'} group-hover:scale-125 transition-transform shrink-0"></span>
           <div>
             <div class="font-sans text-xs font-bold text-white group-hover:text-cyan-300 transition-colors">${reg.name_en}</div>
-            <div class="text-[10px] text-slate-400 font-mono">${reg.coord} · ${reg.name_ar}</div>
+            <div class="text-[10px] text-slate-400 font-mono">${reg.coord}</div>
           </div>
         </td>
         <td class="py-3 px-3 font-mono text-xs text-center font-bold text-amber-300">

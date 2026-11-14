@@ -639,7 +639,7 @@
             <span
               class="material-symbols-outlined absolute left-3.5 text-slate-400 text-lg pointer-events-none">search</span>
             <input id="global-search-input" type="text"
-              placeholder="Search any Governorate or Site (الجيزة, الأقصر, Siwa...)" autocomplete="off"
+              placeholder="Search any Governorate or Site (Giza, Luxor, Alexandria, Siwa...)" autocomplete="off"
               class="w-full bg-aura-card/90 text-white text-xs rounded-xl pl-10 pr-16 py-2 border border-white/10 hover:border-aura-purple focus:border-aura-cyan focus:outline-none focus:ring-2 focus:ring-aura-cyan/30 transition-all placeholder:text-slate-500 font-sans shadow-inner" />
             <button id="search-clear-btn" class="hidden absolute right-10 text-slate-400 hover:text-white text-xs p-1">
               <span class="material-symbols-outlined text-sm">close</span>
@@ -991,25 +991,25 @@
                 data-layer="all"
                 class="globe-layer-pill px-2.5 py-1 rounded-lg text-[10px] font-mono font-bold bg-cyan-500/25 text-cyan-300 border border-cyan-400 flex items-center gap-1 transition-all cursor-pointer">
                 <span>🌍</span>
-                <span>شامل (All)</span>
+                <span>All</span>
               </button>
               <button onclick="window.Earth3D && window.Earth3D.setPlanetLayer('temp')"
                 data-layer="temp"
                 class="globe-layer-pill px-2.5 py-1 rounded-lg text-[10px] font-mono font-medium text-slate-400 hover:text-white flex items-center gap-1 transition-all cursor-pointer">
                 <span>🌡️</span>
-                <span>حرارة (Heat)</span>
+                <span>Heat</span>
               </button>
               <button onclick="window.Earth3D && window.Earth3D.setPlanetLayer('rain')"
                 data-layer="rain"
                 class="globe-layer-pill px-2.5 py-1 rounded-lg text-[10px] font-mono font-medium text-slate-400 hover:text-white flex items-center gap-1 transition-all cursor-pointer">
                 <span>🌧️</span>
-                <span>أمطار (Rain)</span>
+                <span>Rain</span>
               </button>
               <button onclick="window.Earth3D && window.Earth3D.setPlanetLayer('wind')"
                 data-layer="wind"
                 class="globe-layer-pill px-2.5 py-1 rounded-lg text-[10px] font-mono font-medium text-slate-400 hover:text-white flex items-center gap-1 transition-all cursor-pointer">
                 <span>💨</span>
-                <span>رياح (Wind)</span>
+                <span>Wind</span>
               </button>
             </div>
 
@@ -1044,7 +1044,7 @@
               <div>
                 <div class="flex items-center gap-2 flex-wrap">
                   <span class="material-symbols-outlined text-aura-purple text-base">compare_arrows</span>
-                  <h3 class="text-sm font-bold text-white font-headline">Dual-Sector Comparative Intelligence // مقارنة بين منطقتين</h3>
+                  <h3 class="text-sm font-bold text-white font-headline">Dual-Sector Comparative Intelligence</h3>
                   <span class="px-2 py-0.5 rounded-full text-[9px] font-mono font-bold bg-aura-purple/20 text-aura-purple border border-aura-purple/40">2000–2050</span>
                   <a href="https://ntrs.nasa.gov/citations/20090042747" target="_blank" rel="noopener noreferrer"
                     class="px-2 py-0.5 rounded-full text-[9px] font-mono font-semibold bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 hover:bg-cyan-500/25 transition-all flex items-center gap-1"
@@ -1118,27 +1118,73 @@
 
             <!-- Side-by-Side Comparative Diagnostic HUD -->
             <!-- 4-FACTOR ENVIRONMENTAL MATRIX: Temp / Humidity / Wind / Rain -->
-            <div class="p-2.5 rounded-xl bg-black/50 border border-white/10 text-xs font-mono space-y-1.5">
-              <div class="flex items-center justify-between text-[10px] text-slate-400 pb-1 border-b border-white/5">
-                <span class="font-bold uppercase tracking-wider text-slate-300">4-Factor Environmental Matrix (Sector A vs Sector B)</span>
-                <span class="text-cyan-400">NASA MERRA-2 Telemetry</span>
+            <div class="p-4 rounded-2xl bg-black/60 border border-white/15 text-xs font-mono space-y-3 shadow-2xl backdrop-blur-md">
+              <div class="flex items-center justify-between pb-2 border-b border-white/10">
+                <div class="flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                  <span class="font-extrabold uppercase tracking-wider text-white text-xs sm:text-sm">4-Factor Environmental Matrix</span>
+                  <span class="text-[11px] text-slate-400 font-normal hidden sm:inline">(Sector A <span class="text-cyan-300 font-bold">■</span> vs Sector B <span class="text-rose-400 font-bold">■</span>)</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-cyan-500/15 text-cyan-300 border border-cyan-400/30">NASA MERRA-2 Telemetry</span>
+                </div>
               </div>
-              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center text-[11px]">
-                <div class="p-1.5 rounded-lg bg-white/5 border border-white/5">
-                  <span class="text-[10px] text-slate-400 block">🌡️ Temperature</span>
-                  <span id="mf-temp-a" class="text-cyan-300 font-bold">--</span> <span class="text-slate-500">vs</span> <span id="mf-temp-b" class="text-rose-400 font-bold">--</span>
+
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
+                <!-- Factor 1: Temperature -->
+                <div class="p-3.5 rounded-xl bg-gradient-to-b from-white/[0.08] to-white/[0.02] border border-white/15 hover:border-amber-400/40 transition-all shadow-md group">
+                  <div class="flex items-center justify-center gap-1.5 text-xs font-bold text-amber-300 uppercase tracking-wide mb-2">
+                    <span class="text-base">🌡️</span>
+                    <span>Temperature</span>
+                  </div>
+                  <div class="flex items-center justify-center gap-2 font-mono">
+                    <span id="mf-temp-a" class="text-lg sm:text-xl font-black text-cyan-300 tracking-tight drop-shadow-sm">--</span>
+                    <span class="text-[11px] font-bold text-slate-400 uppercase px-1.5 py-0.5 rounded bg-white/10">vs</span>
+                    <span id="mf-temp-b" class="text-lg sm:text-xl font-black text-rose-400 tracking-tight drop-shadow-sm">--</span>
+                  </div>
+                  <div class="text-[10px] text-slate-400 mt-1.5 font-sans">Surface Air (T2M)</div>
                 </div>
-                <div class="p-1.5 rounded-lg bg-white/5 border border-white/5">
-                  <span class="text-[10px] text-slate-400 block">💧 Humidity</span>
-                  <span id="mf-rh-a" class="text-cyan-300 font-bold">--</span> <span class="text-slate-500">vs</span> <span id="mf-rh-b" class="text-rose-400 font-bold">--</span>
+
+                <!-- Factor 2: Humidity -->
+                <div class="p-3.5 rounded-xl bg-gradient-to-b from-white/[0.08] to-white/[0.02] border border-white/15 hover:border-cyan-400/40 transition-all shadow-md group">
+                  <div class="flex items-center justify-center gap-1.5 text-xs font-bold text-cyan-300 uppercase tracking-wide mb-2">
+                    <span class="text-base">💧</span>
+                    <span>Humidity</span>
+                  </div>
+                  <div class="flex items-center justify-center gap-2 font-mono">
+                    <span id="mf-rh-a" class="text-lg sm:text-xl font-black text-cyan-300 tracking-tight drop-shadow-sm">--</span>
+                    <span class="text-[11px] font-bold text-slate-400 uppercase px-1.5 py-0.5 rounded bg-white/10">vs</span>
+                    <span id="mf-rh-b" class="text-lg sm:text-xl font-black text-rose-400 tracking-tight drop-shadow-sm">--</span>
+                  </div>
+                  <div class="text-[10px] text-slate-400 mt-1.5 font-sans">Relative RH at 2M</div>
                 </div>
-                <div class="p-1.5 rounded-lg bg-white/5 border border-white/5">
-                  <span class="text-[10px] text-slate-400 block">💨 Wind Speed</span>
-                  <span id="mf-ws-a" class="text-cyan-300 font-bold">--</span> <span class="text-slate-500">vs</span> <span id="mf-ws-b" class="text-rose-400 font-bold">--</span>
+
+                <!-- Factor 3: Wind Speed -->
+                <div class="p-3.5 rounded-xl bg-gradient-to-b from-white/[0.08] to-white/[0.02] border border-white/15 hover:border-emerald-400/40 transition-all shadow-md group">
+                  <div class="flex items-center justify-center gap-1.5 text-xs font-bold text-emerald-300 uppercase tracking-wide mb-2">
+                    <span class="text-base">💨</span>
+                    <span>Wind Speed</span>
+                  </div>
+                  <div class="flex items-center justify-center gap-2 font-mono">
+                    <span id="mf-ws-a" class="text-lg sm:text-xl font-black text-cyan-300 tracking-tight drop-shadow-sm">--</span>
+                    <span class="text-[11px] font-bold text-slate-400 uppercase px-1.5 py-0.5 rounded bg-white/10">vs</span>
+                    <span id="mf-ws-b" class="text-lg sm:text-xl font-black text-rose-400 tracking-tight drop-shadow-sm">--</span>
+                  </div>
+                  <div class="text-[10px] text-slate-400 mt-1.5 font-sans">Surface Velocity (10M)</div>
                 </div>
-                <div class="p-1.5 rounded-lg bg-white/5 border border-white/5">
-                  <span class="text-[10px] text-slate-400 block">🌧️ Rain (Precip)</span>
-                  <span id="mf-prec-a" class="text-cyan-300 font-bold">--</span> <span class="text-slate-500">vs</span> <span id="mf-prec-b" class="text-rose-400 font-bold">--</span>
+
+                <!-- Factor 4: Precipitation -->
+                <div class="p-3.5 rounded-xl bg-gradient-to-b from-white/[0.08] to-white/[0.02] border border-white/15 hover:border-purple-400/40 transition-all shadow-md group">
+                  <div class="flex items-center justify-center gap-1.5 text-xs font-bold text-purple-300 uppercase tracking-wide mb-2">
+                    <span class="text-base">🌧️</span>
+                    <span>Precipitation</span>
+                  </div>
+                  <div class="flex items-center justify-center gap-2 font-mono">
+                    <span id="mf-prec-a" class="text-lg sm:text-xl font-black text-cyan-300 tracking-tight drop-shadow-sm">--</span>
+                    <span class="text-[11px] font-bold text-slate-400 uppercase px-1.5 py-0.5 rounded bg-white/10">vs</span>
+                    <span id="mf-prec-b" class="text-lg sm:text-xl font-black text-rose-400 tracking-tight drop-shadow-sm">--</span>
+                  </div>
+                  <div class="text-[10px] text-slate-400 mt-1.5 font-sans">Rainfall Rate (mm/d)</div>
                 </div>
               </div>
             </div>
@@ -1601,11 +1647,11 @@
                 <div class="flex-1">
                   <label class="block text-[11px] font-mono text-slate-300 font-bold mb-1 flex items-center gap-1.5">
                     <span class="material-symbols-outlined text-sm text-sky-400">group</span>
-                    <span>Target Telegram Recipient (مستلم الإنذار):</span>
+                    <span>Target Telegram Recipient:</span>
                   </label>
                   <select id="tg-test-subscriber-select"
                     class="w-full px-3 py-1.5 rounded-lg bg-white/5 border border-white/15 text-white text-xs font-mono focus:border-sky-400 outline-none cursor-pointer">
-                    <option value="all">📢 Broadcast to All 6 Telegram Users (إذاعة للكل)</option>
+                    <option value="all">📢 Broadcast to All 6 Telegram Users</option>
                     <option value="1142168838" selected>👤 ENG AHMED ANTER (Cairo) · 1142168838</option>
                     <option value="8458809118">👤 Subscriber Alexandria (Montazah) · 8458809118</option>
                     <option value="6120922499">👤 abdalrhmn (Giza / Dokki) · 6120922499</option>
@@ -1624,13 +1670,13 @@
                 </div>
               </div>
 
-              <!-- 5 Category Bilingual Alert Test Selectors -->
+              <!-- 5 Category Alert Test Selectors -->
               <div class="space-y-2">
                 <div class="flex items-center justify-between text-xs">
                   <span class="font-mono text-[11px] text-slate-300 font-bold uppercase flex items-center gap-1">
-                    <span>⚡ Choose Alert Category to TEST (اختر نوع التحذير للتجربة):</span>
+                    <span>⚡ Choose Alert Category to TEST:</span>
                   </span>
-                  <span class="font-mono text-[10px] text-emerald-400 font-bold">Bilingual Arabic & English</span>
+                  <span class="font-mono text-[10px] text-emerald-400 font-bold">Live Sensor Dispatch</span>
                 </div>
 
                 <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 text-xs font-mono">
@@ -1642,7 +1688,7 @@
                       <span class="text-[9px] px-1 rounded bg-amber-500/20 text-amber-300">Heat</span>
                     </div>
                     <div class="mt-1 font-bold text-[11px] truncate">Heat Warning</div>
-                    <div class="text-[9px] text-slate-400">موجة حارة شديدة</div>
+                    <div class="text-[9px] text-slate-400">Severe Thermal Wave</div>
                   </button>
 
                   <!-- 2. Wind Warning -->
@@ -1653,7 +1699,7 @@
                       <span class="text-[9px] px-1 rounded bg-sky-500/20 text-sky-300">Wind</span>
                     </div>
                     <div class="mt-1 font-bold text-[11px] truncate">Wind Warning</div>
-                    <div class="text-[9px] text-slate-400">رياح وعواصف ترابية</div>
+                    <div class="text-[9px] text-slate-400">Gale & Sandstorm</div>
                   </button>
 
                   <!-- 3. Rainfall Warning -->
@@ -1664,7 +1710,7 @@
                       <span class="text-[9px] px-1 rounded bg-blue-500/20 text-blue-300">Rain</span>
                     </div>
                     <div class="mt-1 font-bold text-[11px] truncate">Rainfall Warning</div>
-                    <div class="text-[9px] text-slate-400">أمطار غزيرة وسيول</div>
+                    <div class="text-[9px] text-slate-400">Flash Runoff & Storm</div>
                   </button>
 
                   <!-- 4. Humidity Warning -->
@@ -1675,7 +1721,7 @@
                       <span class="text-[9px] px-1 rounded bg-cyan-500/20 text-cyan-300">Humidity</span>
                     </div>
                     <div class="mt-1 font-bold text-[11px] truncate">Humidity Warning</div>
-                    <div class="text-[9px] text-slate-400">رطوبة خانقة وإجهاد</div>
+                    <div class="text-[9px] text-slate-400">High Heat Index</div>
                   </button>
 
                   <!-- 5. Green Space Warning -->
@@ -1686,7 +1732,7 @@
                       <span class="text-[9px] px-1 rounded bg-emerald-500/20 text-emerald-300 font-bold">ECO</span>
                     </div>
                     <div class="mt-1 font-bold text-[11px] truncate">Green Space Warning</div>
-                    <div class="text-[9px] text-emerald-400 font-semibold">تشجير وحدائق أسطح</div>
+                    <div class="text-[9px] text-emerald-400 font-semibold">Urban Greening Plan</div>
                   </button>
                 </div>
               </div>
@@ -1696,7 +1742,7 @@
                 <button onclick="window.sendTelegramTestAlert('green_space')"
                   class="w-full sm:w-auto flex-1 px-5 py-3 rounded-xl bg-gradient-to-r from-emerald-600 via-teal-600 to-sky-600 hover:brightness-110 text-white font-extrabold text-xs font-mono transition-all shadow-xl shadow-emerald-950/50 border border-white/20 flex items-center justify-center gap-2 cursor-pointer">
                   <span class="material-symbols-outlined text-base animate-bounce">science</span>
-                  <span>🚀 زرار TEST // SEND LIVE TEST ALERT TO TELEGRAM NOW</span>
+                  <span>🚀 SEND LIVE TEST ALERT TO TELEGRAM NOW</span>
                 </button>
 
                 <button onclick="document.getElementById('tg-config-drawer').classList.toggle('hidden')"
@@ -1746,13 +1792,13 @@
                       class="w-full px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-white text-xs focus:border-sky-400 outline-none">
                   </div>
                   <div>
-                    <label class="block text-[10px] text-slate-400 mb-1">Target Chat ID (أو اضغط كشف تلقائي):</label>
+                    <label class="block text-[10px] text-slate-400 mb-1">Target Chat ID (or click Auto-Detect):</label>
                     <div class="flex gap-2">
                       <input type="text" id="tg-chat-id-input" value="1142168838"
                         placeholder="e.g. 1142168838"
                         class="flex-1 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-white text-xs focus:border-sky-400 outline-none">
                       <button onclick="autoDetectTelegramChat()"
-                        title="يكتشف رقم محادثتك تلقائياً بعد أن ترسل /start للبوت"
+                        title="Auto-detects your chat ID after you send /start to the bot"
                         class="px-2.5 py-1.5 rounded-lg bg-sky-500/20 text-sky-300 border border-sky-400/30 hover:bg-sky-500/30 text-[10px] font-bold">
                         Auto-Detect
                       </button>
@@ -1766,7 +1812,7 @@
                   </div>
                   <button onclick="saveTelegramConfig()"
                     class="px-4 py-1.5 rounded-lg bg-sky-500 hover:bg-sky-600 text-white text-xs font-bold font-mono transition-all">
-                    حفظ الإعدادات (Save)
+                    Save Settings
                   </button>
                 </div>
               </div>
@@ -1774,20 +1820,20 @@
               <!-- Message Preview Terminal -->
               <div class="space-y-1">
                 <div class="flex items-center justify-between text-[10px] font-mono text-slate-400">
-                  <span>TELEGRAM DISPATCH FORMAT PREVIEW (BILINGUAL JEEBS / NASA):</span>
+                  <span>TELEGRAM DISPATCH FORMAT PREVIEW (NASA POWER / 6S NOVA):</span>
                   <span class="text-sky-400">HTML Telegram Bot API</span>
                 </div>
                 <pre id="tg-preview-box"
-                  class="p-3 rounded-xl bg-black/70 border border-white/10 font-mono text-[11px] text-slate-300 whitespace-pre-wrap max-h-40 overflow-y-auto leading-relaxed">🚨 تحذير: نقص المساحات الخضراء | Green Space Warning
+                  class="p-3 rounded-xl bg-black/70 border border-white/10 font-mono text-[11px] text-slate-300 whitespace-pre-wrap max-h-40 overflow-y-auto leading-relaxed">🚨 ALERT: Green Space Deficit & Urban Heat Island
 
-📍 الموقع: Greater Cairo - Urban Core
-🌳 الحالة: Vegetative Ratio NDVI < 0.08 · Severe UHI Spike
+📍 Location: Greater Cairo - Urban Core
+🌳 Status: Vegetative Ratio NDVI &lt; 0.08 · Severe UHI Spike
 
-🌱 توصيات بيئية فورية (Urgent Action Plan):
-• زراعة الأشجار (Plant Trees): اغرس أشجار ظل ملائمة للمناخ في الشوارع والأفنية.
-• حدائق الأسطح (Rooftop Gardens): انشئ حدائق أسطح خضراء لعزل حرارة المباني.
-• تشجير الشوارع (Shaded Streets): ظلل الطرق والممرات بأحزمة شجرية كثيفة.
-• إنشاء مساحات خضراء عاجلة (Create Green Spaces): وفر حدائق ومتنفس بيئي فوراً لخفض الجزر الحرارية.
+🌱 Immediate Action Plan:
+• Plant Trees: Introduce climate-resilient shade trees along avenues and courtyards.
+• Rooftop Gardens: Install extensive rooftop greening to insulate buildings.
+• Shaded Streets: Canopy urban corridors to reduce microclimatic radiant heat.
+• Create Green Spaces: Rapid development of urban pocket parks to break heat islands.
 
 🛰️ 6S Nova Planetary Greening · @sixsnova_bot</pre>
               </div>
@@ -1977,7 +2023,7 @@
               <div class="flex flex-wrap items-center gap-2 mb-1">
                 <span id="tour-gov-badge"
                   class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-aura-purple/20 text-aura-purple border border-aura-purple/40">Giza
-                  Governorate (الجيزة)</span>
+                  Governorate</span>
                 <span id="tour-unesco-badge"
                   class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-amber-400/20 text-amber-300 border border-amber-400/40">UNESCO
                   World Heritage Site</span>
@@ -1987,7 +2033,7 @@
               </div>
               <h2 id="tour-site-title" class="text-2xl font-extrabold text-white font-headline">Giza Pyramids & Great
                 Sphinx</h2>
-              <p id="tour-site-ar-title" class="text-sm text-slate-300 font-sans mt-0.5">أهرامات الجيزة وأبو الهول</p>
+              <p id="tour-site-ar-title" class="text-sm text-slate-300 font-sans mt-0.5">Antiquity Plateau & Necropolis Sentinel</p>
             </div>
 
             <!-- Tourism Suitability Score Card -->
@@ -1996,7 +2042,7 @@
                 <div class="text-[10px] font-mono text-slate-400 uppercase tracking-wider">Tourism Suitability Index
                   (TSI)</div>
                 <div id="tour-tsi-rating" class="text-xs font-bold text-emerald-400 font-sans mt-0.5">Ideal & Golden
-                  Season · موسم سياحي ذهبي ومثالي</div>
+                  Season · Optimal Travel Window</div>
               </div>
               <div id="tour-tsi-score"
                 class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-400 flex items-center justify-center font-mono font-extrabold text-white text-lg shadow-lg shadow-emerald-500/20">
@@ -2173,7 +2219,7 @@
                 </p>
                 <p id="tour-threat-ar-analysis"
                   class="text-xs text-slate-400 leading-relaxed font-sans border-t border-white/5 pt-2">
-                  إجهاد التمدد والانكماش الحراري للأحجار الجيرية مع تآكل الحبيبات الرملية في رياح الخماسين.
+                  Structural micro-fracturing under diurnal temperature fluctuations amplified by airborne particulate erosion.
                 </p>
               </div>
 
@@ -2233,7 +2279,7 @@
               <span id="search-modal-type-badge"
                 class="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-blue-500/20 text-blue-300 border border-blue-400/30">Governorate</span>
             </div>
-            <p id="search-modal-ar-title" class="text-xs text-slate-400 font-sans">اسم المحافظة أو الموقع</p>
+            <p id="search-modal-ar-title" class="text-xs text-slate-400 font-sans">Egyptian Territory / Heritage Coordinate</p>
           </div>
         </div>
 
@@ -2388,12 +2434,12 @@
         <div class="p-4 rounded-2xl bg-gradient-to-r from-sky-500/20 to-indigo-500/20 border border-sky-400/30 text-center space-y-3">
           <div class="text-xs font-mono text-sky-300 font-bold uppercase tracking-wider">Direct Telegram Bot Access</div>
           <p class="text-xs text-slate-200 leading-relaxed max-w-lg mx-auto">
-            اضغط على الزر أدناه لفتح البوت على تليجرام، ثم اضغط <b>Start</b> لتحديد مدينتك وحيك ونوع التنبيهات المرغوبة.
+            Click the button below to launch the bot on Telegram, then tap <b>Start</b> to configure your city, district, and alert subscriptions.
           </p>
           <a href="https://t.me/sixsnova_bot" target="_blank"
             class="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-gradient-to-r from-sky-500 to-indigo-600 hover:brightness-110 text-white font-bold text-xs font-mono shadow-lg shadow-sky-500/30 transition-all cursor-pointer">
             <span class="material-symbols-outlined text-sm">open_in_new</span>
-            <span>Open @sixsnova_bot in Telegram (افتح البوت الآن)</span>
+            <span>Open @sixsnova_bot in Telegram</span>
           </a>
         </div>
 
@@ -2401,15 +2447,15 @@
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs font-mono">
           <div class="p-3 rounded-xl bg-white/5 border border-white/10">
             <div class="text-sky-400 font-bold mb-1">1. City & District</div>
-            <p class="text-[11px] text-slate-400">اختر محافظتك (القاهرة، الإسكندرية، أسوان، إلخ) واكتب اسم حيك السكني.</p>
+            <p class="text-[11px] text-slate-400">Select your governorate (Cairo, Alexandria, Aswan, etc.) and specify your district.</p>
           </div>
           <div class="p-3 rounded-xl bg-white/5 border border-white/10">
             <div class="text-emerald-400 font-bold mb-1">2. Alert Preferences</div>
-            <p class="text-[11px] text-slate-400">حدد التنبيهات: موجات الحر، الرياح العاتية، الأمطار، أو عجز المساحات الخضراء.</p>
+            <p class="text-[11px] text-slate-400">Configure alerts: Heatwaves, High Winds, Heavy Rainfall, or Green Space Deficit.</p>
           </div>
           <div class="p-3 rounded-xl bg-white/5 border border-white/10">
-            <div class="text-purple-400 font-bold mb-1">3. Firestore & JEEBS</div>
-            <p class="text-[11px] text-slate-400">يتم حفظ chat_id تلقائياً مع تدقيق يومي عبر أجهزة استشعار وكالة ناسا.</p>
+            <div class="text-purple-400 font-bold mb-1">3. Automated Sentinel</div>
+            <p class="text-[11px] text-slate-400">Chat ID is linked automatically with daily verification via NASA sensor telemetry.</p>
           </div>
         </div>
 
@@ -2418,7 +2464,7 @@
           <div class="flex items-center justify-between text-xs font-mono">
             <span class="font-bold text-white flex items-center gap-1.5">
               <span class="material-symbols-outlined text-base text-amber-300">science</span>
-              <span>Test Live Dispatch (تجربة الإرسال المباشر)</span>
+              <span>Test Live Dispatch</span>
             </span>
             <span class="text-[10px] text-emerald-400">6 Subscribed Users</span>
           </div>
@@ -2427,7 +2473,7 @@
             <div class="sm:col-span-8">
               <select id="modal-tg-subscriber-select"
                 class="w-full px-3 py-2 rounded-xl bg-white/5 border border-white/15 text-white text-xs font-mono focus:border-sky-400 outline-none cursor-pointer">
-                <option value="all">📢 Broadcast to All 6 Telegram Users (إذاعة للكل)</option>
+                <option value="all">📢 Broadcast to All 6 Telegram Users</option>
                 <option value="1142168838" selected>👤 ENG AHMED ANTER (Cairo) · 1142168838</option>
                 <option value="8458809118">👤 Subscriber Alexandria (Montazah) · 8458809118</option>
                 <option value="6120922499">👤 abdalrhmn (Giza / Dokki) · 6120922499</option>
