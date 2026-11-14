@@ -734,89 +734,85 @@
 
     </header>
 
-    <!-- ========================================================================= -->
-    <!-- TOP AI CLIMATE INTELLIGENCE COMMAND BAR (PROMINENT AT TOP OF SITE)        -->
-    <!-- ========================================================================= -->
-    <div class="px-6 pt-4 pb-0 z-20">
-      <div
-        class="aura-glass rounded-2xl p-4 border border-aura-purple/30 bg-gradient-to-r from-aura-purple/20 via-indigo-950/50 to-aura-cyan/20 shadow-2xl relative overflow-hidden">
-        <div class="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3">
-
-          <!-- Left: AI Assistant Identity (6S Nova) -->
-          <div class="flex items-center gap-3">
-            <div
-              class="w-11 h-11 rounded-xl bg-black/60 flex items-center justify-center shadow-lg shadow-aura-purple/30 shrink-0 border border-aura-purple/40 overflow-hidden">
-              <img src="/static/logo.png" alt="6S Nova" class="w-full h-full object-contain p-0.5">
-            </div>
-            <div>
-              <div class="flex items-center gap-2">
-                <h2 class="text-sm font-extrabold text-white font-headline">6S Nova // ClimateVision</h2>
-                <span
-                  class="px-2 py-0.5 rounded-full text-[9px] font-mono font-bold bg-cyan-400/20 text-cyan-300 border border-cyan-400/40">NASA
-                  MERRA-2 + 2050 AI</span>
-              </div>
-              <p class="text-[11px] text-slate-300">An AI-powered climate intelligence tool by 6S Nova that analyzes historical
-                weather data, predicts future climate trends, and provides accurate forecasts and insights to support
-                environmental planning and decision-making.</p>
-            </div>
-          </div>
-
-          <!-- Center & Right: Direct Ask Input & Action -->
-          <div class="flex-1 flex flex-col sm:flex-row items-center gap-2 max-w-2xl">
-            <div class="relative flex-1 w-full">
-              <span
-                class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-cyan-400 text-sm">chat</span>
-              <input id="top-ai-bar-input" type="text"
-                placeholder="Ask AI anything (e.g., 7-day forecast for Siwa Oasis vs 24-year baseline and 2050 projections)..."
-                onkeydown="if(event.key==='Enter') submitAIQuestion()"
-                class="w-full bg-black/50 text-white text-xs rounded-xl pl-9 pr-4 py-2.5 border border-white/20 focus:border-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-400/40 transition-all placeholder:text-slate-400 font-sans shadow-inner">
-            </div>
-            <button onclick="submitAIQuestion()"
-              class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-gradient-to-r from-aura-purple to-aura-cyan hover:brightness-110 text-white font-bold text-xs font-mono transition-all shadow-lg shadow-aura-purple/30 flex items-center justify-center gap-2 shrink-0 cursor-pointer">
-              <span class="material-symbols-outlined text-sm">rocket_launch</span>
-              <span>Ask AI Climate Tool</span>
-            </button>
-          </div>
-
-        </div>
-
-        <!-- Quick Question Chips -->
-        <div
-          class="flex items-center gap-2 mt-2.5 pt-2 border-t border-white/10 overflow-x-auto text-[11px] font-mono text-slate-300 scrollbar-none">
-          <span class="text-slate-400 text-[10px] uppercase font-bold shrink-0">Preset Inquiries:</span>
-          <button onclick="askAIPreset('Upcoming 7-day weather forecast compared to 24-year NASA historical baseline')"
-            class="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-aura-purple/20 hover:text-white border border-white/10 shrink-0 transition-all flex items-center gap-1 cursor-pointer">
-            <span>🌡️</span> 7-Day Forecast & Historical Delta
-          </button>
-          <button
-            onclick="askAIPreset('What are the climate change projections and surface temperature trends for 2050?')"
-            class="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-aura-purple/20 hover:text-white border border-white/10 shrink-0 transition-all flex items-center gap-1 cursor-pointer">
-            <span>🚀</span> 2050 Climate Projections
-          </button>
-          <button onclick="askAIPreset('Optimal daily visiting hours, relative humidity, and RealFeel heat index')"
-            class="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-aura-purple/20 hover:text-white border border-white/10 shrink-0 transition-all flex items-center gap-1 cursor-pointer">
-            <span>☀️</span> Best Visiting Hours & RealFeel
-          </button>
-          <button
-            onclick="askAIPreset('Are there any active risks of flash runoff, precipitation spikes, or gale winds?')"
-            class="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-aura-purple/20 hover:text-white border border-white/10 shrink-0 transition-all flex items-center gap-1 cursor-pointer">
-            <span>🌧️</span> Wind Shear & Storm Hazards
-          </button>
-          <button onclick="toggleAIChatModal(true)"
-            class="px-2.5 py-1 rounded-lg bg-aura-cyan/15 text-cyan-300 border border-aura-cyan/30 shrink-0 transition-all flex items-center gap-1 cursor-pointer hover:bg-aura-cyan/25">
-            <span>✨</span> Open Full AI Dialogue
-          </button>
-        </div>
-      </div>
-    </div>
-
     <!-- Main Dynamic Content Workspace -->
     <main class="flex-1 p-6 space-y-6">
 
       <!-- ========================================================================= -->
-      <!-- TAB 1: PLANETARY OBSERVATORY                                              -->
+      <!-- TAB 1: MAIN PAGE (PLANETARY OBSERVATORY)                                 -->
       <!-- ========================================================================= -->
       <div id="tab-observatory" class="tab-view space-y-6">
+
+        <!-- 6S Nova // ClimateVision Intelligence Command Bar (Main Page Only) -->
+        <div
+          class="aura-glass rounded-2xl p-4 border border-aura-purple/30 bg-gradient-to-r from-aura-purple/20 via-indigo-950/50 to-aura-cyan/20 shadow-2xl relative overflow-hidden">
+          <div class="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3">
+
+            <!-- Left: AI Assistant Identity (6S Nova) -->
+            <div class="flex items-center gap-3">
+              <div
+                class="w-11 h-11 rounded-xl bg-black/60 flex items-center justify-center shadow-lg shadow-aura-purple/30 shrink-0 border border-aura-purple/40 overflow-hidden">
+                <img src="/static/logo.png" alt="6S Nova" class="w-full h-full object-contain p-0.5">
+              </div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <h2 class="text-sm font-extrabold text-white font-headline">6S Nova // ClimateVision</h2>
+                  <span
+                    class="px-2 py-0.5 rounded-full text-[9px] font-mono font-bold bg-cyan-400/20 text-cyan-300 border border-cyan-400/40">NASA
+                    MERRA-2 + 2050 AI</span>
+                </div>
+                <p class="text-[11px] text-slate-300">An AI-powered climate intelligence tool by 6S Nova that analyzes historical
+                  weather data, predicts future climate trends, and provides accurate forecasts and insights to support
+                  environmental planning and decision-making.</p>
+              </div>
+            </div>
+
+            <!-- Center & Right: Direct Ask Input & Action -->
+            <div class="flex-1 flex flex-col sm:flex-row items-center gap-2 max-w-2xl">
+              <div class="relative flex-1 w-full">
+                <span
+                  class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-cyan-400 text-sm">chat</span>
+                <input id="top-ai-bar-input" type="text"
+                  placeholder="Ask AI anything (e.g., 7-day forecast for Siwa Oasis vs 24-year baseline and 2050 projections)..."
+                  onkeydown="if(event.key==='Enter') submitAIQuestion()"
+                  class="w-full bg-black/50 text-white text-xs rounded-xl pl-9 pr-4 py-2.5 border border-white/20 focus:border-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-400/40 transition-all placeholder:text-slate-400 font-sans shadow-inner">
+              </div>
+              <button onclick="submitAIQuestion()"
+                class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-gradient-to-r from-aura-purple to-aura-cyan hover:brightness-110 text-white font-bold text-xs font-mono transition-all shadow-lg shadow-aura-purple/30 flex items-center justify-center gap-2 shrink-0 cursor-pointer">
+                <span class="material-symbols-outlined text-sm">rocket_launch</span>
+                <span>Ask AI Climate Tool</span>
+              </button>
+            </div>
+
+          </div>
+
+          <!-- Quick Question Chips -->
+          <div
+            class="flex items-center gap-2 mt-2.5 pt-2 border-t border-white/10 overflow-x-auto text-[11px] font-mono text-slate-300 scrollbar-none">
+            <span class="text-slate-400 text-[10px] uppercase font-bold shrink-0">Preset Inquiries:</span>
+            <button onclick="askAIPreset('Upcoming 7-day weather forecast compared to 24-year NASA historical baseline')"
+              class="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-aura-purple/20 hover:text-white border border-white/10 shrink-0 transition-all flex items-center gap-1 cursor-pointer">
+              <span>🌡️</span> 7-Day Forecast & Historical Delta
+            </button>
+            <button
+              onclick="askAIPreset('What are the climate change projections and surface temperature trends for 2050?')"
+              class="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-aura-purple/20 hover:text-white border border-white/10 shrink-0 transition-all flex items-center gap-1 cursor-pointer">
+              <span>🚀</span> 2050 Climate Projections
+            </button>
+            <button onclick="askAIPreset('Optimal daily visiting hours, relative humidity, and RealFeel heat index')"
+              class="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-aura-purple/20 hover:text-white border border-white/10 shrink-0 transition-all flex items-center gap-1 cursor-pointer">
+              <span>☀️</span> Best Visiting Hours & RealFeel
+            </button>
+            <button
+              onclick="askAIPreset('Are there any active risks of flash runoff, precipitation spikes, or gale winds?')"
+              class="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-aura-purple/20 hover:text-white border border-white/10 shrink-0 transition-all flex items-center gap-1 cursor-pointer">
+              <span>🌧️</span> Wind Shear & Storm Hazards
+            </button>
+            <button onclick="toggleAIChatModal(true)"
+              class="px-2.5 py-1 rounded-lg bg-aura-cyan/15 text-cyan-300 border border-aura-cyan/30 shrink-0 transition-all flex items-center gap-1 cursor-pointer hover:bg-aura-cyan/25">
+              <span>✨</span> Open Full AI Dialogue
+            </button>
+          </div>
+        </div>
 
         <!-- Top 4 SaaS KPI Metrics Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
