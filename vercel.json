@@ -2,20 +2,20 @@
   "version": 2,
   "rewrites": [
     {
-      "source": "/api/(.*)",
+      "source": "/api/:path*",
       "destination": "/api/index.py"
     },
     {
-      "source": "/static/(.*)",
-      "destination": "/frontend/$1"
+      "source": "/static/:path*",
+      "destination": "/frontend/:path*"
     },
     {
-      "source": "/(.*\\.(css|js|png|jpg|jpeg|svg|ico|json|woff2|woff|ttf))",
-      "destination": "/frontend/$1"
-    },
-    {
-      "source": "/(.*)",
+      "source": "/",
       "destination": "/frontend/index.html"
+    },
+    {
+      "source": "/:path*",
+      "destination": "/frontend/:path*"
     }
   ]
 }
