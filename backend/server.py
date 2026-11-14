@@ -873,6 +873,12 @@ def api_cairo_sources():
 
 
 
+@app.get("/api")
+@app.get("/api/health")
+def api_health():
+    return {"status": "online", "system": "6S Nova Climate Engine"}
+
+
 # Mount frontend directory for static assets
 if FRONTEND_DIR and os.path.exists(FRONTEND_DIR):
     app.mount("/static", StaticFiles(directory=FRONTEND_DIR), name="static")
@@ -880,19 +886,10 @@ if FRONTEND_DIR and os.path.exists(FRONTEND_DIR):
     @app.get("/")
     def serve_index():
         return FileResponse(os.path.join(FRONTEND_DIR, "index.html"))
-
-    @app.get("/{full_path:path}")
-    def serve_spa_or_static(full_path: str):
-        if full_path.startswith("api/"):
-            raise HTTPException(status_code=404, detail="API route not found")
-        file_path = os.path.join(FRONTEND_DIR, full_path)
-        if os.path.isfile(file_path):
-            return FileResponse(file_path)
-        return FileResponse(os.path.join(FRONTEND_DIR, "index.html"))
 else:
     @app.get("/")
     def serve_fallback():
-        return {"status": "online", "message": "6S Nova API running. Frontend folder not mounted.", "dir": str(FRONTEND_DIR)}
+        return {"status": "online", "message": "6S Nova API running."}
 
 if __name__ == "__main__":
     import uvicorn
