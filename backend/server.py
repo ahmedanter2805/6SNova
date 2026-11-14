@@ -68,7 +68,21 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-FRONTEND_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "frontend"))
+def find_frontend_dir():
+    candidates = [
+        os.path.abspath(os.path.join(os.path.dirname(__file__), "frontend")),
+        os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "frontend")),
+        os.path.abspath(os.path.join(os.getcwd(), "frontend")),
+        os.path.abspath("frontend"),
+        os.path.join("/var/task", "backend", "frontend"),
+        os.path.join("/var/task", "frontend"),
+    ]
+    for c in candidates:
+        if os.path.isdir(c) and os.path.exists(os.path.join(c, "index.html")):
+            return c
+    return None
+
+FRONTEND_DIR = find_frontend_dir()
 
 DETECTIVE_CASES = [
     {
@@ -860,12 +874,25 @@ def api_cairo_sources():
 
 
 # Mount frontend directory for static assets
-if os.path.exists(FRONTEND_DIR):
+if FRONTEND_DIR and os.path.exists(FRONTEND_DIR):
     app.mount("/static", StaticFiles(directory=FRONTEND_DIR), name="static")
 
     @app.get("/")
     def serve_index():
         return FileResponse(os.path.join(FRONTEND_DIR, "index.html"))
+
+    @app.get("/{full_path:path}")
+    def serve_spa_or_static(full_path: str):
+        if full_path.startswith("api/"):
+            raise HTTPException(status_code=404, detail="API route not found")
+        file_path = os.path.join(FRONTEND_DIR, full_path)
+        if os.path.isfile(file_path):
+            return FileResponse(file_path)
+        return FileResponse(os.path.join(FRONTEND_DIR, "index.html"))
+else:
+    @app.get("/")
+    def serve_fallback():
+        return {"status": "online", "message": "6S Nova API running. Frontend folder not mounted.", "dir": str(FRONTEND_DIR)}
 
 if __name__ == "__main__":
     import uvicorn
