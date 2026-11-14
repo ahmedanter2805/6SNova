@@ -3,7 +3,7 @@ import sys
 import math
 from typing import Dict, Any, Optional
 import numpy as np
-from fastapi import FastAPI, Query, HTTPException, Body
+from fastapi import FastAPI, Query, HTTPException, Body, Request, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
@@ -893,8 +893,16 @@ def api_cairo_sources():
 
 @app.get("/api")
 @app.get("/api/health")
-def api_health():
-    return {"status": "online", "system": "6S Nova Climate Engine"}
+def api_health(request: Request = None):
+    headers = dict(request.headers) if request else {}
+    return {
+        "status": "online",
+        "scope_path": request.scope.get("path") if request else None,
+        "x_matched_path": headers.get("x-matched-path"),
+        "x_invoke_path": headers.get("x-invoke-path"),
+        "x_vercel_forwarded_for": headers.get("x-vercel-forwarded-for"),
+        "headers": headers
+    }
 
 
 # Mount frontend directory for static assets
