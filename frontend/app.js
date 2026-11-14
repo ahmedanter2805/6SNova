@@ -531,18 +531,23 @@ async function loadForecastChart(region, variable) {
     if (policyContainer && policies.length) {
       policyContainer.innerHTML = '';
       const icons = ['water_drop', 'agriculture', 'bolt', 'health_and_safety'];
-      const colors = ['text-aura-cyan', 'text-aura-emerald', 'text-aura-amber', 'text-aura-rose'];
+      const colors = ['text-cyan-400', 'text-emerald-400', 'text-amber-400', 'text-rose-400'];
+      const bgColors = ['bg-cyan-500/10 border-cyan-500/20', 'bg-emerald-500/10 border-emerald-500/20', 'bg-amber-500/10 border-amber-500/20', 'bg-rose-500/10 border-rose-500/20'];
 
       policies.forEach((pol, idx) => {
         const card = document.createElement('div');
-        card.className = 'p-4 rounded-xl bg-aura-dark/70 border border-white/5 space-y-2 hover:border-white/20 transition-all';
+        card.className = 'p-6 rounded-2xl bg-gradient-to-b from-white/[0.07] to-white/[0.02] border border-white/10 hover:border-cyan-400/40 space-y-4 transition-all shadow-lg';
         card.innerHTML = `
-          <div class="flex items-center gap-2">
-            <span class="material-symbols-outlined text-lg ${colors[idx % colors.length]}">${icons[idx % icons.length]}</span>
-            <span class="font-bold text-white text-xs font-headline">${pol.sector_en}</span>
+          <div class="flex items-center gap-4">
+            <div class="w-14 h-14 rounded-2xl flex items-center justify-center ${bgColors[idx % bgColors.length]} border shadow-inner">
+              <span class="material-symbols-outlined text-3xl ${colors[idx % colors.length]}">${icons[idx % icons.length]}</span>
+            </div>
+            <div>
+              <h3 class="font-black text-white text-base sm:text-lg font-headline tracking-wide">${pol.sector_en}</h3>
+              <div class="text-[11px] text-cyan-400 font-mono font-semibold">Climate Adaptation Protocol · Strategic Directive</div>
+            </div>
           </div>
-          <p class="text-xs text-slate-300 leading-relaxed">${pol.action_en}</p>
-          <div class="text-[10px] text-cyan-400/70 font-mono">Ministry Strategic Directive · Climate Adaptation Protocol</div>
+          <p class="text-sm sm:text-base text-slate-200 leading-relaxed font-normal">${pol.action_en}</p>
         `;
         policyContainer.appendChild(card);
       });

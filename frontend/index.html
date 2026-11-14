@@ -131,21 +131,21 @@
       box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.9), 0 0 35px rgba(139, 92, 246, 0.2);
     }
 
-    /* Cosmic Deep Space Background Themes */
+    /* Cosmic Deep Space Background Themes - ahmed3nter.online style */
     #cosmic-space-background {
       position: fixed;
       inset: 0;
       z-index: 0;
       pointer-events: none;
       overflow: hidden;
-      background: radial-gradient(circle at 45% 35%, #0e2a52 0%, #081a38 35%, #040e22 70%, #020712 100%);
+      background: radial-gradient(circle at 50% 50%, #0a0b22 0%, #050511 75%, #020208 100%);
       transition: background 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    /* 1. NEW DEFAULT: Galactic Deep Blue & Sapphire */
+    /* 1. NEW DEFAULT: Cyber Black matching ahmed3nter.online */
     body[data-space-theme="deep-blue"] #cosmic-space-background,
     #cosmic-space-background {
-      background: radial-gradient(circle at 45% 35%, #0e2a52 0%, #081a38 35%, #040e22 70%, #020712 100%);
+      background: radial-gradient(circle at 50% 50%, #0a0b22 0%, #050511 75%, #020208 100%);
     }
 
     body[data-space-theme="deep-blue"] .nebula-purple {
@@ -279,17 +279,9 @@
       }
     }
 
-    /* Orbital Earth Horizon (NASA ISS View Simulation) */
+    /* Orbital Earth Horizon (Hidden to match ahmed3nter.online pure starfield) */
     .orbital-earth-container {
-      position: absolute;
-      bottom: -500px;
-      right: -180px;
-      width: 1100px;
-      height: 1100px;
-      pointer-events: none;
-      z-index: 1;
-      opacity: 0.78;
-      transition: all 1s ease;
+      display: none !important;
     }
 
     .orbital-earth-sphere {
@@ -373,7 +365,7 @@
 </head>
 
 <body data-space-theme="deep-blue"
-  class="min-h-screen bg-[#030816] text-slate-200 antialiased flex overflow-x-hidden selection:bg-aura-purple/25 selection:text-aura-purple relative">
+  class="min-h-screen bg-[#050511] text-slate-200 antialiased flex overflow-x-hidden selection:bg-aura-purple/25 selection:text-aura-purple relative">
 
   <!-- ========================================================================= -->
   <!-- COSMIC DEEP SPACE & ANIMATED STARFIELD / ORBITAL EARTH BACKGROUND         -->
@@ -576,8 +568,9 @@
                 Sites</span>
             </button>
 
-            <button onclick="switchTab('alerts')"
-              class="aura-nav-btn w-full flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-medium text-slate-400 hover:text-white hover:bg-white/5 transition-all text-left"
+            <!-- Hidden Alerts Page (Accessed via #alerts or Ctrl+Shift+A) -->
+            <button onclick="switchTab('alerts')" id="nav-tab-alerts"
+              class="hidden aura-nav-btn w-full flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-medium text-slate-400 hover:text-white hover:bg-white/5 transition-all text-left"
               data-tab="alerts">
               <span class="material-symbols-outlined text-lg text-aura-rose">notifications_active</span>
               <span>Crisis Matrix & JEEBS Alerts</span>
@@ -587,29 +580,21 @@
               class="aura-nav-btn w-full flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-medium text-slate-400 hover:text-white hover:bg-white/5 transition-all text-left"
               data-tab="policy">
               <span class="material-symbols-outlined text-lg text-aura-emerald">policy</span>
-              <span>Executive Policy Briefs</span>
+              <span>Predictable Climate Change</span>
             </button>
           </nav>
 
         </div>
       </div>
 
-      <!-- Governorates Fast Switcher -->
-      <div class="px-5 pt-4 pb-2 flex items-center justify-between">
-        <span class="text-[10px] font-mono uppercase text-slate-500 font-bold tracking-wider">EGYPT SECTORS (10)</span>
-        <span class="text-[10px] font-mono text-aura-purple font-bold">24Y MERRA-2</span>
-      </div>
-      <div class="px-3 space-y-0.5 max-h-48 overflow-y-auto" id="sidebar-regions-list">
-        <!-- Injected via JS -->
-      </div>
     </div>
 
     <!-- Workspace Identity Card -->
     <div class="p-4 border-t border-white/5 bg-aura-void/40">
       <div class="aura-glass rounded-xl p-3 flex items-center justify-between">
         <div class="flex items-center gap-2.5">
-          <div
-            class="w-8 h-8 rounded-lg bg-aura-purple/20 border border-aura-purple/40 flex items-center justify-center text-aura-purple font-mono font-bold text-xs">
+          <div onclick="switchTab('alerts')" title="Toggle Crisis Protocol"
+            class="w-8 h-8 rounded-lg bg-aura-purple/20 border border-aura-purple/40 flex items-center justify-center text-aura-purple font-mono font-bold text-xs cursor-pointer hover:border-aura-cyan transition-all">
             EG
           </div>
           <div>
@@ -617,7 +602,7 @@
             <div class="text-[10px] text-slate-400 font-mono">NASA Space Apps 2026</div>
           </div>
         </div>
-        <span class="w-2 h-2 rounded-full bg-aura-emerald" title="Enterprise Tier Active"></span>
+        <span onclick="switchTab('alerts')" class="w-2 h-2 rounded-full bg-aura-emerald cursor-pointer hover:scale-150 transition-all" title="Secure Broadcast Channel"></span>
       </div>
     </div>
 
@@ -633,7 +618,7 @@
       class="sticky top-0 z-40 bg-aura-dark/80 backdrop-blur-xl border-b border-white/5 px-6 py-3.5 flex items-center justify-between gap-4">
 
       <!-- Center: Smart Global Geocoding & Governorate/Site Search Bar -->
-      <div class="flex items-center gap-3">
+      <div id="header-search-container" class="flex items-center gap-3 transition-all duration-200">
         <div class="relative w-64 md:w-80 lg:w-96">
           <div class="relative flex items-center">
             <span
@@ -1858,10 +1843,8 @@
                 <span class="material-symbols-outlined text-2xl">policy</span>
               </div>
               <div>
-                <h2 class="text-lg font-bold text-white font-headline">National Executive Policy & Adaptation Briefs
-                </h2>
-                <p class="text-xs text-slate-400">Actionable recommendations for Egyptian ministries derived from NASA
-                  POWER & Theil-Sen 2050 trajectories</p>
+                <h2 class="text-xl md:text-2xl font-black text-white font-headline">Predictable Climate Change</h2>
+                <p class="text-xs text-slate-300">Actionable strategic adaptation policies for Egyptian authorities derived from NASA POWER & Theil-Sen 2050 trajectories</p>
               </div>
             </div>
 
@@ -1872,9 +1855,56 @@
             </button>
           </div>
 
-          <!-- 4 Ministries Grid -->
+          <!-- 4 Ministries Grid (Enlarged Typography & Prominent Icons) -->
           <div id="policy-cards-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <!-- Populated via JS -->
+            <div class="p-6 rounded-2xl bg-gradient-to-b from-white/[0.07] to-white/[0.02] border border-white/10 hover:border-cyan-400/40 space-y-4 transition-all shadow-lg">
+              <div class="flex items-center gap-4">
+                <div class="w-14 h-14 rounded-2xl flex items-center justify-center bg-cyan-500/10 border border-cyan-500/20 shadow-inner">
+                  <span class="material-symbols-outlined text-3xl text-cyan-400">water_drop</span>
+                </div>
+                <div>
+                  <h3 class="font-black text-white text-base sm:text-lg font-headline tracking-wide">Water Security & Irrigation</h3>
+                  <div class="text-[11px] text-cyan-400 font-mono font-semibold">Climate Adaptation Protocol · Strategic Directive</div>
+                </div>
+              </div>
+              <p class="text-sm sm:text-base text-slate-200 leading-relaxed font-normal">Expand modern drip irrigation and canal lining to offset elevated summer evaporative losses.</p>
+            </div>
+            <div class="p-6 rounded-2xl bg-gradient-to-b from-white/[0.07] to-white/[0.02] border border-white/10 hover:border-emerald-400/40 space-y-4 transition-all shadow-lg">
+              <div class="flex items-center gap-4">
+                <div class="w-14 h-14 rounded-2xl flex items-center justify-center bg-emerald-500/10 border border-emerald-500/20 shadow-inner">
+                  <span class="material-symbols-outlined text-3xl text-emerald-400">agriculture</span>
+                </div>
+                <div>
+                  <h3 class="font-black text-white text-base sm:text-lg font-headline tracking-wide">Agriculture & Crop Resilience</h3>
+                  <div class="text-[11px] text-emerald-400 font-mono font-semibold">Climate Adaptation Protocol · Strategic Directive</div>
+                </div>
+              </div>
+              <p class="text-sm sm:text-base text-slate-200 leading-relaxed font-normal">Deploy heat-tolerant wheat and maize cultivars and shift planting calendars to avoid peak thermal anomalies.</p>
+            </div>
+            <div class="p-6 rounded-2xl bg-gradient-to-b from-white/[0.07] to-white/[0.02] border border-white/10 hover:border-amber-400/40 space-y-4 transition-all shadow-lg">
+              <div class="flex items-center gap-4">
+                <div class="w-14 h-14 rounded-2xl flex items-center justify-center bg-amber-500/10 border border-amber-500/20 shadow-inner">
+                  <span class="material-symbols-outlined text-3xl text-amber-400">bolt</span>
+                </div>
+                <div>
+                  <h3 class="font-black text-white text-base sm:text-lg font-headline tracking-wide">Energy & Grid Reliability</h3>
+                  <div class="text-[11px] text-amber-400 font-mono font-semibold">Climate Adaptation Protocol · Strategic Directive</div>
+                </div>
+              </div>
+              <p class="text-sm sm:text-base text-slate-200 leading-relaxed font-normal">Fortify grid resilience against peak summer cooling surges while scaling solar PV generation.</p>
+            </div>
+            <div class="p-6 rounded-2xl bg-gradient-to-b from-white/[0.07] to-white/[0.02] border border-white/10 hover:border-rose-400/40 space-y-4 transition-all shadow-lg">
+              <div class="flex items-center gap-4">
+                <div class="w-14 h-14 rounded-2xl flex items-center justify-center bg-rose-500/10 border border-rose-500/20 shadow-inner">
+                  <span class="material-symbols-outlined text-3xl text-rose-400">health_and_safety</span>
+                </div>
+                <div>
+                  <h3 class="font-black text-white text-base sm:text-lg font-headline tracking-wide">Public Health & Crisis Alerts</h3>
+                  <div class="text-[11px] text-rose-400 font-mono font-semibold">Climate Adaptation Protocol · Strategic Directive</div>
+                </div>
+              </div>
+              <p class="text-sm sm:text-base text-slate-200 leading-relaxed font-normal">Activate mobile early warning broadcasts for outdoor workers when Heat Index crosses extreme caution thresholds.</p>
+            </div>
           </div>
 
           <!-- Formal Credentials -->
@@ -2608,15 +2638,54 @@
       const active = document.getElementById('tab-' + tabId);
       if (active) active.classList.remove('hidden');
 
+      // If opening alerts page, reveal the hidden alerts button
+      const alertsBtn = document.getElementById('nav-tab-alerts');
+      if (alertsBtn) {
+        if (tabId === 'alerts') {
+          alertsBtn.classList.remove('hidden');
+        }
+      }
+
       document.querySelectorAll('.aura-nav-btn').forEach(btn => {
         btn.classList.toggle('active', btn.getAttribute('data-tab') === tabId);
       });
+
+      // Show search bar ONLY on Main Page (observatory)
+      const searchContainer = document.getElementById('header-search-container');
+      if (searchContainer) {
+        if (tabId === 'observatory') {
+          searchContainer.classList.remove('hidden');
+          searchContainer.style.display = 'flex';
+        } else {
+          searchContainer.classList.add('hidden');
+          searchContainer.style.display = 'none';
+        }
+      }
 
       if (tabId === 'observatory' || tabId === 'tourism') {
         setTimeout(() => window.dispatchEvent(new Event('resize')), 50);
       }
       window.scrollTo({ top: 0, behavior: 'smooth' });
     };
+
+    // Secret entry for Crisis Matrix & JEEBS Alerts
+    // 1. URL Hash trigger (e.g. #alerts or #jeebs)
+    function checkHashForAlerts() {
+      const hash = (window.location.hash || '').toLowerCase();
+      if (hash === '#alerts' || hash === '#jeebs' || hash === '#crisis') {
+        window.switchTab('alerts');
+      }
+    }
+    window.addEventListener('hashchange', checkHashForAlerts);
+    window.addEventListener('DOMContentLoaded', checkHashForAlerts);
+
+    // 2. Keyboard shortcut: Ctrl + Shift + A (or Ctrl + Shift + J)
+    document.addEventListener('keydown', function (e) {
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key.toLowerCase() === 'a' || e.key.toLowerCase() === 'j')) {
+        e.preventDefault();
+        window.switchTab('alerts');
+      }
+    });
 
     // Smartphone Alert Triggers
     window.triggerPhoneAlert = function () {
