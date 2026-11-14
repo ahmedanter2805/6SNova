@@ -68,6 +68,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Compatibility middleware for Vercel serverless prefix normalization
+@app.middleware("http")
+async def normalize_vercel_api_prefix(request, call_next):
+    path = request.scope.get("path", "")
+    if path and not path.startswith("/api") and path not in ["/", "/docs", "/openapi.json"]:
+        request.scope["path"] = "/api" + path
+    return await call_next(request)
+
 def find_frontend_dir():
     candidates = [
         os.path.abspath(os.path.join(os.path.dirname(__file__), "frontend")),
