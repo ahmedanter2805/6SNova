@@ -848,11 +848,12 @@ def send_telegram_alert(
     return res
 
 
-# Auto-start polling and scheduler on module load
-try:
-    start_bot_polling()
-    start_daily_scheduler()
-except Exception as e:
-    logger.warning(f"Could not auto-start background threads: {e}")
+# Auto-start polling and scheduler on module load (skip on serverless Vercel environment)
+if not os.environ.get("VERCEL"):
+    try:
+        start_bot_polling()
+        start_daily_scheduler()
+    except Exception as e:
+        logger.warning(f"Could not auto-start background threads: {e}")
 
 

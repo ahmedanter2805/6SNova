@@ -68,14 +68,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Compatibility middleware for Vercel serverless prefix normalization
-@app.middleware("http")
-async def normalize_vercel_api_prefix(request, call_next):
-    path = request.scope.get("path", "")
-    if path and not path.startswith("/api") and path not in ["/", "/docs", "/openapi.json"]:
-        request.scope["path"] = "/api" + path
-    return await call_next(request)
-
 def find_frontend_dir():
     candidates = [
         os.path.abspath(os.path.join(os.path.dirname(__file__), "frontend")),
@@ -155,6 +147,7 @@ DETECTIVE_CASES = [
     }
 ]
 
+@app.get("/variables")
 @app.get("/api/variables")
 def get_variables():
     return {
@@ -162,6 +155,7 @@ def get_variables():
         "variables": VARIABLE_METADATA
     }
 
+@app.get("/regions")
 @app.get("/api/regions")
 def get_regions():
     return {
@@ -169,6 +163,7 @@ def get_regions():
         "regions": PRESET_REGIONS
     }
 
+@app.get("/detective-cases")
 @app.get("/api/detective-cases")
 def get_cases():
     return {
@@ -176,6 +171,7 @@ def get_cases():
         "cases": DETECTIVE_CASES
     }
 
+@app.get("/analyze")
 @app.get("/api/analyze")
 def analyze(
     lat: float = Query(..., description="Latitude"),
@@ -209,6 +205,7 @@ def analyze(
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.get("/forecast")
 @app.get("/api/forecast")
 def forecast(
     lat: float = Query(...),
@@ -654,6 +651,7 @@ def ask_climate(
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/tourism-sites")
 @app.get("/api/tourism-sites")
 def api_tourism_sites():
     """
@@ -671,6 +669,7 @@ def api_tourism_sites():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/tourism-forecast")
 @app.get("/api/tourism-forecast")
 def api_tourism_forecast(site_id: str = Query("giza_pyramids")):
     """
@@ -688,6 +687,7 @@ def api_tourism_forecast(site_id: str = Query("giza_pyramids")):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/telegram/status")
 @app.get("/api/telegram/status")
 def api_telegram_status():
     cfg = load_tg_config()
@@ -700,6 +700,7 @@ def api_telegram_status():
     })
 
 
+@app.post("/telegram/config")
 @app.post("/api/telegram/config")
 def api_telegram_config(payload: Dict[str, Any] = Body(...)):
     cfg = load_tg_config()
@@ -711,12 +712,14 @@ def api_telegram_config(payload: Dict[str, Any] = Body(...)):
     return {"status": "success", "message": "Telegram alert settings updated successfully."}
 
 
+@app.post("/telegram/auto-detect")
 @app.post("/api/telegram/auto-detect")
 def api_telegram_auto_detect(bot_token: str = Body(None, embed=True)):
     result = auto_detect_chat_id(bot_token)
     return clean_nans(result)
 
 
+@app.post("/telegram/send-alert")
 @app.post("/api/telegram/send-alert")
 def api_telegram_send_alert(
     region_name: str = Body("Greater Cairo & Giza Metropolis"),
@@ -741,6 +744,7 @@ def api_telegram_send_alert(
     return clean_nans(result)
 
 
+@app.get("/telegram/subscribers")
 @app.get("/api/telegram/subscribers")
 def api_telegram_subscribers():
     subs = get_all_subscribers()
@@ -751,6 +755,7 @@ def api_telegram_subscribers():
     })
 
 
+@app.post("/telegram/test-alert")
 @app.post("/api/telegram/test-alert")
 def api_telegram_test_alert(payload: Dict[str, Any] = Body(...)):
     """
@@ -795,6 +800,7 @@ def api_telegram_trigger_daily():
 # CAIRO AI CLIMATE PREDICTOR & GREEN SPACE API (OFFICIAL SPECIFICATION)
 # =========================================================================
 
+@app.get("/cairo/districts")
 @app.get("/api/cairo/districts")
 def api_cairo_districts():
     """Returns Cairo districts green space telemetry, NDVI, and actionable solutions."""
@@ -806,6 +812,7 @@ def api_cairo_districts():
     })
 
 
+@app.get("/cairo/historical")
 @app.get("/api/cairo/historical")
 def api_cairo_historical():
     """Returns 24-year NASA POWER MERRA-2 historical records (T2M, WS10M, PRECTOTCORR) for Cairo."""
@@ -813,6 +820,7 @@ def api_cairo_historical():
     return clean_nans({"status": "success", "data": data})
 
 
+@app.get("/cairo/prophet-forecast")
 @app.get("/api/cairo/prophet-forecast")
 def api_cairo_prophet_forecast(variable: str = Query("T2M")):
     """
@@ -830,6 +838,7 @@ def api_cairo_prophet_forecast(variable: str = Query("T2M")):
     })
 
 
+@app.get("/cairo/warnings")
 @app.get("/api/cairo/warnings")
 def api_cairo_warnings():
     """Returns algorithmic Climate Change & Green Space Warnings for Cairo."""
@@ -837,6 +846,7 @@ def api_cairo_warnings():
     return clean_nans({"status": "success", "warnings": warnings})
 
 
+@app.get("/cairo/sources")
 @app.get("/api/cairo/sources")
 def api_cairo_sources():
     """Returns official data sources, sensors, and methodology credits."""
