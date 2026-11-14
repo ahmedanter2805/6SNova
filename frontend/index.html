@@ -1149,27 +1149,38 @@
 
 
 
-        <!-- Comparative Governorates Benchmark Table -->
-        <div class="aura-glass rounded-2xl p-5 space-y-3">
-          <div class="flex items-center justify-between pb-3 border-b border-white/5">
-            <div class="flex items-center gap-2">
-              <span class="material-symbols-outlined text-aura-purple">table_chart</span>
-              <h3 class="text-sm font-bold text-white font-headline">Comparative Egyptian Governorates Matrix (NASA 24Y
-                Sensor Records)</h3>
+        <!-- Daily Dash Board // Egyptian Governorates Benchmark Table -->
+        <div class="aura-glass rounded-2xl p-6 space-y-4 border border-white/10 shadow-xl backdrop-blur-xl">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-white/10">
+            <div class="flex items-center gap-2.5">
+              <div class="w-8 h-8 rounded-xl bg-aura-purple/20 border border-aura-purple/40 flex items-center justify-center text-aura-purple shadow-sm">
+                <span class="material-symbols-outlined text-lg">dashboard</span>
+              </div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <h3 class="text-base font-extrabold text-white font-headline tracking-wide">Daily Dash Board</h3>
+                  <span class="px-2 py-0.5 rounded-full text-[9px] font-mono font-bold bg-cyan-500/15 text-cyan-300 border border-cyan-400/30">NASA MERRA-2 LIVE</span>
+                </div>
+                <p class="text-[11px] text-slate-400 font-mono mt-0.5">Egyptian Governorates Sensor Matrix · 24-Year Climatological Telemetry</p>
+              </div>
             </div>
-            <span class="text-[11px] text-slate-400 font-mono">Click any row to target sector & align 3D globe</span>
+            <div class="flex items-center gap-2">
+              <span class="text-[11px] text-slate-400 font-mono hidden md:inline">💡 Click any sector row to target & align 3D globe</span>
+              <span class="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-[10px] font-mono text-cyan-300 font-bold">10 Sectors Synced</span>
+            </div>
           </div>
 
-          <div class="overflow-x-auto">
-            <table class="w-full text-xs text-left">
+          <!-- Organized Table Container -->
+          <div class="overflow-x-auto rounded-xl border border-white/10 bg-black/40">
+            <table class="w-full text-xs text-left border-collapse">
               <thead>
-                <tr class="text-slate-400 border-b border-white/10 pb-2 font-mono text-[11px]">
-                  <th class="py-2.5 font-bold">Governorate Sector</th>
-                  <th class="py-2.5 font-bold">Mean Temp</th>
-                  <th class="py-2.5 font-bold">Decadal Slope (Theil-Sen)</th>
-                  <th class="py-2.5 font-bold">Humidity (RH)</th>
-                  <th class="py-2.5 font-bold">Wind Velocity</th>
-                  <th class="py-2.5 font-bold">Significance (Mann-Kendall)</th>
+                <tr class="bg-white/[0.04] text-slate-300 border-b border-white/10 font-mono text-[11px] uppercase tracking-wider">
+                  <th class="py-3 px-4 font-bold">Governorate Sector</th>
+                  <th class="py-3 px-3 font-bold text-center">Mean Temp (T2M)</th>
+                  <th class="py-3 px-3 font-bold text-center">Decadal Slope (Theil-Sen)</th>
+                  <th class="py-3 px-3 font-bold text-center">Humidity (RH)</th>
+                  <th class="py-3 px-3 font-bold text-center">Wind Velocity</th>
+                  <th class="py-3 px-4 font-bold text-right">Significance (Mann-Kendall)</th>
                 </tr>
               </thead>
               <tbody id="regions-table-body" class="divide-y divide-white/5 font-mono">

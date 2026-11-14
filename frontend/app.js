@@ -698,24 +698,39 @@ async function initAllRegions() {
       const mvWS = mean(rawWS);
 
       const tr = document.createElement('tr');
-      tr.className = `hover:bg-white/5 transition-colors cursor-pointer ${idx === 0 ? 'bg-aura-purple/10 text-aura-purple' : ''}`;
+      tr.className = `hover:bg-white/[0.08] transition-all cursor-pointer group ${idx === 0 ? 'bg-aura-purple/20 text-white' : ''}`;
       tr.onclick = () => window.switchRegion(reg, idx);
 
       tr.innerHTML = `
-        <td class="py-2.5 font-bold flex items-center gap-2">
-          <span class="w-2 h-2 rounded-full ${idx % 2 === 0 ? 'bg-aura-cyan' : 'bg-aura-purple'}"></span>
+        <td class="py-3 px-4 font-bold flex items-center gap-3">
+          <span class="w-2.5 h-2.5 rounded-full ${idx % 2 === 0 ? 'bg-cyan-400 shadow-sm shadow-cyan-400/50' : 'bg-aura-purple shadow-sm shadow-aura-purple/50'} group-hover:scale-125 transition-transform shrink-0"></span>
           <div>
-            <div class="font-sans text-xs text-white">${reg.name_en}</div>
-            <div class="text-[10px] text-slate-400 font-mono">${reg.coord}</div>
+            <div class="font-sans text-xs font-bold text-white group-hover:text-cyan-300 transition-colors">${reg.name_en}</div>
+            <div class="text-[10px] text-slate-400 font-mono">${reg.coord} · ${reg.name_ar}</div>
           </div>
         </td>
-        <td class="py-2.5 font-mono text-xs">${mvT != null ? fmt(mvT) + '°C' : '—'}</td>
-        <td class="py-2.5 font-mono text-xs font-bold ${dec >= 0 ? 'text-aura-rose' : 'text-aura-cyan'}">${dec >= 0 ? '+' : ''}${fmt(dec, 3)}°C</td>
-        <td class="py-2.5 font-mono text-xs text-slate-300">${mvRH != null ? fmt(mvRH) + '%' : '—'}</td>
-        <td class="py-2.5 font-mono text-xs text-slate-300">${mvWS != null ? fmt(mvWS * 3.6) + ' km/h' : '—'}</td>
-        <td class="py-2.5">
-          <span class="px-2 py-0.5 rounded text-[10px] font-bold ${sig ? 'bg-aura-emerald/15 text-aura-emerald border border-aura-emerald/30' : 'bg-slate-700 text-slate-300'}">
-            ${sig ? 'CONFIRMED WARMING ★ (p < 0.05)' : 'STABLE BASELINE'}
+        <td class="py-3 px-3 font-mono text-xs text-center font-bold text-amber-300">
+          <span class="inline-block px-2 py-0.5 rounded bg-amber-400/10 border border-amber-400/20">${mvT != null ? fmt(mvT) + '°C' : '—'}</span>
+        </td>
+        <td class="py-3 px-3 font-mono text-xs text-center font-bold">
+          <span class="inline-block px-2 py-0.5 rounded ${dec >= 0 ? 'bg-rose-500/15 text-rose-300 border border-rose-500/30' : 'bg-cyan-500/15 text-cyan-300 border border-cyan-500/30'}">
+            ${dec >= 0 ? '+' : ''}${fmt(dec, 3)}°C
+          </span>
+        </td>
+        <td class="py-3 px-3 font-mono text-xs text-center text-slate-300">
+          <span class="inline-block px-2 py-0.5 rounded bg-cyan-950/40 border border-cyan-500/20 text-cyan-200">
+            ${mvRH != null ? fmt(mvRH) + '%' : '—'}
+          </span>
+        </td>
+        <td class="py-3 px-3 font-mono text-xs text-center text-slate-300">
+          <span class="inline-block px-2 py-0.5 rounded bg-emerald-950/40 border border-emerald-500/20 text-emerald-200">
+            ${mvWS != null ? fmt(mvWS * 3.6) + ' km/h' : '—'}
+          </span>
+        </td>
+        <td class="py-3 px-4 text-right">
+          <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded text-[10px] font-bold ${sig ? 'bg-aura-emerald/15 text-aura-emerald border border-aura-emerald/30 shadow-sm shadow-emerald-500/20' : 'bg-slate-700/50 text-slate-300 border border-slate-600'}">
+            <span>${sig ? '★' : '•'}</span>
+            <span>${sig ? 'CONFIRMED WARMING (p < 0.05)' : 'STABLE BASELINE'}</span>
           </span>
         </td>
       `;
