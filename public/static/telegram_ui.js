@@ -238,11 +238,18 @@
     `);
 
     try {
-      const res = await fetch('/api/telegram/test-alert', {
+      let res = await fetch('/api/telegram/test_alert', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       });
+      if (!res.ok) {
+        res = await fetch('/api/telegram/test-alert', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+      }
       const data = await res.json();
 
       if (data.successful_deliveries > 0) {
