@@ -15,52 +15,52 @@
     cairo: {
       // Greater Cairo & Giza area
       d: 'M 195 175 L 210 168 L 222 172 L 225 185 L 218 195 L 205 198 L 195 192 Z',
-      cx: 210, cy: 183, label: 'القاهرة'
+      cx: 210, cy: 183, label: 'Cairo'
     },
     alexandria: {
       // Alexandria & North Coast
       d: 'M 140 140 L 175 132 L 195 138 L 200 150 L 185 160 L 155 158 L 140 150 Z',
-      cx: 170, cy: 146, label: 'الإسكندرية'
+      cx: 170, cy: 146, label: 'Alexandria'
     },
     delta: {
       // Nile Delta
       d: 'M 185 150 L 215 145 L 230 155 L 225 170 L 205 175 L 190 168 Z',
-      cx: 208, cy: 161, label: 'الدلتا'
+      cx: 208, cy: 161, label: 'Delta'
     },
     sinai: {
       // South Sinai
       d: 'M 260 185 L 290 165 L 310 180 L 305 215 L 285 235 L 265 220 L 258 200 Z',
-      cx: 282, cy: 200, label: 'سيناء'
+      cx: 282, cy: 200, label: 'Sinai'
     },
     aswan: {
       // Aswan & Lake Nasser
       d: 'M 185 340 L 210 330 L 230 340 L 235 365 L 220 385 L 195 380 L 182 360 Z',
-      cx: 210, cy: 358, label: 'أسوان'
+      cx: 210, cy: 358, label: 'Aswan'
     },
     luxor: {
       // Luxor & Qena Valley
       d: 'M 178 280 L 205 270 L 225 280 L 228 310 L 215 325 L 190 320 L 175 300 Z',
-      cx: 202, cy: 298, label: 'الأقصر'
+      cx: 202, cy: 298, label: 'Luxor'
     },
     redsea: {
       // Red Sea Coast
       d: 'M 240 210 L 270 200 L 295 220 L 290 265 L 275 290 L 250 280 L 235 250 Z',
-      cx: 265, cy: 248, label: 'البحر الأحمر'
+      cx: 265, cy: 248, label: 'Red Sea'
     },
     siwa: {
       // Siwa Oasis & Matrouh
       d: 'M 60 160 L 105 150 L 130 162 L 135 185 L 115 200 L 75 195 L 55 178 Z',
-      cx: 95, cy: 177, label: 'سيوة'
+      cx: 95, cy: 177, label: 'Siwa'
     },
     newvalley: {
       // New Valley & Toshka
       d: 'M 105 250 L 155 235 L 180 250 L 185 300 L 170 330 L 130 325 L 100 295 Z',
-      cx: 145, cy: 285, label: 'الوادي الجديد'
+      cx: 145, cy: 285, label: 'New Valley'
     },
     suez: {
       // Suez Canal & Port Said
       d: 'M 232 158 L 258 150 L 268 162 L 265 182 L 252 190 L 238 185 L 230 172 Z',
-      cx: 250, cy: 170, label: 'السويس'
+      cx: 250, cy: 170, label: 'Suez'
     }
   };
 
@@ -127,7 +127,7 @@
     nileLabel.setAttribute('font-size', '8');
     nileLabel.setAttribute('font-family', 'Cairo, sans-serif');
     nileLabel.setAttribute('transform', 'rotate(-75 220 240)');
-    nileLabel.textContent = 'نهر النيل';
+    nileLabel.textContent = 'River Nile';
     svg.appendChild(nileLabel);
 
     // Draw each region
@@ -158,11 +158,11 @@
         path.setAttribute('stroke-width', '2');
         tooltip.style.display = 'block';
         tooltip.innerHTML = `
-          <div style="font-weight:700;color:#fff;margin-bottom:2px;">${data.name_ar || region.label}</div>
-          <div style="color:#94a3b8;font-size:10px;">${data.name_en || key}</div>
+          <div style="font-weight:700;color:#fff;margin-bottom:2px;">${data.name_en || region.label}</div>
+          <div style="color:#94a3b8;font-size:10px;">${region.label} Sector</div>
           <div style="margin-top:4px;display:flex;gap:8px;align-items:center;">
             <span style="background:${gradeBg(grade)};color:${gradeColor(grade)};padding:1px 6px;border-radius:4px;font-weight:700;font-size:13px;border:1px solid ${gradeColor(grade)}40">${grade}</span>
-            <span style="color:${slope >= 0.3 ? '#f43f5e' : '#f59e0b'};font-weight:600;">+${slope.toFixed(3)}°C/عقد</span>
+            <span style="color:${slope >= 0.3 ? '#f43f5e' : '#f59e0b'};font-weight:600;">+${slope.toFixed(3)}°C/dec</span>
           </div>
         `;
         const rect = group.getBoundingClientRect();
@@ -268,15 +268,15 @@
           ${region.grade}
         </div>
         <div class="flex-1 min-w-0">
-          <div class="font-bold text-white text-xs truncate">${region.name_ar}</div>
+          <div class="font-bold text-white text-xs truncate">${region.name_en}</div>
           <div class="text-[10px] text-slate-400 font-mono">${region.name_en}</div>
           <div class="flex items-center gap-3 mt-1 text-[10px]">
-            <span class="font-mono font-bold" style="color:${region.slope_decade >= 0.3 ? '#f43f5e' : '#f59e0b'}">${slopeSign}${region.slope_decade.toFixed(3)}°C/عقد</span>
-            <span class="text-slate-400">النتيجة: <span class="font-bold text-white">${region.score}/100</span></span>
+            <span class="font-mono font-bold" style="color:${region.slope_decade >= 0.3 ? '#f43f5e' : '#f59e0b'}">${slopeSign}${region.slope_decade.toFixed(3)}°C/dec</span>
+            <span class="text-slate-400">Score: <span class="font-bold text-white">${region.score}/100</span></span>
           </div>
         </div>
         <div class="shrink-0">
-          <div class="text-[10px] font-bold px-2 py-0.5 rounded" style="background:${gradeBg(region.grade)};color:${gColor};border:1px solid ${gColor}30">${region.grade_ar}</div>
+          <div class="text-[10px] font-bold px-2 py-0.5 rounded" style="background:${gradeBg(region.grade)};color:${gColor};border:1px solid ${gColor}30">${region.grade_ar || 'Rank'}</div>
         </div>
       `;
 
@@ -328,11 +328,11 @@
             if (sig) score = Math.max(0, score - 15);
 
             let grade, gradeAr;
-            if (score >= 80) { grade = 'A'; gradeAr = 'ممتاز'; }
-            else if (score >= 65) { grade = 'B'; gradeAr = 'جيد'; }
-            else if (score >= 50) { grade = 'C'; gradeAr = 'متوسط'; }
-            else if (score >= 35) { grade = 'D'; gradeAr = 'ضعيف'; }
-            else { grade = 'F'; gradeAr = 'حرج'; }
+            if (score >= 80) { grade = 'A'; gradeAr = 'Optimal'; }
+            else if (score >= 65) { grade = 'B'; gradeAr = 'Good'; }
+            else if (score >= 50) { grade = 'C'; gradeAr = 'Moderate'; }
+            else if (score >= 35) { grade = 'D'; gradeAr = 'Vulnerable'; }
+            else { grade = 'F'; gradeAr = 'Critical'; }
 
             data.push({
               key: reg.key,

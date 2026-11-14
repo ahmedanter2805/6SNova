@@ -42,7 +42,7 @@
         selects.forEach(id => {
           const sel = document.getElementById(id);
           if (sel) {
-            sel.innerHTML = '<option value="all">📢 Broadcast to All 6 Telegram Users (إذاعة للكل)</option>';
+            sel.innerHTML = '<option value="all">📢 Broadcast to All 6 Telegram Users</option>';
             registeredSubscribers.forEach(s => {
               const opt = document.createElement('option');
               opt.value = s.chat_id;

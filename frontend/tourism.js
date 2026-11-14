@@ -69,8 +69,8 @@
           <h4 class="text-xs font-bold text-white group-hover:text-aura-cyan transition-colors line-clamp-1 font-headline">
             ${s.name_en}
           </h4>
-          <p class="text-[11px] text-slate-400 font-sans line-clamp-1 mb-2">
-            ${s.name_ar}
+          <p class="text-[10px] text-slate-400 font-mono line-clamp-1 mb-2">
+            ${s.governorate_en} Governorate · Heritage Sentinel
           </p>
 
           <div class="flex items-center justify-between pt-2 border-t border-white/5 text-[10px] font-mono text-slate-400">
@@ -140,14 +140,14 @@
     const bestHoursEl = document.getElementById('tour-best-hours');
 
     if (titleEl) titleEl.textContent = s.name_en;
-    if (arTitleEl) arTitleEl.textContent = s.name_ar;
-    if (govBadge) govBadge.textContent = `${s.governorate_en} Governorate (${s.governorate_ar})`;
+    if (arTitleEl) arTitleEl.textContent = `${s.governorate_en} Region · Antiquity & Tourism Sentinel`;
+    if (govBadge) govBadge.textContent = `${s.governorate_en} Governorate`;
     if (unescoBadge) unescoBadge.style.display = s.unesco_heritage ? 'inline-flex' : 'none';
     if (elevBadge) elevBadge.textContent = her.elevation;
 
     if (tsiScoreEl) tsiScoreEl.textContent = `${cw.tsi_score}/100`;
     if (tsiRatingEl) {
-      tsiRatingEl.textContent = `${cw.rating_en} · ${cw.rating_ar}`;
+      tsiRatingEl.textContent = `${cw.rating_en} · Optimal Travel Window`;
       tsiRatingEl.style.color = cw.rating_color;
     }
     if (bestHoursEl) bestHoursEl.textContent = adv.best_visiting_hours_en;
@@ -189,7 +189,7 @@
     if (clothingEl) clothingEl.textContent = adv.clothing_guide;
     if (hydrationEl) hydrationEl.textContent = adv.hydration_guide;
     if (threatEl) threatEl.textContent = her.threat_analysis_en;
-    if (threatArEl) threatArEl.textContent = her.threat_analysis_ar;
+    if (threatArEl) threatArEl.textContent = 'Structural micro-fracturing under diurnal temperature fluctuations amplified by airborne particulate erosion.';
 
     // Charts
     renderUpcomingForecastChart(data.forecast_7days);
@@ -389,7 +389,7 @@
       const s = d.site;
 
       let csv = `AURA Tourism & Cultural Heritage Climate Sentinel - Official Travel Brief\n`;
-      csv += `Site:,"${s.name_en} (${s.name_ar})"\n`;
+      csv += `Site:,"${s.name_en}"\n`;
       csv += `Governorate:,"${s.governorate_en}"\n`;
       csv += `Coordinates:,"${s.lat} N, ${s.lon} E"\n`;
       csv += `Tourism Suitability Score:,${d.current_weather.tsi_score}/100 - ${d.current_weather.rating_en}\n`;

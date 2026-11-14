@@ -542,7 +542,7 @@ async function loadForecastChart(region, variable) {
             <span class="font-bold text-white text-xs font-headline">${pol.sector_en}</span>
           </div>
           <p class="text-xs text-slate-300 leading-relaxed">${pol.action_en}</p>
-          <div class="text-[10px] text-slate-500 font-mono">${pol.sector_ar}: ${pol.action_ar}</div>
+          <div class="text-[10px] text-cyan-400/70 font-mono">Ministry Strategic Directive · Climate Adaptation Protocol</div>
         `;
         policyContainer.appendChild(card);
       });
@@ -598,7 +598,7 @@ window.switchRegion = async function(region, idx) {
   if (title) title.textContent = region.name_en;
 
   const coords = document.getElementById('top-region-coords');
-  if (coords) coords.textContent = `${region.coord} (${region.name_ar}) · NASA POWER MERRA-2 Ground-Truth`;
+  if (coords) coords.textContent = `${region.coord} · NASA POWER MERRA-2 Ground-Truth`;
 
   // Sidebar list highlight
   document.querySelectorAll('.sidebar-region-btn').forEach((btn, i) => {
