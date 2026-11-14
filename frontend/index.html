@@ -666,56 +666,11 @@
 
       <!-- Right: Action Controls -->
       <div class="flex items-center gap-2">
-        <!-- Cosmic Background Theme Palette Switcher -->
-        <div
-          class="flex items-center gap-1.5 bg-aura-card/90 px-2.5 py-1.5 rounded-xl border border-white/10 text-xs font-mono"
-          title="Change Background Space Color">
-          <span
-            class="text-slate-400 text-[10px] uppercase tracking-wider font-bold mr-0.5 hidden xl:inline">Color:</span>
-          <button onclick="setSpaceTheme('deep-blue')" id="theme-btn-deep-blue"
-            class="w-4 h-4 rounded-full bg-gradient-to-tr from-blue-700 to-cyan-400 border border-white/50 ring-2 ring-cyan-400/80 scale-110 transition-all hover:scale-125"
-            title="Galactic Deep Blue (Active)"></button>
-          <button onclick="setSpaceTheme('nebula-violet')" id="theme-btn-nebula-violet"
-            class="w-4 h-4 rounded-full bg-gradient-to-tr from-purple-700 to-pink-500 border border-white/20 opacity-60 transition-all hover:scale-125 hover:opacity-100"
-            title="Cosmic Nebula Violet"></button>
-          <button onclick="setSpaceTheme('aurora-emerald')" id="theme-btn-aurora-emerald"
-            class="w-4 h-4 rounded-full bg-gradient-to-tr from-emerald-700 to-teal-400 border border-white/20 opacity-60 transition-all hover:scale-125 hover:opacity-100"
-            title="Aurora Emerald"></button>
-          <button onclick="setSpaceTheme('obsidian-void')" id="theme-btn-obsidian-void"
-            class="w-4 h-4 rounded-full bg-gradient-to-tr from-slate-800 to-zinc-600 border border-white/20 opacity-60 transition-all hover:scale-125 hover:opacity-100"
-            title="Obsidian Void"></button>
-        </div>
-
-        <button onclick="playIntroSequence()"
-          class="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-aura-card hover:bg-white/10 text-aura-purple border border-aura-purple/30 text-xs font-bold font-mono transition-all"
-          title="Replay 5s Cinematic Video Intro for Screen Recording">
-          <span class="material-symbols-outlined text-sm">movie</span>
-          <span>Intro (5s)</span>
-        </button>
-
-        <!-- Connect Telegram Alerts Button -->
-        <button onclick="window.openTelegramModal()"
-          class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-sky-500/20 hover:bg-sky-500/30 text-sky-300 border border-sky-400/40 text-xs font-bold font-mono transition-all cursor-pointer shadow-sm hover:scale-105"
-          title="Connect Telegram Alerts (@sixsnova_bot)">
-          <span class="material-symbols-outlined text-sm text-sky-400">send</span>
-          <span>Connect Telegram</span>
-          <span class="tg-subscriber-count px-1.5 py-0.2 rounded-full text-[9px] bg-sky-400/20 text-sky-300 font-extrabold hidden md:inline">6 Users</span>
-        </button>
-
-        <!-- Prominent TEST Alert Button -->
-        <button onclick="window.sendTelegramTestAlert('green_space')"
-          class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 hover:brightness-110 text-white text-xs font-bold font-mono transition-all cursor-pointer shadow-lg shadow-emerald-950/40 border border-white/20 hover:scale-105"
-          title="Send Instant Test Alert to All Registered Telegram Users">
-          <span class="material-symbols-outlined text-sm text-amber-300 animate-bounce">science</span>
-          <span>TEST Alert</span>
-          <span class="px-1.5 py-0.2 rounded text-[9px] bg-black/30 text-white font-extrabold">LIVE</span>
-        </button>
-
-        <!-- AURA AI Climate Intelligence Header Button -->
+        <!-- 6S Nova AI Climate Intelligence Header Button -->
         <button onclick="toggleAIChatModal(true)"
           class="flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-aura-purple via-indigo-600 to-aura-cyan text-white text-xs font-bold shadow-lg shadow-aura-purple/30 border border-white/20 hover:scale-105 hover:shadow-cyan-400/40 transition-all cursor-pointer">
           <span class="material-symbols-outlined text-base animate-pulse text-cyan-300">psychology</span>
-          <span class="font-headline tracking-wide">AURA AI Tool</span>
+          <span class="font-headline tracking-wide">6S Nova AI Tool</span>
           <span
             class="px-1.5 py-0.5 rounded text-[9px] font-mono bg-white/20 text-white font-extrabold hidden lg:inline">Ctrl+I</span>
         </button>
